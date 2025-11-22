@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Documentación Wiki - Mi Proyecto | Guías y Tutoriales</title>
+    <meta name="description" content="Documentación completa de Mi Proyecto. Guías de instalación, configuración, ejemplos y API reference para desarrolladores.">
+    <meta name="keywords" content="documentación, wiki, guía, tutorial, instalación, configuración, API, desarrollo">
+    <meta name="author" content="Equipo Mi Proyecto">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mi-proyecto.com/pages/wiki.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mi-proyecto.com/pages/wiki.html">
+    <meta property="og:title" content="Documentación Wiki - Mi Proyecto">
+    <meta property="og:description" content="Documentación completa con guías de instalación, configuración y ejemplos.">
+    <meta property="og:image" content="https://mi-proyecto.com/assets/images/wiki-preview.jpg">
+    <meta property="og:site_name" content="Mi Proyecto">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Documentación Wiki - Mi Proyecto">
+    <meta name="twitter:description" content="Documentación completa con guías de instalación, configuración y ejemplos.">
+    <meta name="twitter:image" content="https://mi-proyecto.com/assets/images/wiki-preview.jpg">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Structured Data for Documentation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Documentación Wiki - Mi Proyecto",
+      "description": "Documentación completa con guías de instalación, configuración y ejemplos",
+      "author": {
+        "@type": "Organization",
+        "name": "Equipo Mi Proyecto"
+      },
+      "dateModified": "2024-01-15",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://mi-proyecto.com/pages/wiki.html"
+      }
+    }
+    </script>
+</head>
+<body class="bg-navy-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <div id="navigation-container"></div>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Sidebar -->
+                <aside class="lg:w-1/4" role="navigation" aria-label="Navegación de documentación">
+                    <div class="bg-navy-900/50 backdrop-blur-sm border border-navy-800 rounded-xl p-6 sticky top-24">
+                        <h3 class="text-lg font-semibold mb-4">Documentación</h3>
+                        <nav class="space-y-2" id="wiki-sidebar">
+                            <!-- Contenido cargado dinámicamente -->
+                        </nav>
+                    </div>
+                </aside>
+
+                <!-- Content -->
+                <section class="lg:w-3/4" role="main" aria-label="Contenido de documentación">
+                    <div id="wiki-content">
+                        <!-- Contenido cargado dinámicamente -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script>
+        // Wiki-specific functionality
+        let currentSection = 'getting-started';
+        let wikiData = {};
+
+        // Función para procesar variables en el contenido
+        function processVariables(content, config) {
+            if (!content || !config) return content;
+            
+            return content
+                .replace(/{{download}}/g, config.links.download)
+                .replace(/{{discord}}/g, config.links.discord)
+                .replace(/{{github}}/g, config.links.github)
+                .replace(/{{version}}/g, config.version)
+                .replace(/{{fileSize}}/g, config.fileSize);
+        }
+
+        async function loadWikiContent() {
+            try {
+                const response = await fetch('../data/wiki-content.json');
+                wikiData = await response.json();
+                
+                // ✨ AGREGAR: Procesar las variables en todas las secciones
+                Object.keys(wikiData.sections).forEach(sectionKey => {
+                    const section = wikiData.sections[sectionKey];
+                    if (section.content) {
+                        section.content = processVariables(section.content, wikiData.config);
+                    }
+                });
+                
+                renderSidebar();
+                showWikiSection(currentSection);
+                updatePageTitle();
+            } catch (error) {
+                console.error('Error loading wiki content:', error);
+            }
+        }
+
+        function updatePageTitle() {
+            if (wikiData.sections && wikiData.sections[currentSection]) {
+                document.title = `${wikiData.sections[currentSection].title} - Documentación Wiki | Mi Proyecto`;
+            }
+        }
+
+        function renderSidebar() {
+            const sidebar = document.getElementById('wiki-sidebar');
+            sidebar.innerHTML = Object.keys(wikiData.sections).map(sectionId => `
+                <button onclick="showWikiSection('${sectionId}')" 
+                        class="wiki-nav block w-full text-left text-gray-300 hover:text-primary-400 py-2 px-3 rounded transition-colors"
+                        data-section="${sectionId}"
+                        aria-label="Navegar a ${wikiData.sections[sectionId].title}">
+                    ${wikiData.sections[sectionId].title}
+                </button>
+            `).join('');
+        }
+
+        function showWikiSection(sectionId) {
+            currentSection = sectionId;
+            const content = document.getElementById('wiki-content');
+            const section = wikiData.sections[sectionId];
+            
+            if (section) {
+                content.innerHTML = `
+                    <article class="fade-in">
+                        <header>
+                            <h1 class="text-4xl font-bold mb-6">${section.title}</h1>
+                        </header>
+                        <div class="prose prose-invert max-w-none">
+                            ${section.content}
+                        </div>
+                    </article>
+                `;
+                updatePageTitle();
+            }
+
+            // Update navigation
+            document.querySelectorAll('.wiki-nav').forEach(link => {
+                link.classList.remove('bg-primary-500/20', 'text-primary-400');
+                link.classList.add('text-gray-300');
+            });
+            
+            const activeLink = document.querySelector(`[data-section="${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('bg-primary-500/20', 'text-primary-400');
+                activeLink.classList.remove('text-gray-300');
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadWikiContent();
+        });
+    </script>
+</body>
+</html>

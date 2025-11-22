@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Trinity Launcher - Minecraft Bedrock Open Source Launcher | Inicio</title>
+    <meta name="description" content="Descubre Mi Proyecto: una solución innovadora y minimalista diseñada para ofrecer la mejor experiencia de usuario.">
+    <meta name="keywords" content="mi proyecto, desarrollo web, innovación, minimalista, tecnología">
+    <meta name="author" content="Equipo Mi Proyecto">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#8b5cf6">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Trinity - Launcher">
+    <meta property="og:description" content="Una solución innovadora y minimalista diseñada para ofrecer la mejor experiencia de usuario.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mi-proyecto.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="bg-navy-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <div id="navigation-container"></div>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+        <div class="relative overflow-hidden">
+            <!-- Hero Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Logo -->
+                    <div class="mb-8">
+                        <img src="assets/icons/start.svg" alt="Logo Mi Proyecto" class="w-24 h-24 mx-auto">
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                        Bienvenido a
+                        <span class="bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
+                            Trinity Launcher
+                        </span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed">
+Un launcher open source para Minecraft Bedrock con la capacidad de gestionar múltiples instancias, mundos, texturas y mods. Enfocado en la libertad del usuario y redistribución gratuita.                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="pages/wiki.html" class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-primary-500/25 inline-block">
+                            Comenzar →
+                        </a>
+                        <a href="pages/contributors.html" class="border border-gray-600 hover:border-primary-500 text-gray-300 hover:text-primary-400 px-8 py-4 rounded-lg font-semibold transition-all duration-200 inline-block">
+                            Conocer el Equipo
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simple Images Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Imagen 1 -->
+                    <div class="bg-navy-900/50 backdrop-blur-sm border border-navy-800 rounded-xl overflow-hidden hover:border-primary-400/50 transition-all duration-200">
+                        <img 
+                            src="assets/images/1.jpg" 
+                            alt="Interfaz moderna del proyecto"
+                            class="w-full h-48 object-cover"
+                        >
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-3 text-primary-300">Gestor de Instancias</h3>
+                            <p class="text-gray-400">
+                                Administra múltiples versiones de Minecraft Bedrock de forma organizada y eficiente.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Imagen 2 -->
+                    <div class="bg-navy-900/50 backdrop-blur-sm border border-navy-800 rounded-xl overflow-hidden hover:border-accent-500/50 transition-all duration-200">
+                        <img 
+                            src="assets/images/2.jpg" 
+                            alt="Dashboard del proyecto"
+                            class="w-full h-48 object-cover"
+                        >
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-3 text-accent-400">Gestor de Mods</h3>
+                            <p class="text-gray-400">
+                                Instala, activa y gestiona mods y add-ons para personalizar tu experiencia de juego.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Imagen 3 -->
+                    <div class="bg-navy-900/50 backdrop-blur-sm border border-navy-800 rounded-xl overflow-hidden hover:border-primary-400/50 transition-all duration-200">
+                        <img 
+                            src="assets/images/3.jpg" 
+                            alt="Rendimiento del proyecto"
+                            class="w-full h-48 object-cover"
+                        >
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-3 text-primary-300">Gestor de Recursos</h3>
+                            <p class="text-gray-400">
+                                Organiza paquetes de texturas, sonidos y recursos para transformar la apariencia del juego.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Características Principales</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="feature-card">
+                        <div class="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Rendimiento Rápido</h3>
+                        <p class="text-gray-400">Optimizado para velocidad y eficiencia en todas las operaciones de gestión de Minecraft Bedrock en Linux.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="w-12 h-12 bg-accent-500/20 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Fácil de Usar</h3>
+                        <p class="text-gray-400">Interfaz intuitiva diseñada pensando en la experiencia del usuario, sin complicaciones técnicas.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Personalizable</h3>
+                        <p class="text-gray-400">Configura todo a tu gusto con opciones flexibles de customización y gestión de contenido.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>

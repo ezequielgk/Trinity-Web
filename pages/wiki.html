@@ -5,29 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Documentación Wiki - Mi Proyecto | Guías y Tutoriales</title>
-    <meta name="description" content="Documentación completa de Mi Proyecto. Guías de instalación, configuración, ejemplos y API reference para desarrolladores.">
-    <meta name="keywords" content="documentación, wiki, guía, tutorial, instalación, configuración, API, desarrollo">
-    <meta name="author" content="Equipo Mi Proyecto">
+    <title>Documentación Wiki - Trinity Launcher | Guías y Tutoriales</title>
+    <meta name="description" content="Documentación completa de Trinity Launcher. Guías de instalación, configuración, gestión de instancias, mods y recursos para Minecraft Bedrock en Linux.">
+    <meta name="keywords" content="trinity launcher documentación, wiki minecraft bedrock, guías instalación, configuración launcher, gestión instancias, mods minecraft, texturas bedrock, tutoriales linux">
+    <meta name="author" content="Trinity Launcher Team">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://mi-proyecto.com/pages/wiki.html">
+    <meta name="language" content="es">
+    <meta name="theme-color" content="#8b5cf6">
+    <meta name="generator" content="Trinity Launcher">
+    <meta name="rating" content="general">
+    <meta name="application-name" content="Trinity Launcher">
+    
+    <link rel="canonical" href="https://trinitylauncher.vercel.app/pages/wiki.html">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://mi-proyecto.com/pages/wiki.html">
-    <meta property="og:title" content="Documentación Wiki - Mi Proyecto">
-    <meta property="og:description" content="Documentación completa con guías de instalación, configuración y ejemplos.">
-    <meta property="og:image" content="https://mi-proyecto.com/assets/images/wiki-preview.jpg">
-    <meta property="og:site_name" content="Mi Proyecto">
+    <meta property="og:url" content="https://trinitylauncher.vercel.app/pages/wiki.html">
+    <meta property="og:title" content="Documentación Wiki - Trinity Launcher">
+    <meta property="og:description" content="Documentación completa de Trinity Launcher con guías de instalación, configuración, gestión de instancias, mods y recursos para Minecraft Bedrock.">
+    <meta property="og:image" content="https://trinitylauncher.vercel.app/assets/images/wiki-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Trinity Launcher - Documentación Wiki">
+    <meta property="og:site_name" content="Trinity Launcher">
+    <meta property="og:locale" content="es_ES">
+    <meta property="article:section" content="Documentación">
+    <meta property="article:author" content="Trinity Launcher Team">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Documentación Wiki - Mi Proyecto">
-    <meta name="twitter:description" content="Documentación completa con guías de instalación, configuración y ejemplos.">
-    <meta name="twitter:image" content="https://mi-proyecto.com/assets/images/wiki-preview.jpg">
+    <meta name="twitter:title" content="Documentación Wiki - Trinity Launcher">
+    <meta name="twitter:description" content="Documentación completa de Trinity Launcher con guías para gestión de instancias, mods y recursos de Minecraft Bedrock.">
+    <meta name="twitter:image" content="https://trinitylauncher.vercel.app/assets/images/wiki-preview.jpg">
+    <meta name="twitter:image:alt" content="Trinity Launcher - Documentación Wiki">
+    <meta name="twitter:site" content="@TrinityLauncher">
+    <meta name="twitter:creator" content="@TrinityLauncher">
     
     <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/main.css">
@@ -37,16 +55,34 @@
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "Documentación Wiki - Mi Proyecto",
-      "description": "Documentación completa con guías de instalación, configuración y ejemplos",
+      "headline": "Documentación Wiki - Trinity Launcher",
+      "description": "Documentación completa de Trinity Launcher con guías de instalación, configuración, gestión de instancias, mods y recursos para Minecraft Bedrock en Linux",
       "author": {
         "@type": "Organization",
-        "name": "Equipo Mi Proyecto"
+        "name": "Trinity Launcher Team",
+        "url": "https://trinitylauncher.vercel.app"
       },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Trinity Launcher",
+        "url": "https://trinitylauncher.vercel.app"
+      },
+      "datePublished": "2024-01-01",
       "dateModified": "2024-01-15",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://mi-proyecto.com/pages/wiki.html"
+        "@id": "https://trinitylauncher.vercel.app/pages/wiki.html"
+      },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "Trinity Launcher",
+        "description": "Launcher open source para Minecraft Bedrock",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Linux"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Developers, Gamers"
       }
     }
     </script>
@@ -124,7 +160,7 @@
 
         function updatePageTitle() {
             if (wikiData.sections && wikiData.sections[currentSection]) {
-                document.title = `${wikiData.sections[currentSection].title} - Documentación Wiki | Mi Proyecto`;
+                document.title = `${wikiData.sections[currentSection].title} - Documentación Wiki | Trinity Launcher`;
             }
         }
 

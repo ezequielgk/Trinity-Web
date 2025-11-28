@@ -10,6 +10,13 @@ class Navigation {
 
   getCurrentPage() {
     const path = window.location.pathname;
+    const hash = window.location.hash;
+    
+    // Check hash first for clean URLs
+    if (hash === '#wiki') return 'wiki';
+    if (hash === '#contributors') return 'contributors';
+    
+    // Fallback to path checking
     if (path.includes('wiki')) return 'wiki';
     if (path.includes('contributors')) return 'contributors';
     return 'home';
@@ -286,6 +293,9 @@ class Navigation {
   }
 
   bindEvents() {
+    // Clean URL on page load
+    this.cleanURL();
+
     // Mobile menu toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -304,6 +314,26 @@ class Navigation {
         this.mobileMenuOpen = false;
       }
     });
+  }
+
+  cleanURL() {
+    const path = window.location.pathname;
+    let hash = '';
+    
+    // Convert file URLs to clean hash URLs
+    if (path.includes('pages/wiki.html')) {
+      hash = '#wiki';
+    } else if (path.includes('pages/contributors.html')) {
+      hash = '#contributors';
+    } else if (path.includes('index.html')) {
+      hash = '';
+    }
+    
+    // Update URL if needed
+    if (hash !== null) {
+      const newURL = window.location.origin + '/' + hash;
+      window.history.replaceState({}, '', newURL);
+    }
   }
 }
 

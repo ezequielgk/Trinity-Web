@@ -1,0 +1,77 @@
+{
+  "config": {
+    "links": {
+      "download": "https://github.com/Trinity-LA/Trinity-Launcher/releases/download/1.0/trinity.flatpak",
+      "discord": "https://discord.gg/4EVgybJbbZ",
+      "github": "https://github.com/Trinity-LA/Trinity-Launcher"
+    },
+    "version": "1.0.0",
+    "fileSize": "50MB"
+  },
+  
+  "faqs": [
+    {
+      "id": 1,
+      "question": "¿Qué es Trinity Launcher?",
+      "answer": "Trinity Launcher es una solución <strong class=\"text-white\">open source</strong> diseñada específicamente para permitir que los usuarios de <strong class=\"text-primary-400\">Linux</strong> puedan ejecutar <strong class=\"text-white\">Minecraft Bedrock Edition</strong> de manera nativa y eficiente.<br><br>Desarrollado como un proyecto de código abierto bajo la <strong class=\"text-primary-400\">Licencia BSD</strong>, utiliza la tecnología <strong class=\"text-primary-400\">Flatpak</strong> para proporcionar una instalación segura, aislada y fácil de gestionar en cualquier distribución de Linux.",
+      "category": "general",
+      "tags": ["básico", "linux", "open-source"]
+    },
+    {
+      "id": 2,
+      "question": "¿Cómo instalo Trinity Launcher?",
+      "answer": "La instalación de Trinity Launcher es muy sencilla utilizando <strong class=\"text-primary-400\">Flatpak</strong>.<br><br>Para instalar Trinity Launcher, sigue los pasos detallados que se encuentran en el <strong class=\"text-primary-400\">apartado de instalación de nuestra Wiki</strong>, donde encontrarás:<br><br>• <strong class=\"text-white\">Requisitos del sistema</strong><br>• <strong class=\"text-white\">Instalación paso a paso</strong><br>• <strong class=\"text-white\">Comandos específicos</strong><br>• <strong class=\"text-white\">Solución de problemas comunes</strong><br><br><div class=\"bg-green-900/20 border border-green-700/50 rounded p-4 mt-4\"><p class=\"text-green-300 text-sm\"><strong class=\"text-green-400\">💡 Tip:</strong> La guía de instalación en la Wiki se mantiene siempre actualizada con los métodos más recientes y seguros.</p></div>",
+      "category": "instalacion",
+      "tags": ["instalación", "flatpak", "wiki", "guía"]
+    },
+    {
+      "id": 3,
+      "question": "¿Necesito tener Minecraft Bedrock para usar Trinity Launcher?",
+      "answer": "<div class=\"bg-red-900/20 border border-red-700/50 rounded p-4 mb-4\"><p class=\"text-red-300 text-sm\"><strong class=\"text-red-400\">⚠️ Importante:</strong> Trinity Launcher <strong>NO proporciona</strong> copias de Minecraft Bedrock. Debes obtener tu propia copia.</p></div><strong class=\"text-white\">Requisitos del APK:</strong><br>• <strong class=\"text-primary-400\">Arquitectura:</strong> x86_64 (64 bits)<br>• <strong class=\"text-primary-400\">Formato:</strong> Archivo .apk<br>• <strong class=\"text-primary-400\">Origen:</strong> Puedes preguntar en el servidor por alguna copia<br>• <strong class=\"text-primary-400\">Compatibilidad:</strong> Cualquier versión de Bedrock Edition",
+      "category": "requisitos",
+      "tags": ["requisitos", "minecraft", "legal", "apk"]
+    },
+    {
+      "id": 4,
+      "question": "¿En qué distribuciones de Linux funciona Trinity Launcher?",
+      "answer": "Trinity Launcher es <strong class=\"text-primary-400\">compatible con todas las distribuciones de Linux</strong> que soportan Flatpak:<br><br><strong class=\"text-white\">Distribuciones probadas:</strong><br>• <strong class=\"text-primary-400\">Ubuntu/Debian</strong> y derivadas<br>• <strong class=\"text-primary-400\">Fedora</strong> y derivadas<br>• <strong class=\"text-primary-400\">Arch Linux</strong> y derivadas<br>• <strong class=\"text-primary-400\">openSUSE</strong><br>• <strong class=\"text-primary-400\">Manjaro</strong><br>• <strong class=\"text-primary-400\">Pop!_OS</strong><br>• Y muchas más...<br><br>Si tu distribución soporta Flatpak, Trinity Launcher funcionará sin problemas.",
+      "category": "compatibilidad",
+      "tags": ["distribuciones", "linux", "flatpak", "compatibilidad"]
+    },
+    {
+      "id": 5,
+      "question": "¿Trinity Launcher es gratuito?",
+      "answer": "<strong class=\"text-green-400\">¡Sí!</strong> Trinity Launcher es completamente <strong class=\"text-white\">gratuito</strong> y de <strong class=\"text-primary-400\">código abierto</strong>. No hay costos ocultos ni funciones premium.<br><br><div class=\"bg-green-900/20 border border-green-700/50 rounded p-4 mt-4\"><p class=\"text-green-300 text-sm\"><strong class=\"text-green-400\">💚 Apoyo al proyecto:</strong> Si te gusta Trinity Launcher, puedes apoyarnos contribuyendo al desarrollo, reportando bugs, o uniéndote a nuestra <a href=\"{{discord}}\" target=\"_blank\" class=\"text-primary-400 hover:text-primary-300 underline\">comunidad en Discord</a>.</p></div>",
+      "category": "general",
+      "tags": ["gratis", "open-source", "comunidad"]
+    },
+    {
+      "id": 6,
+      "question": "¿Qué hago si Minecraft se queda cargando y no inicia?",
+      "answer": "Este es un problema común relacionado con GPUs integradas o configuraciones gráficas específicas. La solución es usar variables de entorno para forzar el uso de una GPU específica:<br><br><strong class=\"text-white\">Solución 1 - GPU integrada:</strong><br><code class=\"bg-navy-900 px-2 py-1 rounded text-primary-400\">DRI_PRIME=0 flatpak run com.trench.trinity.launcher</code><br><br><strong class=\"text-white\">Solución 2 - GPU dedicada:</strong><br><code class=\"bg-navy-900 px-2 py-1 rounded text-primary-400\">DRI_PRIME=1 flatpak run com.trench.trinity.launcher</code><br><br><strong class=\"text-white\">¿Cuál usar?</strong><br>• Prueba primero con <strong class=\"text-primary-400\">DRI_PRIME=0</strong><br>• Si no funciona, prueba con <strong class=\"text-primary-400\">DRI_PRIME=1</strong><br><br><div class=\"bg-amber-900/20 border border-amber-700/50 rounded p-4 mt-4\"><p class=\"text-amber-300 text-sm\"><strong class=\"text-amber-400\">⚠️ Nota:</strong> Este problema suele ocurrir en sistemas con GPUs integradas Intel o configuraciones híbridas. La solución fuerza el uso de un renderizador específico.</p></div>",
+      "category": "problemas",
+      "tags": ["error", "gpu", "carga", "67%", "solución"]
+    },
+    {
+      "id": 7,
+      "question": "¿Trinity Launcher se actualiza automáticamente?",
+      "answer": "<div class=\"bg-amber-900/20 border border-amber-700/50 rounded p-4 mb-4\"><p class=\"text-amber-300 text-sm\"><strong class=\"text-amber-400\">⚠️ Actualización temporal:</strong> Por el momento, para actualizar Trinity Launcher es necesario realizar el proceso de instalación nuevamente.</p></div><strong class=\"text-white\">Proceso actual de actualización:</strong><br>1. <strong class=\"text-primary-400\">Desinstala</strong> la versión actual (opcional)<br>2. <strong class=\"text-primary-400\">Descarga</strong> la nueva versión desde el apartado de instalación de la wiki<br>3. <strong class=\"text-primary-400\">Instala</strong> siguiendo el mismo proceso inicial<br><br><strong class=\"text-white\">Comando para desinstalar (opcional):</strong><br><code class=\"bg-navy-900 px-2 py-1 rounded text-primary-400\">flatpak uninstall com.trench.trinity.launcher</code><br><br><div class=\"bg-blue-900/20 border border-blue-700/50 rounded p-4 mt-4\"><p class=\"text-blue-300 text-sm\"><strong class=\"text-blue-400\">🚧 ¡EN DESARROLLO!:</strong> Estamos trabajando para implementar un sistema de actualizaciones automáticas que haga este proceso más sencillo en futuras versiones.</p></div>",
+      "category": "actualizaciones",
+      "tags": ["actualizaciones", "instalación", "manual", "desarrollo"]
+    },
+    {
+      "id": 8,
+      "question": "¿Qué hago si Trinity Launcher no inicia o se cuelga?",
+      "answer": "Si experimentas problemas con Trinity Launcher, prueba estos pasos:<br><br><strong class=\"text-white\">Soluciones básicas:</strong><br>1. <strong class=\"text-primary-400\">Reinicia tu sistema</strong><br>2. Actualiza Trinity Launcher: <code class=\"bg-navy-900 px-2 py-1 rounded text-primary-400\">flatpak update</code><br>3. Verifica que tienes las <strong class=\"text-primary-400\">dependencias necesarias</strong> instaladas<br><br><strong class=\"text-white\">Diagnóstico avanzado:</strong><br>• Ejecuta desde terminal para ver errores:<br><code class=\"bg-navy-900 px-2 py-1 rounded text-primary-400\">flatpak run com.trench.trinity.launcher</code><br><br><strong class=\"text-white\">Si el problema persiste:</strong><br>• Únete a nuestro <a href=\"{{discord}}\" target=\"_blank\" class=\"text-primary-400 hover:text-primary-300 underline\">Discord</a> y crea un foro en <code class=\"bg-navy-900 px-1 rounded text-primary-400\">📣┃ayuda-foro</code><br>• Incluye información de tu sistema y el error específico",
+      "category": "problemas",
+      "tags": ["errores", "solución", "soporte", "diagnóstico"]
+    },
+    {
+      "id": 9,
+      "question": "¿Cuáles son los requisitos del sistema para Trinity Launcher?",
+      "answer": "<strong class=\"text-white\">Requisitos mínimos del sistema:</strong><br><br><strong class=\"text-primary-400\">Sistema Operativo:</strong><br>• Linux (cualquier distribución con soporte para Flatpak)<br><br><strong class=\"text-primary-400\">Hardware:</strong><br>• <strong class=\"text-white\">RAM:</strong> 2GB mínimo (4GB recomendado)<br>• <strong class=\"text-white\">Espacio en disco:</strong> 2GB libres mínimo<br>• <strong class=\"text-white\">Gráficos:</strong> OpenGL 3.0 o Vulkan compatible<br>• <strong class=\"text-white\">Arquitectura:</strong> x86_64 (64 bits)<br><br><strong class=\"text-primary-400\">Software:</strong><br>• Flatpak instalado en el sistema<br>• Copia de Minecraft Bedrock x86-64<br><br><div class=\"bg-amber-900/20 border border-amber-700/50 rounded p-4 mt-4\"><p class=\"text-amber-300 text-sm\"><strong class=\"text-amber-400\">⚡ Rendimiento:</strong> Para una experiencia óptima, se recomienda 8GB de RAM y una tarjeta gráfica dedicada.</p></div>",
+      "category": "requisitos",
+      "tags": ["requisitos", "hardware", "sistema", "rendimiento"]
+    }
+  ]
+}

@@ -14,10 +14,12 @@ class Navigation {
     
     // Check hash first for clean URLs
     if (hash === '#wiki') return 'wiki';
+    if (hash === '#faq') return 'faq';
     if (hash === '#contributors') return 'contributors';
     
     // Fallback to path checking
     if (path.includes('wiki')) return 'wiki';
+    if (path.includes('faq')) return 'faq';
     if (path.includes('contributors')) return 'contributors';
     return 'home';
   }
@@ -61,6 +63,9 @@ class Navigation {
                 <a href="${basePath}pages/wiki.html" class="nav-link text-gray-300 hover:text-primary-400 transition-colors" data-page="wiki">
                   Wiki
                 </a>
+                <a href="${basePath}pages/faq.html" class="nav-link text-gray-300 hover:text-primary-400 transition-colors" data-page="faq">
+                  FAQ
+                </a>
                 <a href="${basePath}pages/contributors.html" class="nav-link text-gray-300 hover:text-primary-400 transition-colors" data-page="contributors">
                   Colaboradores
                 </a>
@@ -81,6 +86,7 @@ class Navigation {
               <div class="flex flex-col space-y-2">
                 <a href="${basePath}index.html" class="nav-link-mobile text-left text-gray-300 hover:text-primary-400 py-2" data-page="home">Inicio</a>
                 <a href="${basePath}pages/wiki.html" class="nav-link-mobile text-left text-gray-300 hover:text-primary-400 py-2" data-page="wiki">Wiki</a>
+                <a href="${basePath}pages/faq.html" class="nav-link-mobile text-left text-gray-300 hover:text-primary-400 py-2" data-page="faq">FAQ</a>
                 <a href="${basePath}pages/contributors.html" class="nav-link-mobile text-left text-gray-300 hover:text-primary-400 py-2" data-page="contributors">Colaboradores</a>
               </div>
             </div>
@@ -323,6 +329,8 @@ class Navigation {
     // Convert file URLs to clean hash URLs
     if (path.includes('pages/wiki.html')) {
       hash = '#wiki';
+    } else if (path.includes('pages/faq.html')) {
+      hash = '#faq';
     } else if (path.includes('pages/contributors.html')) {
       hash = '#contributors';
     } else if (path.includes('index.html')) {

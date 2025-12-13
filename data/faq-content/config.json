@@ -53,7 +53,7 @@
     },
     {
       "id": 7,
-      "question": "¿Trinity Launcher se actualiza automáticamente?",
+      "question": "¿Cómo actualizar Trinity Launcher?",
       "category": "actualizaciones",
       "tags": ["actualizaciones", "instalación", "manual", "desarrollo"],
       "file": "7.html"

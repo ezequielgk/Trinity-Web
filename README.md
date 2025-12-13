@@ -41,31 +41,56 @@ Sitio web moderno y responsive de Trinity Launcher, construido con tecnologías 
 ```
 
 trinity-launcher-website/  
-├── 📂 assets/ # Recursos estáticos  
-│ ├── 📂 icons/ # Favicons e iconos SVG  
-│ └── 📂 images/ # Imágenes optimizadas  
-├── 📂 css/ # Hojas de estilo  
-│ ├── 📄 main.css # Estilos principales  
-│ └── 📄 components.css # Componentes específicos  
-├── 📂 data/ # Contenido dinámico  
-│ ├── 📄 contributors.json # Información del equipo  
-│ ├── 📂 faq-content/ # Sistema FAQ modular  
-│ │ ├── 📄 config.json # Configuración FAQs  
-│ │ └── 📄 [1-9].html # Respuestas individuales  
-│ └── 📂 wiki-content/ # Documentación modular  
-│ ├── 📄 configs.json # Configuración Wiki  
-│ └── 📄 *.html # Artículos de documentación  
-├── 📂 js/ # Scripts JavaScript  
-│ ├── 📄 main.js # Funcionalidad principal  
-│ ├── 📄 navigation.js # Navegación dinámica  
-│ ├── 📄 tailwind.config.js # Configuración Tailwind  
-│ └── 📄 utils.js # Utilidades comunes  
-├── 📂 pages/ # Páginas secundarias  
-│ ├── 📄 contributors.html # Página del equipo  
-│ ├── 📄 faq.html # Preguntas frecuentes  
-│ └── 📄 wiki.html # Documentación  
-├── 📄 index.html # Página principal  
-└── 📄 vercel.json # Configuración de despliegue
+├── assets
+│   ├── icons
+│   │   ├── favicon.ico
+│   │   ├── start23.svg
+│   │   └── start.svg
+│   └── images
+│       ├── 1.jpg
+│       ├── 2.jpg
+│       ├── 3.jpg
+│       ├── 4.jpg
+│       ├── 5.jpg
+│       ├── faq-preview.jpg
+│       ├── team-preview.jpg
+│       ├── trinity-launcher-preview.jpg
+│       └── wiki-preview.jpg
+├── css
+│   ├── components.css
+│   └── main.css
+├── data
+│   ├── contributors.json
+│   ├── faq-content
+│   │   ├── 1.html
+│   │   ├── 2.html
+│   │   ├── 3.html
+│   │   ├── 4.html
+│   │   ├── 5.html
+│   │   ├── 6.html
+│   │   ├── 7.html
+│   │   ├── 8.html
+│   │   ├── 9.html
+│   │   └── config.json
+│   └── wiki-content
+│       ├── configs.json
+│       ├── configuration.html
+│       ├── getting-started.html
+│       ├── installation.html
+│       └── support.html
+├── index.html
+├── js
+│   ├── main.js
+│   ├── navigation.js
+│   ├── tailwind.config.js
+│   └── utils.js
+├── LICENSE
+├── pages
+│   ├── contributors.html
+│   ├── faq.html
+│   └── wiki.html
+├── README.md
+└── vercel.json
 
 ```
 

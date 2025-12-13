@@ -1,0 +1,48 @@
+{
+  "contributors": [
+    {
+      "id": 4,
+      "name": "Ezequiel",
+      "role": "Web Design",
+      "initials": "EZ",
+      "description": "Diseñador y desarrollador frontend especializado en interfaces modernas. Responsable del diseño visual y experiencia de usuario de Trinity Launcher.",
+      "gradient": "from-primary-400 to-primary-600",
+      "roleColor": "text-primary-400",
+      "hoverColor": "text-primary-400",
+      "github": "https://github.com/ezequielgk"
+    },
+    {
+      "id": 2,
+      "name": "JavierC",
+      "role": "Co-Creador del Proyecto",
+      "initials": "AD",
+      "description": "Supervisor de proyecto con experiencia en gestión de equipos y coordinación de desarrollo. Asegura la calidad y el cumplimiento de objetivos del proyecto.",
+      "gradient": "from-purple-400 to-purple-600",
+      "roleColor": "text-purple-400",
+      "hoverColor": "text-purple-400",
+      "github": "https://github.com/franckey02"
+    },
+    {
+      "id": 1,
+      "name": "Crow",
+      "role": "Creador del Proyecto",
+      "initials": "CT",
+      "description": "Fundador y visionario detrás de Trinity Launcher. Lidera el desarrollo conceptual y define la dirección estratégica del proyecto.",
+      "gradient": "from-green-400 to-green-600",
+      "roleColor": "text-green-400",
+      "hoverColor": "text-green-400",
+      "github": "https://github.com/roosterkingv-ai"
+    },
+        {
+      "id": 3,
+      "name": "Orta",
+      "role": "Supervisor del Proyecto",
+      "initials": "CT",
+      "description": "Co-supervisor del proyecto con experiencia en arquitectura de software y liderazgo técnico. Supervisa la implementación de funcionalidades clave.",
+      "gradient": "from-green-400 to-green-600",
+      "roleColor": "text-green-400",
+      "hoverColor": "text-green-400",
+      "github": "https://github.com/0rt4"
+    }
+  ]
+}

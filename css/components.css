@@ -1,0 +1,118 @@
+.nav-link {
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  color: var(--primary-400);
+}
+
+.nav-link.active {
+  color: var(--primary-400);
+}
+
+.wiki-nav {
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: #cbd5e1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.wiki-nav:hover {
+  color: var(--primary-400);
+}
+
+.wiki-nav.active {
+  background-color: rgba(45, 212, 191, 0.2);
+  color: var(--primary-400);
+}
+
+#mobile-wiki-accordion {
+  border-bottom: 1px solid #1e293b;
+}
+
+#wiki-accordion-content {
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#accordion-icon {
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--primary-500);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-600);
+  box-shadow: 0 20px 25px -5px rgba(45, 212, 191, 0.25);
+}
+
+.btn-secondary {
+  border: 1px solid #4b5563;
+  color: #d1d5db;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary-500);
+  color: var(--primary-400);
+}
+
+.contributor-card {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid #1e293b;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.contributor-card:hover {
+  border-color: rgba(45, 212, 191, 0.5);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contributor-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+.wiki-nav:focus {
+  outline: 2px solid var(--primary-400);
+  outline-offset: 2px;
+}
+
+button:focus {
+  outline: 2px solid var(--primary-400);
+  outline-offset: 2px;
+}

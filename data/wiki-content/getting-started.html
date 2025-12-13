@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comenzando - Trinity Launcher Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            400: '#5D5CDE',
+                            500: '#5D5CDE',
+                            600: '#4F4ECE'
+                        },
+                        navy: {
+                            700: '#1e293b',
+                            800: '#0f172a', 
+                            900: '#020617'
+                        }
+                    }
+                }
+            }
+        }
+
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+</head>
+<body class="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+    <div class="container mx-auto p-6 max-w-6xl">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent mb-4">
+                Trinity Launcher
+            </h1>
+            <p class="text-xl text-gray-300">
+                El launcher open source para Minecraft Bedrock en Linux
+            </p>
+        </div>
+
+        <div class="bg-gradient-to-r from-navy-900/50 to-navy-800/50 border border-navy-700 rounded-xl p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-primary-400 mb-4">
+                ¿Qué es Trinity Launcher?
+            </h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                Trinity Launcher es una solución open source diseñada específicamente para permitir que los usuarios de Linux puedan ejecutar <strong class="text-white">Minecraft Bedrock Edition</strong> de manera nativa y eficiente.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                Desarrollado como un proyecto de código abierto bajo la Licencia BSD, Trinity Launcher utiliza la tecnología <strong class="text-primary-400">Flatpak</strong> para proporcionar una instalación segura, aislada y fácil de gestionar en cualquier distribución de Linux.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6">
+                <h3 class="text-lg font-semibold text-primary-400 mb-3 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Características Principales
+                </h3>
+                <ul class="text-gray-300 space-y-2">
+                    <li>• Open Source y completamente gratuito</li>
+                    <li>• Compatible con todas las distribuciones Linux</li>
+                    <li>• Instalación segura vía Flatpak</li>
+                    <li>• Interfaz moderna e intuitiva</li>
+                    <li>• Soporte para múltiples versiones de Minecraft</li>
+                    <li>• Gestión integrada de mods, texturas y mundos</li>
+                    <li>• Actualizaciones automáticas del launcher</li>
+                </ul>
+            </div>
+
+            <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6">
+                <h3 class="text-lg font-semibold text-primary-400 mb-3 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    Requisitos del Sistema
+                </h3>
+                <ul class="text-gray-300 space-y-2">
+                    <li>• Linux (cualquier distribución)</li>
+                    <li>• Flatpak instalado en el sistema</li>
+                    <li>• 2GB RAM mínimo (8GB recomendado)</li>
+                    <li>• OpenGL 3.0 o Vulkan compatible</li>
+                    <li>• 2GB espacio libre en disco</li>
+                    <li>• Copia de Minecraft Bedrock x86-64</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-green-900/20 to-green-800/20 border border-green-700/50 rounded-xl p-6 mb-8">
+            <h2 class="text-xl font-semibold text-green-400 mb-3 flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                ¿Por qué Trinity Launcher?
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-semibold text-white mb-2">🐧 Diseñado para Linux</h3>
+                    <p class="text-gray-300 text-sm">Optimizado específicamente para el ecosistema Linux, sin necesidad de emulación o capas de compatibilidad complejas.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white mb-2">🔒 Seguro y Aislado</h3>
+                    <p class="text-gray-300 text-sm">Utiliza Flatpak para mantener el juego aislado del sistema, proporcionando seguridad y estabilidad.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white mb-2">🎮 Experiencia Completa</h3>
+                    <p class="text-gray-300 text-sm">Gestiona todas las versiones, mods y recursos desde una interfaz unificada y fácil de usar.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white mb-2">🔧 Open Source</h3>
+                    <p class="text-gray-300 text-sm">Código abierto y transparente, desarrollado por la comunidad para la comunidad.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+            <div class="text-center bg-navy-900/30 border border-navy-800 rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-white mb-3">¿Listo para empezar?</h2>
+                <p class="text-gray-300 mb-4">Sigue nuestra guía de instalación para configurar Trinity Launcher en tu sistema</p>
+                <button onclick="showWikiSection('installation')" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-primary-500/25 transform hover:-translate-y-0.5 transition-all duration-200">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                    Ir a Instalación
+                </button>
+            </div>
+
+            <div class="text-center bg-navy-900/30 border border-navy-800 rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-white mb-3">¿Necesitas ayuda?</h2>
+                <p class="text-gray-300 mb-4">Únete a nuestra comunidad en Discord para obtener soporte y compartir experiencias</p>
+                <a href="{{discord}}" target="_blank" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-indigo-500/25 transform hover:-translate-y-0.5 transition-all duration-200">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                    </svg>
+                    Unirse a Discord
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showWikiSection(sectionId) {
+            console.log('Navegar a sección:', sectionId);
+            // Esta función será manejada por el sistema principal de wiki
+        }
+    </script>
+</body>
+</html>

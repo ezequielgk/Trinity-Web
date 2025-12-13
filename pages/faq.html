@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Preguntas Frecuentes - Trinity Launcher | FAQ</title>
+    <meta name="description" content="Encuentra respuestas a las preguntas más comunes sobre Trinity Launcher. Instalación, configuración, solución de problemas y más.">
+    <meta name="keywords" content="trinity launcher faq, preguntas frecuentes, minecraft bedrock, instalación, configuración, solución problemas">
+    <meta name="author" content="Trinity Launcher Team">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="es">
+    <meta name="theme-color" content="#8b5cf6">
+    <meta name="generator" content="Trinity Launcher">
+    <meta name="rating" content="general">
+    <meta name="application-name" content="Trinity Launcher">
+    
+    <link rel="canonical" href="https://trinitylauncher.vercel.app/pages/faq.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://trinitylauncher.vercel.app/pages/faq.html">
+    <meta property="og:title" content="Preguntas Frecuentes - Trinity Launcher">
+    <meta property="og:description" content="Encuentra respuestas a las preguntas más comunes sobre Trinity Launcher. Instalación, configuración, solución de problemas y más.">
+    <meta property="og:image" content="https://trinitylauncher.vercel.app/assets/images/trinity-launcher-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Trinity Launcher - FAQ">
+    <meta property="og:site_name" content="Trinity Launcher">
+    <meta property="og:locale" content="es_ES">
+    <meta property="article:section" content="FAQ">
+    <meta property="article:author" content="Trinity Launcher Team">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Preguntas Frecuentes - Trinity Launcher">
+    <meta name="twitter:description" content="Encuentra respuestas a las preguntas más comunes sobre Trinity Launcher para Minecraft Bedrock en Linux.">
+    <meta name="twitter:image" content="https://trinitylauncher.vercel.app/assets/images/trinity-launcher-preview.jpg">
+    <meta name="twitter:image:alt" content="Trinity Launcher - FAQ">
+    <meta name="twitter:site" content="@TrinityLauncher">
+    <meta name="twitter:creator" content="@TrinityLauncher">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body class="bg-navy-950 text-white min-h-screen">
+    <!-- Navigation -->
+    <div id="navigation-container"></div>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Mobile Filter Button -->
+                <div class="lg:hidden mb-6">
+                    <button id="mobileFilterToggle" class="w-full bg-navy-900/50 backdrop-blur-sm border border-navy-800 rounded-xl p-4 flex justify-between items-center hover:bg-navy-800/50 transition-colors">
+                        <span class="font-semibold">Filtros</span>
+                        <svg id="mobileFilterIcon" class="h-5 w-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="lg:w-1/4" role="navigation" aria-label="Filtros de FAQ">
+                    <div id="filterSidebar" class="bg-navy-900/50 backdrop-blur-sm border border-navy-800 rounded-xl p-6 lg:sticky lg:top-24 hidden lg:block">
+                        <h3 class="text-lg font-semibold mb-4">Filtrar por Categoría</h3>
+                        <nav class="space-y-2" id="categoryFilters">
+                            <!-- Botones de categoría cargados dinámicamente -->
+                        </nav>
+                    </div>
+                </aside>
+
+                <!-- Content -->
+                <section class="lg:w-3/4" role="main" aria-label="Preguntas frecuentes">
+                    <article class="fade-in">
+                        <header class="mb-8">
+                            <h1 class="text-4xl font-bold mb-6">Preguntas Frecuentes</h1>
+                            <p class="text-xl text-gray-300">
+                                Encuentra respuestas a las preguntas más comunes sobre Trinity Launcher
+                            </p>
+                        </header>
+
+                        <!-- Search Bar -->
+                        <div class="bg-navy-900/50 backdrop-blur-sm border border-navy-800 rounded-xl p-6 mb-8">
+                            <h3 class="text-lg font-semibold mb-3">Buscar</h3>
+                            <div class="relative">
+                                <input 
+                                    type="text" 
+                                    id="searchInput"
+                                    placeholder="Buscar preguntas..."
+                                    class="w-full px-4 py-3 pl-12 text-base border border-navy-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-navy-900/50 text-white placeholder-gray-400 transition-colors duration-200"
+                                >
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Loading State -->
+                        <div id="loadingState" class="text-center py-12">
+                            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-400"></div>
+                            <p class="mt-2 text-gray-400">Cargando preguntas frecuentes...</p>
+                        </div>
+
+                        <!-- FAQ Container -->
+                        <div id="faqContainer" class="space-y-4 hidden">
+                            <!-- FAQs cargadas dinámicamente -->
+                        </div>
+
+                        <!-- No Results -->
+                        <div id="noResults" class="text-center py-12 hidden">
+                            <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0121 12a8 8 0 11-16 0 8 8 0 016 7.291z"></path>
+                            </svg>
+                            <h3 class="text-lg font-medium text-white mb-2">No se encontraron resultados</h3>
+                            <p class="text-gray-400">Prueba con otros términos de búsqueda o revisa todas las categorías.</p>
+                        </div>
+
+                        <!-- Error State -->
+                        <div id="errorState" class="text-center py-12 hidden">
+                            <svg class="mx-auto h-12 w-12 text-red-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <h3 class="text-lg font-medium text-white mb-2">Error al cargar las FAQs</h3>
+                            <p class="text-gray-400">No se pudieron cargar las preguntas frecuentes. Inténtalo de nuevo más tarde.</p>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script>
+        class FAQManager {
+            constructor() {
+                this.faqData = [];
+                this.categories = [];
+                this.currentFilter = 'all';
+                this.searchTerm = '';
+                this.config = {};
+                this.init();
+            }
+
+            async init() {
+                try {
+                    await this.loadFAQData();
+                    this.setupEventListeners();
+                    this.renderCategories();
+                    this.renderFAQs();
+                    this.hideLoading();
+                } catch (error) {
+                    console.error('Error initializing FAQ:', error);
+                    this.showError();
+                }
+            }
+
+            // Función para procesar variables en el contenido
+            processVariables(content) {
+                if (!content || !this.config) return content;
+                
+                return content
+                    .replace(/{{download}}/g, this.config.links?.download || '#')
+                    .replace(/{{discord}}/g, this.config.links?.discord || '#')
+                    .replace(/{{github}}/g, this.config.links?.github || '#')
+                    .replace(/{{version}}/g, this.config.version || '1.0.0')
+                    .replace(/{{fileSize}}/g, this.config.fileSize || '50MB');
+            }
+
+            async loadFAQData() {
+                try {
+                    console.log('Loading FAQ config from: ../data/faq-content/config.json');
+                    
+                    // Cargar configuración y metadatos de FAQs
+                    const configResponse = await fetch('../data/faq-content/config.json');
+                    if (!configResponse.ok) {
+                        throw new Error(`Failed to load FAQ config. Status: ${configResponse.status}`);
+                    }
+                    const configData = await configResponse.json();
+                    
+                    console.log('Config loaded:', configData);
+                    
+                    this.config = configData.config || {};
+                    this.faqData = configData.faqs || [];
+                    this.categories = [...new Set(this.faqData.map(faq => faq.category))];
+                    
+                    console.log(`Found ${this.faqData.length} FAQs to load`);
+                    
+                    // Cargar contenido de cada FAQ desde archivos HTML separados
+                    await Promise.all(this.faqData.map(async (faq) => {
+                        try {
+                            const contentUrl = `../data/faq-content/${faq.file}`;
+                            console.log(`Loading content from: ${contentUrl}`);
+                            
+                            const contentResponse = await fetch(contentUrl);
+                            if (contentResponse.ok) {
+                                const content = await contentResponse.text();
+                                faq.answer = this.processVariables(content.trim());
+                                console.log(`Loaded content for FAQ ${faq.id}`);
+                            } else {
+                                console.warn(`Failed to load content for FAQ ${faq.id}. Status: ${contentResponse.status}`);
+                                faq.answer = 'Contenido no disponible';
+                            }
+                        } catch (error) {
+                            console.error(`Error loading FAQ ${faq.id}:`, error);
+                            faq.answer = 'Error cargando contenido';
+                        }
+                    }));
+                    
+                    console.log('All FAQ content loaded successfully');
+                    
+                } catch (error) {
+                    console.error('Error loading FAQ data:', error);
+                    throw error;
+                }
+            }
+
+            setupEventListeners() {
+                // Search functionality
+                const searchInput = document.getElementById('searchInput');
+                searchInput.addEventListener('input', (e) => {
+                    this.searchTerm = e.target.value.toLowerCase();
+                    this.renderFAQs();
+                });
+
+                // Category filter event delegation
+                document.getElementById('categoryFilters').addEventListener('click', (e) => {
+                    if (e.target.classList.contains('category-filter')) {
+                        this.setActiveCategory(e.target);
+                        this.currentFilter = e.target.dataset.category;
+                        this.renderFAQs();
+                        
+                        // Close mobile filter on selection
+                        if (window.innerWidth < 1024) {
+                            this.closeMobileFilter();
+                        }
+                    }
+                });
+
+                // Mobile filter toggle
+                const mobileFilterToggle = document.getElementById('mobileFilterToggle');
+                if (mobileFilterToggle) {
+                    mobileFilterToggle.addEventListener('click', () => {
+                        this.toggleMobileFilter();
+                    });
+                }
+
+                // Close mobile filter when clicking outside
+                document.addEventListener('click', (e) => {
+                    const filterSidebar = document.getElementById('filterSidebar');
+                    const mobileFilterToggle = document.getElementById('mobileFilterToggle');
+                    
+                    if (window.innerWidth < 1024 && 
+                        !filterSidebar.contains(e.target) && 
+                        !mobileFilterToggle.contains(e.target) &&
+                        !filterSidebar.classList.contains('hidden')) {
+                        this.closeMobileFilter();
+                    }
+                });
+
+                // Handle window resize
+                window.addEventListener('resize', () => {
+                    const filterSidebar = document.getElementById('filterSidebar');
+                    if (window.innerWidth >= 1024) {
+                        filterSidebar.classList.remove('hidden');
+                    } else {
+                        filterSidebar.classList.add('hidden');
+                    }
+                });
+            }
+
+            toggleMobileFilter() {
+                const filterSidebar = document.getElementById('filterSidebar');
+                const mobileFilterIcon = document.getElementById('mobileFilterIcon');
+                
+                if (filterSidebar.classList.contains('hidden')) {
+                    filterSidebar.classList.remove('hidden');
+                    mobileFilterIcon.style.transform = 'rotate(180deg)';
+                } else {
+                    filterSidebar.classList.add('hidden');
+                    mobileFilterIcon.style.transform = 'rotate(0deg)';
+                }
+            }
+
+            closeMobileFilter() {
+                const filterSidebar = document.getElementById('filterSidebar');
+                const mobileFilterIcon = document.getElementById('mobileFilterIcon');
+                
+                filterSidebar.classList.add('hidden');
+                mobileFilterIcon.style.transform = 'rotate(0deg)';
+            }
+
+            setActiveCategory(activeButton) {
+                document.querySelectorAll('.category-filter').forEach(btn => {
+                    btn.classList.remove('bg-primary-500/20', 'text-primary-400');
+                    btn.classList.add('text-gray-300');
+                });
+                activeButton.classList.add('bg-primary-500/20', 'text-primary-400');
+                activeButton.classList.remove('text-gray-300');
+            }
+
+            renderCategories() {
+                const container = document.getElementById('categoryFilters');
+                
+                // Botón "Todas"
+                const allButton = document.createElement('button');
+                allButton.className = 'category-filter block w-full text-left text-gray-300 hover:text-primary-400 py-2 px-3 rounded transition-colors bg-primary-500/20 text-primary-400';
+                allButton.dataset.category = 'all';
+                allButton.textContent = 'Todas';
+                allButton.setAttribute('aria-label', 'Mostrar todas las preguntas');
+                container.appendChild(allButton);
+                
+                // Botones de categoría
+                this.categories.forEach(category => {
+                    const button = document.createElement('button');
+                    button.className = 'category-filter block w-full text-left text-gray-300 hover:text-primary-400 py-2 px-3 rounded transition-colors';
+                    button.dataset.category = category;
+                    button.textContent = this.formatCategory(category);
+                    button.setAttribute('aria-label', `Filtrar por ${this.formatCategory(category)}`);
+                    container.appendChild(button);
+                });
+            }
+
+            formatCategory(category) {
+                const categoryNames = {
+                    'general': 'General',
+                    'instalacion': 'Instalación',
+                    'configuracion': 'Configuración',
+                    'requisitos': 'Requisitos',
+                    'compatibilidad': 'Compatibilidad',
+                    'mods': 'Mods y Add-ons',
+                    'actualizaciones': 'Actualizaciones',
+                    'problemas': 'Solución de Problemas'
+                };
+                return categoryNames[category] || category.charAt(0).toUpperCase() + category.slice(1);
+            }
+
+            renderFAQs() {
+                const container = document.getElementById('faqContainer');
+                const filteredFAQs = this.getFilteredFAQs();
+
+                if (filteredFAQs.length === 0) {
+                    this.showNoResults();
+                    return;
+                }
+
+                this.hideNoResults();
+                container.innerHTML = '';
+
+                filteredFAQs.forEach((faq, index) => {
+                    const faqElement = this.createFAQElement(faq, index);
+                    container.appendChild(faqElement);
+                });
+            }
+
+            getFilteredFAQs() {
+                return this.faqData.filter(faq => {
+                    const matchesCategory = this.currentFilter === 'all' || faq.category === this.currentFilter;
+                    const matchesSearch = this.searchTerm === '' || 
+                        faq.question.toLowerCase().includes(this.searchTerm) ||
+                        faq.answer.toLowerCase().includes(this.searchTerm);
+                    return matchesCategory && matchesSearch;
+                });
+            }
+
+            createFAQElement(faq, index) {
+                const faqDiv = document.createElement('div');
+                faqDiv.className = 'bg-navy-900/50 backdrop-blur-sm border border-navy-800 rounded-xl overflow-hidden transition-all duration-200 hover:border-navy-700';
+                
+                faqDiv.innerHTML = `
+                    <button class="faq-toggle w-full px-6 py-4 text-left hover:bg-navy-800/50 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors duration-200" 
+                            data-index="${index}" aria-expanded="false">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-primary-400 pr-4">
+                                ${faq.question}
+                            </h3>
+                            <svg class="faq-icon h-5 w-5 text-primary-400 transform transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-4 text-gray-300 leading-relaxed prose prose-invert max-w-none">
+                            ${faq.answer}
+                        </div>
+                        ${faq.tags ? `
+                            <div class="px-6 pb-4">
+                                <div class="flex flex-wrap gap-2">
+                                    ${faq.tags.map(tag => `
+                                        <span class="px-2 py-1 bg-navy-900/50 border border-navy-700 text-xs rounded text-gray-400">
+                                            ${tag}
+                                        </span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+
+                // Add click event for toggle
+                const toggleButton = faqDiv.querySelector('.faq-toggle');
+                const content = faqDiv.querySelector('.faq-content');
+                const icon = faqDiv.querySelector('.faq-icon');
+
+                toggleButton.addEventListener('click', () => {
+                    const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                    
+                    if (isExpanded) {
+                        content.style.maxHeight = '0px';
+                        icon.style.transform = 'rotate(0deg)';
+                        toggleButton.setAttribute('aria-expanded', 'false');
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(180deg)';
+                        toggleButton.setAttribute('aria-expanded', 'true');
+                    }
+                });
+
+                return faqDiv;
+            }
+
+            hideLoading() {
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('faqContainer').classList.remove('hidden');
+            }
+
+            showError() {
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('errorState').classList.remove('hidden');
+            }
+
+            showNoResults() {
+                document.getElementById('faqContainer').classList.add('hidden');
+                document.getElementById('noResults').classList.remove('hidden');
+            }
+
+            hideNoResults() {
+                document.getElementById('noResults').classList.add('hidden');
+                document.getElementById('faqContainer').classList.remove('hidden');
+            }
+        }
+
+        // Initialize FAQ when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new FAQManager();
+        });
+    </script>
+</body>
+</html>

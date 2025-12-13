@@ -1,0 +1,76 @@
+{
+  "config": {
+    "links": {
+      "download": "https://github.com/Trinity-LA/Trinity-Launcher/releases/download/1.0/trinity.flatpak",
+      "discord": "https://discord.gg/4EVgybJbbZ",
+      "github": "https://github.com/Trinity-LA/Trinity-Launcher"
+    },
+    "version": "1.0.0",
+    "fileSize": "50MB"
+  },
+  "faqs": [
+    {
+      "id": 1,
+      "question": "¿Qué es Trinity Launcher?",
+      "category": "general",
+      "tags": ["básico", "linux", "open-source"],
+      "file": "1.html"
+    },
+    {
+      "id": 2,
+      "question": "¿Cómo instalo Trinity Launcher?",
+      "category": "instalacion",
+      "tags": ["instalación", "flatpak", "wiki", "guía"],
+      "file": "2.html"
+    },
+    {
+      "id": 3,
+      "question": "¿Necesito tener Minecraft Bedrock para usar Trinity Launcher?",
+      "category": "requisitos",
+      "tags": ["requisitos", "minecraft", "legal", "apk"],
+      "file": "3.html"
+    },
+    {
+      "id": 4,
+      "question": "¿En qué distribuciones de Linux funciona Trinity Launcher?",
+      "category": "compatibilidad",
+      "tags": ["distribuciones", "linux", "flatpak", "compatibilidad"],
+      "file": "4.html"
+    },
+    {
+      "id": 5,
+      "question": "¿Trinity Launcher es gratuito?",
+      "category": "general",
+      "tags": ["gratis", "open-source", "comunidad"],
+      "file": "5.html"
+    },
+    {
+      "id": 6,
+      "question": "¿Qué hago si Minecraft se queda cargando y no inicia?",
+      "category": "problemas",
+      "tags": ["error", "gpu", "carga", "67%", "solución"],
+      "file": "6.html"
+    },
+    {
+      "id": 7,
+      "question": "¿Trinity Launcher se actualiza automáticamente?",
+      "category": "actualizaciones",
+      "tags": ["actualizaciones", "instalación", "manual", "desarrollo"],
+      "file": "7.html"
+    },
+    {
+      "id": 8,
+      "question": "¿Qué hago si Trinity Launcher no inicia o se cuelga?",
+      "category": "problemas",
+      "tags": ["errores", "solución", "soporte", "diagnóstico"],
+      "file": "8.html"
+    },
+    {
+      "id": 9,
+      "question": "¿Cuáles son los requisitos del sistema para Trinity Launcher?",
+      "category": "requisitos",
+      "tags": ["requisitos", "hardware", "sistema", "rendimiento"],
+      "file": "9.html"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+Este es un problema común relacionado con GPUs dedicadas Nvidia o Amd Viejas. 
+La solución es usar variables de entorno para forzar el uso de una GPU específica:
+<br><br>
+
+<strong class="text-white">Solución 1 - GPU integrada:</strong>
+<br>
+<code class="bg-navy-900 px-2 py-1 rounded text-primary-400">DRI_PRIME=0 flatpak run com.trench.trinity.launcher</code>
+<br><br>
+
+<strong class="text-white">Solución 2 - GPU dedicada:</strong>
+<br>
+<code class="bg-navy-900 px-2 py-1 rounded text-primary-400">DRI_PRIME=1 flatpak run com.trench.trinity.launcher</code>
+<br><br>
+
+<strong class="text-white">¿Cuál usar?</strong>
+<br>
+• Prueba primero con <strong class="text-primary-400">DRI_PRIME=0</strong><br>
+• Si no funciona, prueba con <strong class="text-primary-400">DRI_PRIME=1</strong>
+<br><br>
+
+<div class="bg-amber-900/20 border border-amber-700/50 rounded p-4 mt-4">
+    <p class="text-amber-300 text-sm">
+        <strong class="text-amber-400">⚠️ Nota:</strong> 
+        Este problema suele ocurrir en sistemas con GPUs dedicadas Amd o Nvidia viejas. 
+        La solución fuerza el uso de un renderizador específico.
+    </p>
+</div>

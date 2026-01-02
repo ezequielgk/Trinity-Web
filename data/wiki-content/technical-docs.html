@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación Técnica - Trinity Launcher Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            400: '#5D5CDE',
+                            500: '#5D5CDE',
+                            600: '#4F4ECE'
+                        },
+                        navy: {
+                            700: '#1e293b',
+                            800: '#0f172a',
+                            900: '#020617'
+                        }
+                    }
+                }
+            }
+        }
+
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+</head>
+<body class="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+    <div class="container mx-auto p-6 max-w-6xl">
+
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent mb-4">
+                Trinity Launcher
+            </h1>
+            <p class="text-xl text-gray-300">
+                Entorno gráfico modular para Minecraft Bedrock en Linux
+            </p>
+            <p class="text-gray-400 mt-2">
+                <a href="https://trinitylauncher.vercel.app/" target="_blank" class="text-primary-400 hover:text-primary-500 underline">
+                    Visita nuestra página web oficial
+                </a>
+                para guías de instalación paso a paso.
+            </p>
+        </div>
+
+        <!-- Badges -->
+        <div class="flex justify-center flex-wrap gap-2 mb-8">
+            <a href="https://opensource.org/licenses/BSD-3-Clause" target="_blank" class="inline-block px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-full transition-colors">
+                BSD 3-Clause
+            </a>
+            <a href="https://www.qt.io/" target="_blank" class="inline-block px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-xs font-semibold rounded-full transition-colors">
+                Qt 6
+            </a>
+            <a href="{{github}}" target="_blank" class="inline-block px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white text-xs font-semibold rounded-full transition-colors">
+                GitHub
+            </a>
+            <a href="https://flatpak.org/" target="_blank" class="inline-block px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full transition-colors">
+                Flatpak
+            </a>
+        </div>
+
+        <!-- Intro Box -->
+        <div class="bg-gradient-to-r from-primary-400/20 to-primary-600/10 border border-primary-400/30 rounded-xl p-6 mb-8">
+            <p class="text-gray-300 mb-4">
+                <strong class="text-white">Trinity Launcher</strong> es un entorno gráfico moderno y modular para ejecutar y gestionar
+                <strong class="text-white">Minecraft: Bedrock Edition</strong> en Linux. Diseñado para funcionar tanto en sistema como dentro de
+                <strong class="text-white">Flatpak</strong>, utiliza <strong class="text-white">Qt6</strong> y sigue una arquitectura limpia basada en librerías separadas
+                (<code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">core</code> y <code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">ui</code>).
+            </p>
+            <p class="text-gray-300 mb-4">Incluye dos aplicaciones complementarias:</p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4">
+                    <h4 class="font-semibold text-white mb-2 flex items-center">
+                        <span class="mr-2">🚀</span>
+                        <code class="text-primary-400">trinchete</code>
+                    </h4>
+                    <p class="text-gray-400 text-sm">
+                        <strong class="text-gray-300">Launcher principal:</strong> gestión avanzada de versiones, exportación/importación, accesos directos.
+                    </p>
+                </div>
+                <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4">
+                    <h4 class="font-semibold text-white mb-2 flex items-center">
+                        <span class="mr-2">📦</span>
+                        <code class="text-primary-400">trinito</code>
+                    </h4>
+                    <p class="text-gray-400 text-sm">
+                        <strong class="text-gray-300">Gestor de contenido:</strong> instalación, activación/desactivación y eliminación de mods, texturas, packs y mundos.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación rápida -->
+        <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6 mb-8">
+            <h2 class="text-xl font-semibold text-white mb-4">📑 Navegación Rápida</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <a href="#tecnologias" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
+                    <span class="text-2xl block mb-1">🛠️</span>
+                    <span class="text-sm text-gray-300">Tecnologías</span>
+                </a>
+                <a href="#trinchete" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
+                    <span class="text-2xl block mb-1">🎮</span>
+                    <span class="text-sm text-gray-300">Trinchete</span>
+                </a>
+                <a href="#trinito" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
+                    <span class="text-2xl block mb-1">🧰</span>
+                    <span class="text-sm text-gray-300">Trinito</span>
+                </a>
+                <a href="#compilacion" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
+                    <span class="text-2xl block mb-1">⚙️</span>
+                    <span class="text-sm text-gray-300">Compilación</span>
+                </a>
+                <a href="#mcpelauncher" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
+                    <span class="text-2xl block mb-1">🔧</span>
+                    <span class="text-sm text-gray-300">MCPElauncher</span>
+                </a>
+                <a href="#flatpak" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
+                    <span class="text-2xl block mb-1">📦</span>
+                    <span class="text-sm text-gray-300">Flatpak</span>
+                </a>
+                <a href="#pruebas" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
+                    <span class="text-2xl block mb-1">🧪</span>
+                    <span class="text-sm text-gray-300">Pruebas</span>
+                </a>
+                <a href="#licencia" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
+                    <span class="text-2xl block mb-1">📄</span>
+                    <span class="text-sm text-gray-300">Licencia</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tecnologías -->
+        <section id="tecnologias" class="mb-10 scroll-mt-6">
+            <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
+                <span class="mr-3">🛠️</span>
+                Tecnologías
+            </h2>
+
+            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6 mb-6">
+                <h3 class="text-xl font-semibold text-white mb-4">Stack de desarrollo</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b border-navy-700">
+                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Componente</th>
+                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Descripción</th>
+                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Versión</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-300">
+                            <tr class="border-b border-navy-800">
+                                <td class="py-3 px-4 font-medium text-white">Lenguaje</td>
+                                <td class="py-3 px-4">C++ estándar</td>
+                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">C++17</code></td>
+                            </tr>
+                            <tr class="border-b border-navy-800">
+                                <td class="py-3 px-4 font-medium text-white">Framework UI</td>
+                                <td class="py-3 px-4">Qt Framework</td>
+                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">Qt 6.6+</code></td>
+                            </tr>
+                            <tr class="border-b border-navy-800">
+                                <td class="py-3 px-4 font-medium text-white">Build System</td>
+                                <td class="py-3 px-4">CMake</td>
+                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">3.17+</code></td>
+                            </tr>
+                            <tr class="border-b border-navy-800">
+                                <td class="py-3 px-4 font-medium text-white">Compilador</td>
+                                <td class="py-3 px-4">Clang</td>
+                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">16+</code></td>
+                            </tr>
+                            <tr class="border-b border-navy-800">
+                                <td class="py-3 px-4 font-medium text-white">Empaquetado</td>
+                                <td class="py-3 px-4">Flatpak</td>
+                                <td class="py-3 px-4">—</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-medium text-white">Plataforma</td>
+                                <td class="py-3 px-4">Linux (x86_64, ARM64)</td>
+                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">glibc</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                <h3 class="text-xl font-semibold text-white mb-4">Arquitectura modular</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-start">
+                        <span class="text-primary-400 mr-2">▸</span>
+                        <div>
+                            <code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">TrinityCore</code>:
+                            <span class="text-gray-400">lógica de negocio (gestión de versiones, packs, lanzamiento, exportación).</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-primary-400 mr-2">▸</span>
+                        <div>
+                            <code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">TrinityUI</code>:
+                            <span class="text-gray-400">interfaces gráficas (ventanas, diálogos, widgets).</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-primary-400 mr-2">▸</span>
+                        <div>
+                            <strong class="text-white">Separación clara</strong>:
+                            <span class="text-gray-400">facilita mantenimiento, pruebas y reutilización.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Trinchete -->
+        <section id="trinchete" class="mb-10 scroll-mt-6">
+            <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
+                <span class="mr-3">🎮</span>
+                Trinchete — Interfaz del launcher
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                    <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        Barra superior
+                    </h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="bg-navy-900/50 border border-navy-700 rounded-lg p-3">
+                            <strong class="text-white">+ Extraer APK</strong>
+                            <p class="text-sm text-gray-400 mt-1">Selecciona un <code class="text-primary-400">.apk</code>, le da un nombre y lo extrae con <code class="text-primary-400">mcpelauncher-extract</code>.</p>
+                        </li>
+                        <li class="bg-navy-900/50 border border-navy-700 rounded-lg p-3">
+                            <strong class="text-white">Importar</strong>
+                            <p class="text-sm text-gray-400 mt-1">Restaura una versión guardada en <code class="text-primary-400">.tar.gz</code>.</p>
+                        </li>
+                        <li class="bg-navy-900/50 border border-navy-700 rounded-lg p-3">
+                            <strong class="text-white">Herramientas</strong>
+                            <p class="text-sm text-gray-400 mt-1">Abre la aplicación <code class="text-primary-400">trinito</code>.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                    <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Panel derecho
+                    </h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-green-400 mr-2">▸</span>
+                            <div><strong class="text-white">JUGAR</strong>: ejecuta <code class="text-primary-400 text-xs">mcpelauncher-client -dg &lt;ruta&gt;</code> y cierra el launcher.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2">▸</span>
+                            <div><strong class="text-white">Crear Acceso Directo</strong>: genera un archivo <code class="text-primary-400 text-xs">.desktop</code> en <code class="text-primary-400 text-xs">~/Descargas/</code>.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-yellow-400 mr-2">▸</span>
+                            <div><strong class="text-white">Editar Configuración</strong>: añade variables de entorno (ej: <code class="text-primary-400 text-xs">DRI_PRIME=1</code>).</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-400 mr-2">▸</span>
+                            <div><strong class="text-white">Exportar</strong>: guarda la versión + sus datos en <code class="text-primary-400 text-xs">.tar.gz</code>.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-400 mr-2">▸</span>
+                            <div><strong class="text-white">Eliminar</strong>: borra permanentemente la versión.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-4 bg-gradient-to-r from-green-900/20 to-green-800/20 border border-green-700/50 rounded-lg p-4">
+                <p class="text-green-400 flex items-center">
+                    <span class="mr-2">✅</span>
+                    <strong>Interfaz moderna con tema oscuro y soporte para íconos</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- Trinito -->
+        <section id="trinito" class="mb-10 scroll-mt-6">
+            <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
+                <span class="mr-3">🧰</span>
+                Trinito — Gestor de Contenido
+            </h2>
+
+            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6 mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b border-navy-700">
+                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Pestaña</th>
+                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Tipo</th>
+                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Destino</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-300">
+                            <tr class="border-b border-navy-800">
+                                <td class="py-3 px-4 font-medium text-white">Mods</td>
+                                <td class="py-3 px-4">Archivo</td>
+                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">behavior_packs/</code></td>
+                            </tr>
+                            <tr class="border-b border-navy-800">
+                                <td class="py-3 px-4 font-medium text-white">Texturas</td>
+                                <td class="py-3 px-4">Archivo</td>
+                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">resource_packs/</code></td>
+                            </tr>
+                            <tr class="border-b border-navy-800">
+                                <td class="py-3 px-4 font-medium text-white">Mundos</td>
+                                <td class="py-3 px-4"><strong>Carpeta</strong></td>
+                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">minecraftWorlds/</code></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-medium text-white">Desarrollo</td>
+                                <td class="py-3 px-4">Archivo</td>
+                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">development_.../</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                <h3 class="text-xl font-semibold text-white mb-4">Funcionalidades clave</h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4 text-center">
+                        <span class="text-2xl mb-2 block">✅</span>
+                        <strong class="text-white">Habilitado</strong>
+                        <p class="text-gray-400 text-sm mt-1">Nombre normal</p>
+                    </div>
+                    <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4 text-center">
+                        <span class="text-2xl mb-2 block">⬜</span>
+                        <strong class="text-white">Deshabilitado</strong>
+                        <p class="text-gray-400 text-sm mt-1">Renombrado a <code class="text-primary-400 text-xs">.disabled</code></p>
+                    </div>
+                    <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4 text-center">
+                        <span class="text-2xl mb-2 block">🔄</span>
+                        <strong class="text-white">Interactivo</strong>
+                        <p class="text-gray-400 text-sm mt-1">Checkboxes, recarga y eliminación</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compilación -->
+        <section id="compilacion" class="mb-10 scroll-mt-6">
+            <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
+                <span class="mr-3">⚙️</span>
+                Compilación e Instalación
+            </h2>
+
+            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-sm overflow-x-auto mb-4"><code class="text-gray-300"><span class="text-gray-500"># Dar permisos</span>
+<span class="text-green-400">chmod</span> +x build.sh
+
+<span class="text-gray-500"># Compilar e instalar</span>
+<span class="text-yellow-400">sudo</span> ./build.sh</code></pre>
+
+                <p class="text-gray-300 mb-4">
+                    Instala en <code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">/usr/local/bin</code> y registra el ícono y acceso directo.
+                </p>
+
+                <p class="text-gray-400 mb-3">Una vez instalado, ejecuta desde cualquier terminal:</p>
+                <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-gray-300"><span class="text-primary-400">trinchete</span>
+<span class="text-primary-400">trinito</span></code></pre>
+            </div>
+        </section>
+
+        <!-- MCPElauncher -->
+        <section id="mcpelauncher" class="mb-10 scroll-mt-6">
+            <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
+                <span class="mr-3">🔧</span>
+                MCPElauncher Requerido
+            </h2>
+
+            <div class="bg-amber-900/20 border border-amber-700/50 rounded-xl p-6 mb-6">
+                <p class="text-amber-400 flex items-start">
+                    <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.502 0L4.312 15.5c-.77.833.192 2.5 1.732 2.5z"/>
+                    </svg>
+                    <span>
+                        Trinity Launcher <strong>requiere</strong> los binarios de
+                        <code class="bg-amber-900/50 px-1 rounded">mcpelauncher-client</code>,
+                        <code class="bg-amber-900/50 px-1 rounded">mcpelauncher-extract</code> y
+                        <code class="bg-amber-900/50 px-1 rounded">mcpelauncher-webview</code>.
+                    </span>
+                </p>
+            </div>
+
+            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                <p class="text-gray-300 mb-4">
+                    Usa el fork mantenido en:
+                    <a href="https://github.com/franckey02/mcpelauncher-patch" target="_blank" class="text-primary-400 hover:text-primary-500 underline">
+                        https://github.com/franckey02/mcpelauncher-patch
+                    </a>
+                    <br>
+                    <span class="text-gray-400 text-sm">(Compatible con versiones recientes de Minecraft, incluyendo <strong class="text-white">1.21.131+</strong> y betas).</span>
+                </p>
+
+                <h3 class="text-lg font-semibold text-white mb-3">Comandos para compilar</h3>
+                <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-gray-300"><span class="text-green-400">git clone</span> https://github.com/franckey02/mcpelauncher-patch.git
+<span class="text-green-400">cd</span> mcpelauncher-patch
+<span class="text-green-400">git checkout</span> qt6
+<span class="text-green-400">git submodule update</span> --init --recursive
+<span class="text-green-400">mkdir</span> -p build
+<span class="text-green-400">cd</span> build
+
+<span class="text-yellow-400">CC</span>=clang <span class="text-yellow-400">CXX</span>=clang++ cmake .. \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_POLICY_DEFAULT_CMP0074=NEW \
+  -DCMAKE_C_COMPILER=clang \
+  -DCMAKE_CXX_COMPILER=clang++ \
+  -DCMAKE_C_FLAGS="-march=x86-64 -mtune=generic -msse4.1 -msse4.2 -mpopcnt" \
+  -DCMAKE_CXX_FLAGS="-march=x86-64 -mtune=generic -msse4.1 -msse4.2 -mpopcnt" \
+  -Wno-dev
+
+<span class="text-green-400">make</span> -j$(getconf _NPROCESSORS_ONLN)
+<span class="text-yellow-400">sudo</span> make install</code></pre>
+            </div>
+        </section>
+
+        <!-- Flatpak -->
+        <section id="flatpak" class="mb-10 scroll-mt-6">
+            <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
+                <span class="mr-3">📦</span>
+                Empaquetado en Flatpak
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Requisitos
+                    </h3>
+                    <pre class="bg-navy-900 border border-navy-700 rounded-lg p-3 text-xs overflow-x-auto"><code class="text-gray-300"><span class="text-green-400">flatpak install</span> flathub io.qt.qtwebengine.BaseApp//6.9
+<span class="text-green-400">flatpak install</span> flathub org.kde.Platform//6.9 org.kde.Sdk//6.9</code></pre>
+                </div>
+
+                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                        Construcción
+                    </h3>
+                    <pre class="bg-navy-900 border border-navy-700 rounded-lg p-3 text-xs overflow-x-auto"><code class="text-gray-300"><span class="text-green-400">flatpak-builder</span> --user --force-clean build-dir \
+  com.trench.trinity.launcher.json
+
+<span class="text-green-400">flatpak-builder</span> --repo=repo --force-clean build-dir \
+  com.trench.trinity.launcher.json
+
+<span class="text-green-400">flatpak build-bundle</span> repo trinity.flatpak \
+  com.trench.trinity.launcher
+
+<span class="text-green-400">flatpak install</span> ./trinity.flatpak</code></pre>
+                </div>
+            </div>
+
+            <div class="mt-4 bg-gradient-to-r from-green-900/20 to-green-800/20 border border-green-700/50 rounded-lg p-4">
+                <p class="text-green-400 flex items-center text-sm">
+                    <span class="mr-2">✅</span>
+                    El manifest debe incluir <code class="bg-green-900/50 px-1 rounded">libevdev</code>, <code class="bg-green-900/50 px-1 rounded">libzip</code> y copiar <code class="bg-green-900/50 px-1 rounded">files/</code> a <code class="bg-green-900/50 px-1 rounded">/app</code>.
+                </p>
+            </div>
+        </section>
+
+        <!-- Pruebas -->
+        <section id="pruebas" class="mb-10 scroll-mt-6">
+            <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
+                <span class="mr-3">🧪</span>
+                Pruebas
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-white mb-4">En sistema</h3>
+                    <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-sm"><code class="text-gray-300"><span class="text-primary-400">trinchete</span>
+<span class="text-primary-400">trinito</span></code></pre>
+                </div>
+
+                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-white mb-4">En Flatpak</h3>
+                    <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-gray-300"><span class="text-green-400">flatpak run</span> com.trench.trinity.launcher
+<span class="text-green-400">flatpak run</span> --command=trinito \
+  com.trench.trinity.launcher</code></pre>
+                </div>
+            </div>
+
+            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                <h3 class="text-lg font-semibold text-white mb-4">Rutas de datos (automáticas)</h3>
+                <div class="space-y-3">
+                    <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center gap-2">
+                        <span class="text-purple-400 font-bold shrink-0">Flatpak:</span>
+                        <code class="text-gray-400 text-sm break-all">~/.var/app/com.trench.trinity.launcher/data/mcpelauncher/</code>
+                    </div>
+                    <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center gap-2">
+                        <span class="text-blue-400 font-bold shrink-0">Local:</span>
+                        <code class="text-gray-400 text-sm">~/.local/share/mcpelauncher/</code>
+                    </div>
+                </div>
+                <div class="mt-4 bg-blue-900/20 border border-blue-700/50 rounded-lg p-3">
+                    <p class="text-blue-400 text-sm">
+                        Ambas usan <code class="bg-blue-900/50 px-1 rounded">QStandardPaths::GenericDataLocation</code> → <strong>total compatibilidad</strong>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Licencia -->
+        <section id="licencia" class="mb-10 scroll-mt-6">
+            <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
+                <span class="mr-3">📄</span>
+                Licencia
+            </h2>
+
+            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                <p class="text-gray-300 mb-4">
+                    Trinity Launcher se distribuye bajo la <strong class="text-white">Licencia BSD de 3 cláusulas</strong>.
+                </p>
+
+                <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-xs overflow-x-auto text-gray-400 whitespace-pre-wrap">Copyright (c) 2024, Trinity Launcher Authors
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</pre>
+
+                <p class="mt-4">
+                    <a href="https://opensource.org/licenses/BSD-3-Clause" target="_blank" class="text-primary-400 hover:text-primary-500 underline">
+                        Ver licencia completa →
+                    </a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-navy-800 pt-8 mt-12 text-center">
+            <p class="text-gray-500 text-sm mb-2">Documento técnico generado en enero de 2026</p>
+            <a href="{{github}}" target="_blank" class="inline-flex items-center text-primary-400 hover:text-primary-500 transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Repositorio oficial en GitHub
+            </a>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scroll para navegación interna
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,7 +1,9 @@
 {
+  "cleanUrls": true,
   "rewrites": [
+    { "source": "/", "destination": "/index.html" },
     { "source": "/wiki", "destination": "/pages/wiki.html" },
     { "source": "/contributors", "destination": "/pages/contributors.html" },
-    { "source": "/", "destination": "/index.html" }
+    { "source": "/faq", "destination": "/pages/faq.html" }
   ]
 }

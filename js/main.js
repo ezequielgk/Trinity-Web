@@ -1,5 +1,19 @@
 // Archivo JavaScript principal - Funcionalidad global del proyecto
 
+// Archivo JavaScript principal - Funcionalidad global del proyecto
+
+/**
+ * Vercel Analytics Integration
+ * Configura el rastreo de visitas para el dashboard de Vercel
+ */
+(function() {
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  const script = document.createElement('script');
+  script.defer = true;
+  script.src = '/_vercel/insights/script.js';
+  document.head.appendChild(script);
+})();
+
 /**
  * Configuración del modo oscuro automático
  * Detecta las preferencias del sistema y aplica el tema correspondiente

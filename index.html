@@ -51,6 +51,128 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        /* Custom animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .glow-effect {
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.15), 0 0 80px rgba(139, 92, 246, 0.05);
+        }
+
+        .card-glow:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(139, 92, 246, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-shine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-shine:hover::before {
+            left: 100%;
+        }
+
+        .image-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.6) 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-card:hover::before {
+            opacity: 1;
+        }
+
+        .image-card img {
+            transition: transform 0.5s ease, filter 0.3s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            position: relative;
+        }
+
+        .feature-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 0.75rem;
+            background: inherit;
+            opacity: 0.3;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tag-pill {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tag-pill::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+        }
+    </style>
 </head>
 <body class="bg-navy-950 text-white min-h-screen">
     <!-- Navigation -->
@@ -59,65 +181,88 @@
     <!-- Main Content -->
     <main class="flex-1">
         <div class="relative overflow-hidden">
+            <!-- Subtle background decoration -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl"></div>
+            </div>
+
             <!-- Hero Section -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+            <div class="min-h-[calc(100vh-80px)] flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-8 text-center relative">
                 <div class="max-w-4xl mx-auto">
-                    <!-- Logo -->
-                    <div class="mb-8">
-                        <img src="assets/icons/start.svg" alt="My Project Logo" class="w-24 h-24 mx-auto">
+                    <!-- Logo with glow effect -->
+                    <div class="mb-6 lg:mb-8 float-animation">
+                        <div class="relative inline-block">
+                            <img src="assets/icons/start.svg" alt="My Project Logo" class="w-20 h-20 lg:w-24 lg:h-24 mx-auto relative z-10">
+                            <div class="absolute inset-0 bg-primary-500/20 rounded-full blur-2xl scale-150"></div>
+                        </div>
                     </div>
 
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 lg:mb-6 leading-tight">
                         Welcome to
-                        <span class="bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
+                        <span class="block mt-1 lg:mt-2 text-gradient">
                             Trinity Launcher
                         </span>
                     </h1>
-                    <p class="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed">
-An open source launcher for Minecraft Bedrock with the ability to manage multiple instances, worlds, textures and mods. Focused on user freedom and free redistribution.                    </p>
+                    <p class="text-lg md:text-xl lg:text-2xl text-gray-300/90 mb-8 lg:mb-10 leading-relaxed max-w-3xl mx-auto">
+                        An open source launcher for Minecraft Bedrock with the ability to manage multiple instances, worlds, textures and mods. Focused on user freedom and free redistribution.
+                    </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="pages/wiki.html" class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-primary-500/25 inline-block">
+                        <a href="pages/wiki.html" class="btn-shine bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white px-8 lg:px-10 py-3 lg:py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-0.5 inline-block">
                             Get Started
                         </a>
-                        <a href="pages/contributors.html" class="border border-gray-600 hover:border-primary-500 text-gray-300 hover:text-primary-400 px-8 py-4 rounded-lg font-semibold transition-all duration-200 inline-block">
+                        <a href="pages/contributors.html" class="border-2 border-gray-600/50 hover:border-primary-500/50 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white px-8 lg:px-10 py-3 lg:py-4 rounded-xl font-semibold transition-all duration-300 inline-block hover:-translate-y-0.5">
                             Meet the Team
                         </a>
+                    </div>
+
+                    <!-- Scroll indicator -->
+                    <div class="hidden lg:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                        </svg>
                     </div>
                 </div>
             </div>
 
+            <!-- Section Divider -->
+            <div class="section-divider max-w-4xl mx-auto"></div>
+
             <!-- Enhanced Features Showcase -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
                 <!-- Section Header -->
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+                <div class="text-center mb-20">
+                    <span class="inline-block px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6">
+                        Features
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gradient">
                         Powerful Management Tools
                     </h2>
-                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
                         Discover the main features that make Trinity Launcher the best choice for managing Minecraft Bedrock
                     </p>
                 </div>
 
                 <!-- Modpack Management -->
-                <div class="mb-20">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="mb-28">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <!-- Images Section -->
                         <div class="relative">
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="cursor-pointer group" onclick="openLightbox('assets/images/1.webp', 'Instance Management - Trinity Launcher')">
+                            <div class="grid grid-cols-2 gap-5">
+                                <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/1.webp', 'Instance Management - Trinity Launcher')">
                                     <img
                                         src="assets/images/1.webp"
                                         alt="Instance Management"
-                                        class="w-full h-48 object-cover rounded-lg shadow-lg border border-gray-700/50 group-hover:border-primary-400/50 transition-all duration-300 group-hover:scale-105"
+                                        class="w-full h-52 object-cover"
                                         style="filter: brightness(1.1) contrast(1.1);"
                                     >
                                 </div>
-                                <div class="cursor-pointer group" onclick="openLightbox('assets/images/2.webp', 'Mod Management - Trinity Launcher')">
+                                <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/2.webp', 'Mod Management - Trinity Launcher')">
                                     <img
                                         src="assets/images/2.webp"
                                         alt="Mod Management"
-                                        class="w-full h-48 object-cover rounded-lg shadow-lg border border-gray-700/50 group-hover:border-accent-400/50 transition-all duration-300 group-hover:scale-105"
+                                        class="w-full h-52 object-cover"
                                         style="filter: brightness(1.1) contrast(1.1);"
                                     >
                                 </div>
@@ -125,30 +270,30 @@ An open source launcher for Minecraft Bedrock with the ability to manage multipl
                         </div>
 
                         <!-- Content Section -->
-                        <div class="space-y-6">
-                            <div class="inline-flex items-center px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full">
+                        <div class="space-y-7">
+                            <div class="inline-flex items-center px-5 py-2.5 bg-primary-500/10 border border-primary-500/20 rounded-full">
                                 <svg class="w-5 h-5 text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
                                 </svg>
                                 <span class="text-primary-300 text-sm font-medium">Instance Export</span>
                             </div>
 
-                            <h3 class="text-3xl md:text-4xl font-bold text-white">
+                            <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">
                                 Export Your Complete Instances with Ease
                             </h3>
 
-                            <p class="text-lg text-gray-300 leading-relaxed">
+                            <p class="text-lg text-gray-400 leading-relaxed">
                                 Export and import your complete Minecraft instances with all mods, resources, worlds and settings included. Share your perfect setup with friends or make backups of your customized instances without losing any detail.
                             </p>
 
-                            <div class="flex flex-wrap gap-3">
-                                <span class="px-3 py-2 bg-primary-500/15 border border-primary-500/25 rounded-lg text-sm text-primary-300 font-medium">
+                            <div class="flex flex-wrap gap-3 pt-2">
+                                <span class="tag-pill px-4 py-2.5 bg-primary-500/10 border border-primary-500/20 rounded-xl text-sm text-primary-300 font-medium">
                                     📤 Complete export
                                 </span>
-                                <span class="px-3 py-2 bg-primary-500/15 border border-primary-500/25 rounded-lg text-sm text-primary-300 font-medium">
+                                <span class="tag-pill px-4 py-2.5 bg-primary-500/10 border border-primary-500/20 rounded-xl text-sm text-primary-300 font-medium">
                                     🔄 Easy import
                                 </span>
-                                <span class="px-3 py-2 bg-primary-500/15 border border-primary-500/25 rounded-lg text-sm text-primary-300 font-medium">
+                                <span class="tag-pill px-4 py-2.5 bg-primary-500/10 border border-primary-500/20 rounded-xl text-sm text-primary-300 font-medium">
                                     🛡️ Secure backups
                                 </span>
                             </div>
@@ -157,33 +302,33 @@ An open source launcher for Minecraft Bedrock with the ability to manage multipl
                 </div>
 
                 <!-- Mod Download and Update -->
-                <div class="mb-20">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="mb-28">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <!-- Content Section (left side) -->
-                        <div class="space-y-6 lg:order-1">
-                            <div class="inline-flex items-center px-4 py-2 bg-accent-500/10 border border-accent-500/20 rounded-full">
+                        <div class="space-y-7 lg:order-1">
+                            <div class="inline-flex items-center px-5 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-full">
                                 <svg class="w-5 h-5 text-accent-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
                                 </svg>
                                 <span class="text-accent-300 text-sm font-medium">Mod Management</span>
                             </div>
 
-                            <h3 class="text-3xl md:text-4xl font-bold text-white">
+                            <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">
                                 Install and Manage Your Mods Easily
                             </h3>
 
-                            <p class="text-lg text-gray-300 leading-relaxed">
+                            <p class="text-lg text-gray-400 leading-relaxed">
                                 Manage all your mods and add-ons from an intuitive and centralized interface. Trinity Launcher allows you to install, activate, deactivate and organize your modifications easily, without technical complications or complex configurations.
                             </p>
 
-                            <div class="flex flex-wrap gap-3">
-                                <span class="px-3 py-2 bg-accent-500/15 border border-accent-500/25 rounded-lg text-sm text-accent-300 font-medium">
+                            <div class="flex flex-wrap gap-3 pt-2">
+                                <span class="tag-pill px-4 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-xl text-sm text-accent-300 font-medium">
                                     📦 Centralized management
                                 </span>
-                                <span class="px-3 py-2 bg-accent-500/15 border border-accent-500/25 rounded-lg text-sm text-accent-300 font-medium">
+                                <span class="tag-pill px-4 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-xl text-sm text-accent-300 font-medium">
                                     🔧 Simple configuration
                                 </span>
-                                <span class="px-3 py-2 bg-accent-500/15 border border-accent-500/25 rounded-lg text-sm text-accent-300 font-medium">
+                                <span class="tag-pill px-4 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-xl text-sm text-accent-300 font-medium">
                                     🎮 Compatible add-ons
                                 </span>
                             </div>
@@ -191,11 +336,11 @@ An open source launcher for Minecraft Bedrock with the ability to manage multipl
 
                         <!-- Images Section (right side) -->
                         <div class="lg:order-2">
-                            <div class="cursor-pointer group" onclick="openLightbox('assets/images/3.webp', 'Resource Management - Trinity Launcher')">
+                            <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/3.webp', 'Resource Management - Trinity Launcher')">
                                 <img
                                     src="assets/images/3.webp"
                                     alt="Resource Management"
-                                    class="w-full h-80 object-cover rounded-lg shadow-lg border border-gray-700/50 group-hover:border-accent-400/50 transition-all duration-300 group-hover:scale-105"
+                                    class="w-full h-80 object-cover"
                                     style="filter: brightness(1.1) contrast(1.1);"
                                 >
                             </div>
@@ -204,47 +349,47 @@ An open source launcher for Minecraft Bedrock with the ability to manage multipl
                 </div>
 
                 <!-- Minecraft Instance Management -->
-                <div class="mb-20">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="mb-28">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <!-- Images Section -->
-                        <div class="cursor-pointer group" onclick="openLightbox('assets/images/5.webp', 'World Management - Trinity Launcher')">
+                        <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/5.webp', 'World Management - Trinity Launcher')">
                             <img
                                 src="assets/images/5.webp"
                                 alt="World Management"
-                                class="w-full h-80 object-cover rounded-lg shadow-lg border border-gray-700/50 group-hover:border-emerald-400/50 transition-all duration-300 group-hover:scale-105"
+                                class="w-full h-80 object-cover"
                                 style="filter: brightness(1.1) contrast(1.1);"
                             >
                         </div>
 
                         <!-- Content Section -->
-                        <div class="space-y-6">
-                            <div class="inline-flex items-center px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+                        <div class="space-y-7">
+                            <div class="inline-flex items-center px-5 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
                                 <svg class="w-5 h-5 text-emerald-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
                                 <span class="text-emerald-300 text-sm font-medium">Minecraft Instance Management</span>
                             </div>
 
-                            <h3 class="text-3xl md:text-4xl font-bold text-white">
+                            <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">
                                 Multiple Organized Instances
                             </h3>
 
-                            <p class="text-lg text-gray-300 leading-relaxed">
+                            <p class="text-lg text-gray-400 leading-relaxed">
                                 Have your settings been reset after launching an older version? Have you accidentally broken a world because you opened it in an old version? Are you tired of manually switching mods and installing mod loaders for different versions?
                             </p>
 
-                            <p class="text-lg text-gray-300 leading-relaxed">
+                            <p class="text-lg text-gray-400 leading-relaxed">
                                 Trinity Launcher can help you. Each Minecraft instance has its own folder, with mods, resource packs and settings completely separated for each instance.
                             </p>
 
-                            <div class="flex flex-wrap gap-3">
-                                <span class="px-3 py-2 bg-emerald-500/15 border border-emerald-500/25 rounded-lg text-sm text-emerald-300 font-medium">
+                            <div class="flex flex-wrap gap-3 pt-2">
+                                <span class="tag-pill px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-sm text-emerald-300 font-medium">
                                     📁 Separate folders
                                 </span>
-                                <span class="px-3 py-2 bg-emerald-500/15 border border-emerald-500/25 rounded-lg text-sm text-emerald-300 font-medium">
+                                <span class="tag-pill px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-sm text-emerald-300 font-medium">
                                     ⚙️ Isolated settings
                                 </span>
-                                <span class="px-3 py-2 bg-emerald-500/15 border border-emerald-500/25 rounded-lg text-sm text-emerald-300 font-medium">
+                                <span class="tag-pill px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-sm text-emerald-300 font-medium">
                                     🛡️ Protected worlds
                                 </span>
                             </div>
@@ -254,32 +399,32 @@ An open source launcher for Minecraft Bedrock with the ability to manage multipl
 
                 <!-- Lightweight and Customizable -->
                 <div class="mb-20">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <!-- Content Section (left side) -->
-                        <div class="space-y-6 lg:order-1">
-                            <div class="inline-flex items-center px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full">
+                        <div class="space-y-7 lg:order-1">
+                            <div class="inline-flex items-center px-5 py-2.5 bg-orange-500/10 border border-orange-500/20 rounded-full">
                                 <svg class="w-5 h-5 text-orange-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                                 </svg>
                                 <span class="text-orange-300 text-sm font-medium">Collaborative Project</span>
                             </div>
 
-                            <h3 class="text-3xl md:text-4xl font-bold text-white">
+                            <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">
                                 Continuous Updates and Support
                             </h3>
 
-                            <p class="text-lg text-gray-300 leading-relaxed">
+                            <p class="text-lg text-gray-400 leading-relaxed">
                                 Trinity Launcher receives constant updates and technical support thanks to the dedication of all the developers involved in the project. Our community of contributors works continuously to improve the user experience and add new features.
                             </p>
 
-                            <div class="flex flex-wrap gap-3">
-                                <span class="px-3 py-2 bg-orange-500/15 border border-orange-500/25 rounded-lg text-sm text-orange-300 font-medium">
+                            <div class="flex flex-wrap gap-3 pt-2">
+                                <span class="tag-pill px-4 py-2.5 bg-orange-500/10 border border-orange-500/20 rounded-xl text-sm text-orange-300 font-medium">
                                     🔄 Regular updates
                                 </span>
-                                <span class="px-3 py-2 bg-orange-500/15 border border-orange-500/25 rounded-lg text-sm text-orange-300 font-medium">
+                                <span class="tag-pill px-4 py-2.5 bg-orange-500/10 border border-orange-500/20 rounded-xl text-sm text-orange-300 font-medium">
                                     👥 Active community
                                 </span>
-                                <span class="px-3 py-2 bg-orange-500/15 border border-orange-500/25 rounded-lg text-sm text-orange-300 font-medium">
+                                <span class="tag-pill px-4 py-2.5 bg-orange-500/10 border border-orange-500/20 rounded-xl text-sm text-orange-300 font-medium">
                                     🛠️ Technical support
                                 </span>
                             </div>
@@ -287,11 +432,11 @@ An open source launcher for Minecraft Bedrock with the ability to manage multipl
 
                         <!-- Images Section (right side) -->
                         <div class="lg:order-2">
-                            <div class="cursor-pointer group" onclick="openLightbox('assets/images/4.webp', 'Advanced Configuration - Trinity Launcher')">
+                            <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/4.webp', 'Advanced Configuration - Trinity Launcher')">
                                 <img
                                     src="assets/images/4.webp"
                                     alt="Advanced Configuration"
-                                    class="w-full h-80 object-cover rounded-lg shadow-lg border border-gray-700/50 group-hover:border-orange-400/50 transition-all duration-300 group-hover:scale-105"
+                                    class="w-full h-80 object-cover"
                                     style="filter: brightness(1.1) contrast(1.1);"
                                 >
                             </div>
@@ -300,39 +445,48 @@ An open source launcher for Minecraft Bedrock with the ability to manage multipl
                 </div>
             </div>
 
+            <!-- Section Divider -->
+            <div class="section-divider max-w-4xl mx-auto"></div>
+
             <!-- Features Section -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Main Features</h2>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <div class="text-center mb-16">
+                    <span class="inline-block px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6">
+                        Why Choose Us
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gradient">Main Features</h2>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="feature-card">
-                        <div class="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center mb-6">
-                            <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="glass-card card-glow rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 group">
+                        <div class="feature-icon w-14 h-14 bg-gradient-to-br from-primary-500/30 to-primary-600/30 rounded-xl flex items-center justify-center mb-7">
+                            <svg class="w-7 h-7 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4">Fast Performance</h3>
-                        <p class="text-gray-400">Optimized for speed and efficiency in all Minecraft Bedrock management operations on Linux.</p>
+                        <h3 class="text-xl font-bold mb-4 group-hover:text-primary-300 transition-colors">Fast Performance</h3>
+                        <p class="text-gray-400 leading-relaxed">Optimized for speed and efficiency in all Minecraft Bedrock management operations on Linux.</p>
                     </div>
 
-                    <div class="feature-card">
-                        <div class="w-12 h-12 bg-accent-500/20 rounded-lg flex items-center justify-center mb-6">
-                            <svg class="w-6 h-6 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="glass-card card-glow rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 group">
+                        <div class="feature-icon w-14 h-14 bg-gradient-to-br from-accent-500/30 to-accent-600/30 rounded-xl flex items-center justify-center mb-7">
+                            <svg class="w-7 h-7 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4">Easy to Use</h3>
-                        <p class="text-gray-400">Intuitive interface designed with user experience in mind, without technical complications.</p>
+                        <h3 class="text-xl font-bold mb-4 group-hover:text-accent-300 transition-colors">Easy to Use</h3>
+                        <p class="text-gray-400 leading-relaxed">Intuitive interface designed with user experience in mind, without technical complications.</p>
                     </div>
 
-                    <div class="feature-card">
-                        <div class="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center mb-6">
-                            <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="glass-card card-glow rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 group">
+                        <div class="feature-icon w-14 h-14 bg-gradient-to-br from-primary-500/30 to-primary-600/30 rounded-xl flex items-center justify-center mb-7">
+                            <svg class="w-7 h-7 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4">Customizable</h3>
-                        <p class="text-gray-400">Configure everything to your liking with flexible customization and content management options.</p>
+                        <h3 class="text-xl font-bold mb-4 group-hover:text-primary-300 transition-colors">Customizable</h3>
+                        <p class="text-gray-400 leading-relaxed">Configure everything to your liking with flexible customization and content management options.</p>
                     </div>
                 </div>
             </div>
@@ -343,14 +497,14 @@ An open source launcher for Minecraft Bedrock with the ability to manage multipl
     <div id="footer-container"></div>
 
     <!-- Image Lightbox Modal -->
-    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm opacity-0 invisible transition-all duration-300">
+    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md opacity-0 invisible transition-all duration-300">
         <!-- Close button -->
         <button
             onclick="closeLightbox()"
-            class="absolute top-4 right-4 z-60 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white hover:bg-white/20 transition-colors duration-200 flex items-center justify-center group"
+            class="absolute top-6 right-6 z-60 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-200 flex items-center justify-center group"
             aria-label="Close image"
         >
-            <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
         </button>
@@ -362,13 +516,13 @@ An open source launcher for Minecraft Bedrock with the ability to manage multipl
                     id="lightboxImage"
                     src=""
                     alt=""
-                    class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+                    class="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl ring-1 ring-white/10"
                 >
 
                 <!-- Image info overlay -->
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg p-6">
-                    <h3 id="lightboxTitle" class="text-xl font-semibold text-white mb-2"></h3>
-                    <p class="text-gray-300 text-sm">Click outside the image or press ESC to close</p>
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent rounded-b-2xl p-8">
+                    <h3 id="lightboxTitle" class="text-xl font-bold text-white mb-2"></h3>
+                    <p class="text-gray-400 text-sm">Click outside the image or press ESC to close</p>
                 </div>
             </div>
         </div>

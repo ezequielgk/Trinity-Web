@@ -11,65 +11,65 @@
   "faqs": [
     {
       "id": 1,
-      "question": "¿Qué es Trinity Launcher?",
+      "question": "What is Trinity Launcher?",
       "category": "general",
-      "tags": ["básico", "linux", "open-source"],
+      "tags": ["basic", "linux", "open-source"],
       "file": "1.html"
     },
     {
       "id": 2,
-      "question": "¿Cómo instalo Trinity Launcher?",
-      "category": "instalacion",
-      "tags": ["instalación", "flatpak", "wiki", "guía"],
+      "question": "How do I install Trinity Launcher?",
+      "category": "installation",
+      "tags": ["installation", "flatpak", "wiki", "guide"],
       "file": "2.html"
     },
     {
       "id": 3,
-      "question": "¿Necesito tener Minecraft Bedrock para usar Trinity Launcher?",
-      "category": "requisitos",
-      "tags": ["requisitos", "minecraft", "legal", "apk"],
+      "question": "Do I need to own Minecraft Bedrock to use Trinity Launcher?",
+      "category": "requirements",
+      "tags": ["requirements", "minecraft", "legal", "apk"],
       "file": "3.html"
     },
     {
       "id": 4,
-      "question": "¿En qué distribuciones de Linux funciona Trinity Launcher?",
-      "category": "compatibilidad",
-      "tags": ["distribuciones", "linux", "flatpak", "compatibilidad"],
+      "question": "Which Linux distributions does Trinity Launcher work on?",
+      "category": "compatibility",
+      "tags": ["distributions", "linux", "flatpak", "compatibility"],
       "file": "4.html"
     },
     {
       "id": 5,
-      "question": "¿Trinity Launcher es gratuito?",
+      "question": "Is Trinity Launcher free?",
       "category": "general",
-      "tags": ["gratis", "open-source", "comunidad"],
+      "tags": ["free", "open-source", "community"],
       "file": "5.html"
     },
     {
       "id": 6,
-      "question": "¿Qué hago si Minecraft se queda cargando y no inicia?",
-      "category": "problemas",
-      "tags": ["error", "gpu", "carga", "67%", "solución"],
+      "question": "What should I do if Minecraft gets stuck loading and won't start?",
+      "category": "troubleshooting",
+      "tags": ["error", "gpu", "loading", "67%", "solution"],
       "file": "6.html"
     },
     {
       "id": 7,
-      "question": "¿Cómo actualizar Trinity Launcher?",
-      "category": "actualizaciones",
-      "tags": ["actualizaciones", "instalación", "manual", "desarrollo"],
+      "question": "How do I update Trinity Launcher?",
+      "category": "updates",
+      "tags": ["updates", "installation", "manual", "development"],
       "file": "7.html"
     },
     {
       "id": 8,
-      "question": "¿Qué hago si Trinity Launcher no inicia o se cuelga?",
-      "category": "problemas",
-      "tags": ["errores", "solución", "soporte", "diagnóstico"],
+      "question": "What should I do if Trinity Launcher won't start or crashes?",
+      "category": "troubleshooting",
+      "tags": ["errors", "solution", "support", "diagnostics"],
       "file": "8.html"
     },
     {
       "id": 9,
-      "question": "¿Cuáles son los requisitos del sistema para Trinity Launcher?",
-      "category": "requisitos",
-      "tags": ["requisitos", "hardware", "sistema", "rendimiento"],
+      "question": "What are the system requirements for Trinity Launcher?",
+      "category": "requirements",
+      "tags": ["requirements", "hardware", "system", "performance"],
       "file": "9.html"
     }
   ]

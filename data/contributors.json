@@ -1,48 +1,136 @@
 {
   "contributors": [
     {
-      "id": 4,
-      "name": "Ezequiel",
-      "role": "Web Design",
-      "initials": "EZ",
-      "description": "Diseñador y desarrollador frontend especializado en interfaces modernas. Responsable del diseño visual y experiencia de usuario de Trinity Launcher.",
-      "gradient": "from-primary-400 to-primary-600",
-      "roleColor": "text-primary-400",
-      "hoverColor": "text-primary-400",
-      "github": "https://github.com/ezequielgk"
+      "id": 1,
+      "name": "Crow",
+      "role": "Project Creator",
+      "initials": "CW",
+      "description": "Founder and visionary behind Trinity Launcher. Leads conceptual development and defines the strategic direction of the project.",
+      "gradient": "from-green-400 to-green-600",
+      "roleColor": "text-green-400",
+      "hoverColor": "text-green-400",
+      "github": "https://github.com/roosterkingv-ai"
     },
     {
       "id": 2,
       "name": "JavierC",
-      "role": "Co-Creador del Proyecto",
-      "initials": "AD",
-      "description": "Supervisor de proyecto con experiencia en gestión de equipos y coordinación de desarrollo. Asegura la calidad y el cumplimiento de objetivos del proyecto.",
+      "role": "Project Co-Creator",
+      "initials": "JC",
+      "description": "Project supervisor with experience in team management and development coordination. Ensures quality and project goal fulfillment.",
       "gradient": "from-purple-400 to-purple-600",
       "roleColor": "text-purple-400",
       "hoverColor": "text-purple-400",
       "github": "https://github.com/franckey02"
     },
     {
-      "id": 1,
-      "name": "Crow",
-      "role": "Creador del Proyecto",
-      "initials": "CW",
-      "description": "Fundador y visionario detrás de Trinity Launcher. Lidera el desarrollo conceptual y define la dirección estratégica del proyecto.",
-      "gradient": "from-green-400 to-green-600",
-      "roleColor": "text-green-400",
-      "hoverColor": "text-green-400",
-      "github": "https://github.com/roosterkingv-ai"
-    },
-        {
       "id": 3,
       "name": "Orta",
-      "role": "Supervisor del Proyecto",
-      "initials": "CT",
-      "description": "Co-supervisor del proyecto con experiencia en arquitectura de software y liderazgo técnico. Supervisa la implementación de funcionalidades clave.",
-      "gradient": "from-green-400 to-green-600",
-      "roleColor": "text-green-400",
-      "hoverColor": "text-green-400",
+      "role": "Project Supervisor",
+      "initials": "OR",
+      "description": "Project co-supervisor with experience in software architecture and technical leadership. Oversees the implementation of key functionalities.",
+      "gradient": "from-blue-400 to-blue-600",
+      "roleColor": "text-blue-400",
+      "hoverColor": "text-blue-400",
       "github": "https://github.com/0rt4"
+    },
+    {
+      "id": 4,
+      "name": "MrTanuk",
+      "role": "Core Developer",
+      "initials": "MT",
+      "description": "Contributed to core development alongside JavierC and played a key role in resolving technical issues.",
+      "gradient": "from-red-400 to-red-600",
+      "roleColor": "text-red-400",
+      "hoverColor": "text-red-400",
+      "github": "https://github.com/MrTanuk"
+    },
+    {
+      "id": 5,
+      "name": "Ezequiel",
+      "role": "Web Design",
+      "initials": "EZ",
+      "description": "Frontend designer and developer specialized in modern interfaces. Responsible for the visual design and user experience of Trinity Launcher.",
+      "gradient": "from-primary-400 to-primary-600",
+      "roleColor": "text-primary-400",
+      "hoverColor": "text-primary-400",
+      "github": "https://github.com/ezequielgk"
+    },
+    {
+      "id": 6,
+      "name": "KevinRunforrestt",
+      "role": "Documentation & Support",
+      "initials": "KR",
+      "description": "Managed the translation of markdown documentation files and provided assistance to the development team.",
+      "gradient": "from-teal-400 to-teal-600",
+      "roleColor": "text-teal-400",
+      "hoverColor": "text-teal-400",
+      "github": "https://github.com/KevinRunforrestt"
+    },
+    {
+      "id": 7,
+      "name": "IoselDev",
+      "role": "Translator & Support",
+      "initials": "ID",
+      "description": "Assisted in translating the launcher interface and helped resolve community and technical issues.",
+      "gradient": "from-cyan-400 to-cyan-600",
+      "roleColor": "text-cyan-400",
+      "hoverColor": "text-cyan-400",
+      "github": "https://github.com/IoselDev"
+    },
+    {
+      "id": 8,
+      "name": "Future Contributor",
+      "role": "Open Position",
+      "initials": "??",
+      "description": "This spot is reserved for future collaborators who want to help improve Trinity Launcher. Join us!",
+      "gradient": "from-gray-600 to-gray-800",
+      "roleColor": "text-gray-400",
+      "hoverColor": "text-gray-400",
+      "github": "#"
+    },
+    {
+      "id": 9,
+      "name": "Future Contributor",
+      "role": "Open Position",
+      "initials": "??",
+      "description": "This spot is reserved for future collaborators who want to help improve Trinity Launcher. Join us!",
+      "gradient": "from-gray-600 to-gray-800",
+      "roleColor": "text-gray-400",
+      "hoverColor": "text-gray-400",
+      "github": "#"
+    },
+    {
+      "id": 10,
+      "name": "Future Contributor",
+      "role": "Open Position",
+      "initials": "??",
+      "description": "This spot is reserved for future collaborators who want to help improve Trinity Launcher. Join us!",
+      "gradient": "from-gray-600 to-gray-800",
+      "roleColor": "text-gray-400",
+      "hoverColor": "text-gray-400",
+      "github": "#"
+    },
+    {
+      "id": 11,
+      "name": "Future Contributor",
+      "role": "Open Position",
+      "initials": "??",
+      "description": "This spot is reserved for future collaborators who want to help improve Trinity Launcher. Join us!",
+      "gradient": "from-gray-600 to-gray-800",
+      "roleColor": "text-gray-400",
+      "hoverColor": "text-gray-400",
+      "github": "#"
+    },
+    {
+      "id": 12,
+      "name": "Future Contributor",
+      "role": "Open Position",
+      "initials": "??",
+      "description": "This spot is reserved for future collaborators who want to help improve Trinity Launcher. Join us!",
+      "gradient": "from-gray-600 to-gray-800",
+      "roleColor": "text-gray-400",
+      "hoverColor": "text-gray-400",
+      "github": "#"
     }
   ]
 }

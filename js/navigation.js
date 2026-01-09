@@ -112,7 +112,7 @@ class Navigation {
             <div id="mobile-menu" class="hidden md:hidden pb-4">
               <div class="flex flex-col space-y-2 px-2">
                 <a href="${basePath}index.html" class="nav-link-mobile text-left text-gray-300 hover:text-primary-400 py-2" data-page="home">
-                  <i class="fas fa-home mr-2"></i>Inicio
+                  <i class="fas fa-home mr-2"></i>Home
                 </a>
                 <a href="${basePath}pages/wiki.html" class="nav-link-mobile text-left text-gray-300 hover:text-primary-400 py-2" data-page="wiki">
                   <i class="fas fa-book mr-2"></i>Wiki
@@ -121,7 +121,7 @@ class Navigation {
                   <i class="fas fa-question mr-2"></i>FAQ
                 </a>
                 <a href="${basePath}pages/contributors.html" class="nav-link-mobile text-left text-gray-300 hover:text-primary-400 py-2" data-page="contributors">
-                  <i class="fas fa-users mr-2"></i>Colaboradores
+                  <i class="fas fa-users mr-2"></i>Contributors
                 </a>
               </div>
             </div>
@@ -176,7 +176,7 @@ class Navigation {
             <!-- Enlaces de navegación del footer -->
             <div class="flex justify-center space-x-8 mb-8">
               <a href="${basePath}index.html" class="footer-nav-link text-gray-300 hover:text-primary-400 transition-colors font-medium" data-page="home">
-                <i class="fas fa-home mr-2"></i>Inicio
+                <i class="fas fa-home mr-2"></i>Home
               </a>
               <a href="${basePath}pages/wiki.html" class="footer-nav-link text-gray-300 hover:text-primary-400 transition-colors font-medium" data-page="wiki">
                 <i class="fas fa-book mr-2"></i>Wiki
@@ -185,14 +185,14 @@ class Navigation {
                 <i class="fas fa-question mr-2"></i>FAQ
               </a>
               <a href="${basePath}pages/contributors.html" class="footer-nav-link text-gray-300 hover:text-primary-400 transition-colors font-medium" data-page="contributors">
-                <i class="fas fa-users mr-2"></i>Colaboradores
+                <i class="fas fa-users mr-2"></i>Contributors
               </a>
             </div>
             
             <!-- Información de copyright -->
             <div class="text-center">
               <p class="text-gray-400">
-                © 2025 Trinity Launcher. Todos los derechos reservados.
+                © 2026 Trinity Launcher. All rights reserved.
               </p>
             </div>
           </div>
@@ -289,7 +289,7 @@ class Navigation {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header del acordeón clickeable -->
         <div class="flex justify-between items-center py-3 cursor-pointer" id="wiki-accordion-toggle">
-          <h3 class="text-lg font-semibold text-white">Documentación</h3>
+          <h3 class="text-lg font-semibold text-white">Documentation</h3>
           <button class="text-gray-300 hover:text-primary-400 transition-colors p-2">
             <svg class="w-5 h-5 transform transition-transform duration-200" id="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>

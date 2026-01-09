@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vercel Analytics - Trinity Launcher Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            400: '#5D5CDE',
+                            500: '#5D5CDE',
+                            600: '#4F4ECE'
+                        },
+                        navy: {
+                            700: '#1e293b',
+                            800: '#0f172a', 
+                            900: '#020617'
+                        }
+                    }
+                }
+            }
+        }
+
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+</head>
+<body class="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+    <div class="container mx-auto p-6 max-w-6xl">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent mb-4">
+                Getting Started with Vercel Web Analytics
+            </h1>
+            <p class="text-xl text-gray-300">
+                Learn how to enable analytics tracking and view visitor data
+            </p>
+        </div>
+
+        <div class="bg-gradient-to-r from-navy-900/50 to-navy-800/50 border border-navy-700 rounded-xl p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-primary-400 mb-4">
+                Overview
+            </h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+                This guide will help you get started with using Vercel Web Analytics on your project. Vercel Web Analytics provides insights into your website's visitor behavior, helping you understand how users interact with your site.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+                We'll walk you through enabling analytics, adding the package to your project, deploying to Vercel, and viewing your data in the dashboard.
+            </p>
+        </div>
+
+        <!-- Prerequisites Section -->
+        <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6 mb-8">
+            <h3 class="text-2xl font-semibold text-primary-400 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m7 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Prerequisites
+            </h3>
+            <ul class="text-gray-300 space-y-3">
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">•</span>
+                    <span>A Vercel account. If you don't have one, you can <a href="https://vercel.com/signup" target="_blank" class="text-primary-400 hover:text-primary-300 underline">sign up for free</a>.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">•</span>
+                    <span>A Vercel project. If you don't have one, you can <a href="https://vercel.com/new" target="_blank" class="text-primary-400 hover:text-primary-300 underline">create a new project</a>.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">•</span>
+                    <span>The Vercel CLI installed on your system.</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Install Vercel CLI -->
+        <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6 mb-8">
+            <h3 class="text-2xl font-semibold text-primary-400 mb-4">
+                Install Vercel CLI
+            </h3>
+            <p class="text-gray-300 mb-4">
+                Install the Vercel CLI using your preferred package manager:
+            </p>
+            
+            <div class="space-y-4">
+                <div class="bg-navy-800/50 rounded-lg p-4">
+                    <h4 class="text-primary-300 font-semibold mb-2">Using pnpm:</h4>
+                    <pre class="bg-navy-950 p-3 rounded text-green-400 overflow-x-auto"><code>pnpm i vercel</code></pre>
+                </div>
+
+                <div class="bg-navy-800/50 rounded-lg p-4">
+                    <h4 class="text-primary-300 font-semibold mb-2">Using yarn:</h4>
+                    <pre class="bg-navy-950 p-3 rounded text-green-400 overflow-x-auto"><code>yarn add vercel</code></pre>
+                </div>
+
+                <div class="bg-navy-800/50 rounded-lg p-4">
+                    <h4 class="text-primary-300 font-semibold mb-2">Using npm:</h4>
+                    <pre class="bg-navy-950 p-3 rounded text-green-400 overflow-x-auto"><code>npm install vercel</code></pre>
+                </div>
+
+                <div class="bg-navy-800/50 rounded-lg p-4">
+                    <h4 class="text-primary-300 font-semibold mb-2">Using bun:</h4>
+                    <pre class="bg-navy-950 p-3 rounded text-green-400 overflow-x-auto"><code>bun add vercel</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enable Web Analytics -->
+        <div class="bg-gradient-to-r from-blue-900/20 to-blue-800/20 border border-blue-700/50 rounded-xl p-6 mb-8">
+            <h3 class="text-2xl font-semibold text-blue-400 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5.36-5.36l-.707-.707M5.322 5.322l-.707.707a9 9 0 0012.728 12.728l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                Enable Web Analytics in Vercel
+            </h3>
+            <ol class="text-gray-300 space-y-3 ml-4">
+                <li class="flex items-start">
+                    <span class="text-blue-400 mr-3 font-semibold">1.</span>
+                    <span>Navigate to the <a href="/dashboard" class="text-primary-400 hover:text-primary-300 underline">Vercel dashboard</a></span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-400 mr-3 font-semibold">2.</span>
+                    <span>Select your project</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-400 mr-3 font-semibold">3.</span>
+                    <span>Click the <strong>Analytics</strong> tab</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-400 mr-3 font-semibold">4.</span>
+                    <span>Click <strong>Enable</strong> in the dialog</span>
+                </li>
+            </ol>
+            <div class="bg-blue-900/30 border border-blue-700/50 rounded-lg p-4 mt-4">
+                <p class="text-blue-300">
+                    <strong class="text-blue-400">💡 Note:</strong> Enabling Web Analytics will add new routes (scoped at <code class="bg-navy-950 px-2 py-1 rounded text-green-400">/_vercel/insights/*</code>) after your next deployment.
+                </p>
+            </div>
+        </div>
+
+        <!-- Add Analytics Package -->
+        <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6 mb-8">
+            <h3 class="text-2xl font-semibold text-primary-400 mb-4">
+                Add @vercel/analytics to Your Project
+            </h3>
+            <p class="text-gray-300 mb-4">
+                Using the package manager of your choice, add the <code class="bg-navy-950 px-2 py-1 rounded text-green-400">@vercel/analytics</code> package:
+            </p>
+            
+            <div class="space-y-4">
+                <div class="bg-navy-800/50 rounded-lg p-4">
+                    <h4 class="text-primary-300 font-semibold mb-2">Using pnpm:</h4>
+                    <pre class="bg-navy-950 p-3 rounded text-green-400 overflow-x-auto"><code>pnpm add @vercel/analytics</code></pre>
+                </div>
+
+                <div class="bg-navy-800/50 rounded-lg p-4">
+                    <h4 class="text-primary-300 font-semibold mb-2">Using yarn:</h4>
+                    <pre class="bg-navy-950 p-3 rounded text-green-400 overflow-x-auto"><code>yarn add @vercel/analytics</code></pre>
+                </div>
+
+                <div class="bg-navy-800/50 rounded-lg p-4">
+                    <h4 class="text-primary-300 font-semibold mb-2">Using npm:</h4>
+                    <pre class="bg-navy-950 p-3 rounded text-green-400 overflow-x-auto"><code>npm install @vercel/analytics</code></pre>
+                </div>
+
+                <div class="bg-navy-800/50 rounded-lg p-4">
+                    <h4 class="text-primary-300 font-semibold mb-2">Using bun:</h4>
+                    <pre class="bg-navy-950 p-3 rounded text-green-400 overflow-x-auto"><code>bun add @vercel/analytics</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation for HTML Sites -->
+        <div class="bg-gradient-to-r from-purple-900/20 to-purple-800/20 border border-purple-700/50 rounded-xl p-6 mb-8">
+            <h3 class="text-2xl font-semibold text-purple-400 mb-4">
+                Implementation for Plain HTML Sites
+            </h3>
+            <p class="text-gray-300 mb-4">
+                For static HTML sites like the Trinity Launcher website, add the following script to your <code class="bg-navy-950 px-2 py-1 rounded text-green-400">.html</code> files:
+            </p>
+            
+            <div class="bg-navy-800/50 rounded-lg p-4 mb-4">
+                <pre class="bg-navy-950 p-4 rounded text-green-400 overflow-x-auto text-sm"><code>&lt;script&gt;
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+&lt;/script&gt;
+&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+
+            <div class="bg-purple-900/30 border border-purple-700/50 rounded-lg p-4">
+                <p class="text-purple-300">
+                    <strong class="text-purple-400">💡 Note:</strong> When using the HTML implementation, there is no need to install the <code class="bg-navy-950 px-2 py-1 rounded text-green-400">@vercel/analytics</code> package. However, route-specific tracking is not available with this approach.
+                </p>
+            </div>
+        </div>
+
+        <!-- Deploy Your App -->
+        <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6 mb-8">
+            <h3 class="text-2xl font-semibold text-primary-400 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                </svg>
+                Deploy Your App to Vercel
+            </h3>
+            <p class="text-gray-300 mb-4">
+                Deploy your app using the following command:
+            </p>
+            
+            <div class="bg-navy-800/50 rounded-lg p-4 mb-4">
+                <pre class="bg-navy-950 p-3 rounded text-green-400 overflow-x-auto"><code>vercel deploy</code></pre>
+            </div>
+
+            <p class="text-gray-300 mb-4">
+                Alternatively, we recommend <a href="https://vercel.com/docs/git" target="_blank" class="text-primary-400 hover:text-primary-300 underline">connecting your project's Git repository</a>, which will automatically deploy your latest commits to the main branch without requiring terminal commands.
+            </p>
+
+            <div class="bg-blue-900/30 border border-blue-700/50 rounded-lg p-4">
+                <p class="text-blue-300 mb-2">
+                    <strong class="text-blue-400">💡 Tip:</strong> Once your app is deployed, it will automatically start tracking visitors and page views.
+                </p>
+                <p class="text-blue-300">
+                    If everything is set up properly, you should be able to see a Fetch/XHR request in your browser's Network tab from <code class="bg-navy-950 px-2 py-1 rounded text-green-400">/_vercel/insights/view</code> when you visit any page.
+                </p>
+            </div>
+        </div>
+
+        <!-- View Your Data -->
+        <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6 mb-8">
+            <h3 class="text-2xl font-semibold text-primary-400 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+                View Your Data in the Dashboard
+            </h3>
+            <ol class="text-gray-300 space-y-3 ml-4">
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">1.</span>
+                    <span>Once your app is deployed and users have visited your site, navigate to your <a href="/dashboard" class="text-primary-400 hover:text-primary-300 underline">Vercel dashboard</a></span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">2.</span>
+                    <span>Select your project</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">3.</span>
+                    <span>Click the <strong>Analytics</strong> tab</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">4.</span>
+                    <span>After a few days of visitors, you'll start seeing data in the analytics dashboard</span>
+                </li>
+            </ol>
+
+            <div class="bg-green-900/30 border border-green-700/50 rounded-lg p-4 mt-4">
+                <p class="text-green-300">
+                    <strong class="text-green-400">✨ Pro Tip:</strong> Users on Pro and Enterprise plans can add custom events to track user interactions such as button clicks, form submissions, or purchases.
+                </p>
+            </div>
+        </div>
+
+        <!-- Privacy and Compliance -->
+        <div class="bg-gradient-to-r from-indigo-900/20 to-indigo-800/20 border border-indigo-700/50 rounded-xl p-6 mb-8">
+            <h3 class="text-2xl font-semibold text-indigo-400 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+                Privacy and Compliance
+            </h3>
+            <p class="text-gray-300 leading-relaxed">
+                Vercel Web Analytics is designed with privacy and compliance in mind. Learn more about how Vercel supports <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" class="text-indigo-400 hover:text-indigo-300 underline">privacy and data compliance standards</a>.
+            </p>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6 mb-8">
+            <h3 class="text-2xl font-semibold text-primary-400 mb-4">
+                Next Steps
+            </h3>
+            <p class="text-gray-300 mb-4">
+                Now that you have Vercel Web Analytics set up, explore the following topics to learn more:
+            </p>
+            <ul class="text-gray-300 space-y-2 ml-4">
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">•</span>
+                    <span><a href="https://vercel.com/docs/analytics/package" target="_blank" class="text-primary-400 hover:text-primary-300 underline">Learn how to use the @vercel/analytics package</a></span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">•</span>
+                    <span><a href="https://vercel.com/docs/analytics/custom-events" target="_blank" class="text-primary-400 hover:text-primary-300 underline">Learn how to set custom events</a></span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">•</span>
+                    <span><a href="https://vercel.com/docs/analytics/filtering" target="_blank" class="text-primary-400 hover:text-primary-300 underline">Learn about filtering data</a></span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">•</span>
+                    <span><a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" class="text-primary-400 hover:text-primary-300 underline">Read about privacy and compliance</a></span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">•</span>
+                    <span><a href="https://vercel.com/docs/analytics/limits-and-pricing" target="_blank" class="text-primary-400 hover:text-primary-300 underline">Explore pricing and limits</a></span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-primary-400 mr-3 font-semibold">•</span>
+                    <span><a href="https://vercel.com/docs/analytics/troubleshooting" target="_blank" class="text-primary-400 hover:text-primary-300 underline">Check troubleshooting guides</a></span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Help Section -->
+        <div class="text-center bg-navy-900/30 border border-navy-800 rounded-lg p-6 mb-8">
+            <h2 class="text-xl font-semibold text-white mb-3">Need More Help?</h2>
+            <p class="text-gray-300 mb-4">
+                Visit the Vercel Analytics documentation or contact the Trinity Launcher community
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="https://vercel.com/docs/analytics" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-primary-500/25 transform hover:-translate-y-0.5 transition-all duration-200">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    Vercel Analytics Docs
+                </a>
+                <a href="{{discord}}" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-indigo-500/25 transform hover:-translate-y-0.5 transition-all duration-200">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                    </svg>
+                    Join Discord Community
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showWikiSection(sectionId) {
+            console.log('Navigating to section:', sectionId);
+            // This function is handled by the main wiki system
+        }
+    </script>
+</body>
+</html>

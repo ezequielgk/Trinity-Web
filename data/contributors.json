@@ -14,9 +14,9 @@
     {
       "id": 2,
       "name": "JavierC",
-      "role": "Project Co-Creator",
+      "role": "Co-Creator & Developer",
       "initials": "JC",
-      "description": "Project supervisor with experience in team management and development coordination. Ensures quality and project goal fulfillment.",
+      "description": "Co-creator who actively participates in the launcher's development while supervising the project. Ensures quality and team coordination.",
       "gradient": "from-purple-400 to-purple-600",
       "roleColor": "text-purple-400",
       "hoverColor": "text-purple-400",
@@ -69,9 +69,9 @@
     {
       "id": 7,
       "name": "IoselDev",
-      "role": "Translator & Support",
+      "role": "AppImage Maintainer",
       "initials": "ID",
-      "description": "Assisted in translating the launcher interface and helped resolve community and technical issues.",
+      "description": "Created the AppImage version of Trinity Launcher, providing a portable and easy-to-run option for Linux users.",
       "gradient": "from-cyan-400 to-cyan-600",
       "roleColor": "text-cyan-400",
       "hoverColor": "text-cyan-400",
@@ -79,14 +79,14 @@
     },
     {
       "id": 8,
-      "name": "Future Contributor",
-      "role": "Open Position",
-      "initials": "??",
-      "description": "This spot is reserved for future collaborators who want to help improve Trinity Launcher. Join us!",
-      "gradient": "from-gray-600 to-gray-800",
-      "roleColor": "text-gray-400",
-      "hoverColor": "text-gray-400",
-      "github": "#"
+      "name": "4059hjw",
+      "role": "Translator & Support",
+      "initials": "HJ",
+      "description": "Contributed to the Catalan translation of the launcher and provided valuable assistance to the community.",
+      "gradient": "from-orange-400 to-orange-600",
+      "roleColor": "text-orange-400",
+      "hoverColor": "text-orange-400",
+      "github": "https://github.com/4059hjw"
     },
     {
       "id": 9,

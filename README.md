@@ -1,4 +1,4 @@
-# 🚀 Trinity Launcher Website
+#  Trinity Launcher Website
 
 <div align="center">
 
@@ -20,13 +20,13 @@ Sitio web moderno y responsive de Trinity Launcher, construido con tecnologías 
 
 ### ✨ Características principales
 
-- 🎨 **Diseño moderno** con modo oscuro y animaciones suaves
-- 📱 **Completamente responsive** para todos los dispositivos
-- ⚡ **Carga rápida** con contenido optimizado
-- 🔍 **SEO optimizado** con meta tags completos
-- 📊 **Analytics integrado** y datos estructurados
-- 🧩 **Sistema modular** para fácil mantenimiento
-- 🔄 **Contenido dinámico** cargado desde JSON/HTML
+-  **Diseño moderno** con modo oscuro y animaciones suaves
+-  **Completamente responsive** para todos los dispositivos
+-  **Carga rápida** con contenido optimizado
+-  **SEO optimizado** con meta tags completos
+-  **Analytics integrado** y datos estructurados
+-  **Sistema modular** para fácil mantenimiento
+-  **Contenido dinámico** cargado desde JSON/HTML
 
 ## 🛠️ Tecnologías utilizadas
 

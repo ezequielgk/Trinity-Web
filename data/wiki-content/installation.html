@@ -39,32 +39,20 @@
             backdrop-filter: blur(10px);
         }
         
-        /* --- ESTILOS DE LA BARRA DE DESPLAZAMIENTO (SOLUCIÓN) --- */
+        /* Ocultar barra de desplazamiento manteniendo funcionalidad */
         .command-block code {
             display: block;
             overflow-x: auto;
             white-space: nowrap;
-            padding-right: 3rem;
-            
-            /* Firefox */
-            scrollbar-width: thin;
-            scrollbar-color: #475569 rgba(30, 41, 59, 0.3);
+            padding-right: 1rem;
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
         }
-
-        /* Chrome, Edge, Safari */
         .command-block code::-webkit-scrollbar {
-            height: 6px; /* Altura fina */
-        }
-        .command-block code::-webkit-scrollbar-track {
-            background: rgba(30, 41, 59, 0.3); /* Fondo sutil */
-            border-radius: 4px;
-        }
-        .command-block code::-webkit-scrollbar-thumb {
-            background-color: #475569; /* Color de la barra */
-            border-radius: 4px;
-        }
-        .command-block code::-webkit-scrollbar-thumb:hover {
-            background-color: #64748b; /* Color al pasar el mouse */
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            background: transparent !important;
         }
     </style>
 </head>
@@ -154,56 +142,48 @@
                             </div>
 
                             <div class="space-y-3">
-                                <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-4">
-                                    <div class="flex items-center justify-between mb-2">
-                                        <span class="text-purple-300 text-xs font-medium">1. Add the Trinity repository</span>
-                                        <button onclick="window.copyToClipboard('cmd-repo-beta', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                            </svg>
+                                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">1. Add Repository</span>
+                                        <button onclick="copiarTexto('cmd-repo-beta', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                             <span>Copy</span>
                                         </button>
                                     </div>
-                                    <code id="cmd-repo-beta" class="text-primary-400 text-sm">flatpak remote-add --if-not-exists trinity https://trinity-flatpak.codeberg.page/com.trench.trinity.launcher.flatpakrepo</code>
+                                    <code id="cmd-repo-beta" class="font-mono text-sm text-gray-300">flatpak remote-add --if-not-exists trinity https://trinity-flatpak.codeberg.page/com.trench.trinity.launcher.flatpakrepo</code>
                                 </div>
 
-                                <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-4">
-                                    <div class="flex items-center justify-between mb-2">
-                                        <span class="text-purple-300 text-xs font-medium">2. Install the KDE runtime (Qt6)</span>
-                                        <button onclick="window.copyToClipboard('cmd-platform', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                            </svg>
+                                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">2. Install KDE Runtime</span>
+                                        <button onclick="copiarTexto('cmd-platform', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                             <span>Copy</span>
                                         </button>
                                     </div>
-                                    <code id="cmd-platform" class="text-primary-400 text-sm">flatpak install flathub org.kde.Platform//6.9</code>
+                                    <code id="cmd-platform" class="font-mono text-sm text-gray-300">flatpak install flathub org.kde.Platform//6.9</code>
                                 </div>
 
-                                <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-4">
-                                    <div class="flex items-center justify-between mb-2">
-                                        <span class="text-purple-300 text-xs font-medium">3. Install the Qt WebEngine base for Qt6</span>
-                                        <button onclick="window.copyToClipboard('cmd-webengine', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                            </svg>
+                                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">3. Install Qt WebEngine</span>
+                                        <button onclick="copiarTexto('cmd-webengine', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                             <span>Copy</span>
                                         </button>
                                     </div>
-                                    <code id="cmd-webengine" class="text-primary-400 text-sm">flatpak install flathub io.qt.qtwebengine.BaseApp//6.9</code>
+                                    <code id="cmd-webengine" class="font-mono text-sm text-gray-300">flatpak install flathub io.qt.qtwebengine.BaseApp//6.9</code>
                                 </div>
 
-                                <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-4">
-                                    <div class="flex items-center justify-between mb-2">
-                                        <span class="text-purple-300 text-xs font-medium">4. Install Trinity Launcher</span>
-                                        <button onclick="window.copyToClipboard('cmd-install', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                            </svg>
+                                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">4. Install Trinity</span>
+                                        <button onclick="copiarTexto('cmd-install', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                             <span>Copy</span>
                                         </button>
                                     </div>
-                                    <code id="cmd-install" class="text-primary-400 text-sm">flatpak install com.trench.trinity.launcher</code>
+                                    <code id="cmd-install" class="font-mono text-sm text-gray-300">flatpak install com.trench.trinity.launcher</code>
                                 </div>
                             </div>
 
@@ -226,17 +206,15 @@
                         <div class="p-5 space-y-4">
                             <p class="text-gray-400 text-sm">First you must add the Trinity repository:</p>
 
-                            <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-4">
-                                <div class="flex items-center justify-between mb-2">
-                                    <span class="text-gray-400 text-xs font-medium">Add repository</span>
-                                    <button onclick="window.copyToClipboard('cmd-repo-store', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                        </svg>
+                            <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Add Repository</span>
+                                    <button onclick="copiarTexto('cmd-repo-store', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                         <span>Copy</span>
                                     </button>
                                 </div>
-                                <code id="cmd-repo-store" class="text-primary-400 text-sm">flatpak remote-add --if-not-exists trinity https://trinity-flatpak.codeberg.page/com.trench.trinity.launcher.flatpakrepo</code>
+                                <code id="cmd-repo-store" class="font-mono text-sm text-gray-300">flatpak remote-add --if-not-exists trinity https://trinity-flatpak.codeberg.page/com.trench.trinity.launcher.flatpakrepo</code>
                             </div>
 
                             <p class="text-gray-400 text-sm">Then search for and install "Trinity Launcher" from your software store (GNOME Software, KDE Discover, etc.).</p>
@@ -281,16 +259,15 @@
                                 </svg>
                                 <h4 class="font-medium text-green-400">From Terminal</h4>
                             </div>
-                            <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-3 mt-2">
-                                <div class="flex items-center justify-between">
-                                    <code id="cmd-run" class="text-primary-400 text-sm">flatpak run com.trench.trinity.launcher</code>
-                                    <button onclick="window.copyToClipboard('cmd-run', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                        </svg>
+                            <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 mt-2 relative group command-block">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Run Command</span>
+                                    <button onclick="copiarTexto('cmd-run-app', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                         <span>Copy</span>
                                     </button>
                                 </div>
+                                <code id="cmd-run-app" class="font-mono text-sm text-gray-300">flatpak run com.trench.trinity.launcher</code>
                             </div>
                         </div>
                     </div>
@@ -324,6 +301,63 @@
         </div>
     </div>
 
-    <script src="../js/utils.js"></script>
+    <script>
+        // Esta función funciona incluso si abres el archivo localmente
+        async function copiarTexto(elementId, button) {
+            const textElement = document.getElementById(elementId);
+            if (!textElement) {
+                console.error("No se encontró el elemento con ID:", elementId);
+                return;
+            }
+
+            const textToCopy = textElement.innerText;
+
+            try {
+                // Intento moderno
+                await navigator.clipboard.writeText(textToCopy);
+                mostrarExito(button);
+            } catch (err) {
+                // Fallback para entornos donde navigator.clipboard falla (como file://)
+                try {
+                    const textArea = document.createElement("textarea");
+                    textArea.value = textToCopy;
+                    // Asegurar que el textarea no sea visible
+                    textArea.style.position = "fixed";
+                    textArea.style.left = "-9999px";
+                    textArea.style.top = "0";
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    mostrarExito(button);
+                } catch (err2) {
+                    console.error('Error al copiar', err);
+                    alert('No se pudo copiar automáticamente. Por favor selecciona el texto y presiona Ctrl+C');
+                }
+            }
+        }
+
+        function mostrarExito(button) {
+            // Guardar contenido original si no se ha guardado
+            if (!button.getAttribute('data-original-html')) {
+                button.setAttribute('data-original-html', button.innerHTML);
+            }
+            const originalHtml = button.getAttribute('data-original-html');
+            
+            // Cambiar a verde
+            button.innerHTML = `
+                <svg class="w-3.5 h-3.5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-green-400 font-bold">Copied!</span>
+            `;
+            
+            // Restaurar
+            setTimeout(() => {
+                button.innerHTML = originalHtml;
+            }, 2000);
+        }
+    </script>
 </body>
 </html>

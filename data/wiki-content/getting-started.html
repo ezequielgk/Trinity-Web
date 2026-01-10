@@ -11,137 +11,198 @@
                 extend: {
                     colors: {
                         primary: {
-                            400: '#5D5CDE',
-                            500: '#5D5CDE',
-                            600: '#4F4ECE'
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed'
                         },
                         navy: {
                             700: '#1e293b',
-                            800: '#0f172a', 
-                            900: '#020617'
+                            800: '#0f172a',
+                            900: '#020617',
+                            950: '#010313'
                         }
                     }
                 }
             }
         }
 
-        // Dark mode support
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
     </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Ocultar barra de desplazamiento globalmente para mantener la estética limpia */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-white dark:bg-gray-900 transition-colors">
-    <div class="container mx-auto p-6 max-w-6xl">
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent mb-4">
-                Trinity Launcher
-            </h1>
-            <p class="text-xl text-gray-300">
-                The open source launcher for Minecraft Bedrock on Linux
-            </p>
+<body class="min-h-screen bg-navy-950 text-white">
+    <div class="container mx-auto p-6 max-w-5xl">
+
+        <div class="mb-10">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-primary-500/20 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold">Getting Started</h1>
+                    <p class="text-gray-400">Welcome to Trinity Launcher</p>
+                </div>
+            </div>
         </div>
 
-        <div class="bg-gradient-to-r from-navy-900/50 to-navy-800/50 border border-navy-700 rounded-xl p-6 mb-8">
-            <h2 class="text-2xl font-semibold text-primary-400 mb-4">
-                What is Trinity Launcher?
-            </h2>
-            <p class="text-gray-300 leading-relaxed mb-4">
-                Trinity Launcher is an open source solution designed specifically to allow Linux users to run <strong class="text-white">Minecraft Bedrock Edition</strong> natively and efficiently.
+        <div class="glass-card border border-gray-700/50 rounded-2xl p-8 mb-8">
+            <h2 class="text-2xl font-semibold text-primary-400 mb-4">What is Trinity Launcher?</h2>
+            <p class="text-gray-300 leading-relaxed mb-4 text-lg">
+                Trinity Launcher is an open source solution designed specifically to allow Linux users to run <strong class="text-white font-medium">Minecraft Bedrock Edition</strong> natively and efficiently.
             </p>
-            <p class="text-gray-300 leading-relaxed">
+            <p class="text-gray-400 leading-relaxed">
                 Developed as an open source project under the BSD License, Trinity Launcher uses <strong class="text-primary-400">Flatpak</strong> technology to provide a secure, isolated, and easy-to-manage installation on any Linux distribution.
             </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 mb-8">
-            <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-primary-400 mb-3 flex items-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
+            <div class="glass-card border border-gray-700/50 rounded-2xl p-6 hover:bg-white/5 transition-colors">
+                <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <div class="p-1.5 rounded-lg bg-indigo-500/20">
+                        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                    </div>
                     Key Features
                 </h3>
-                <ul class="text-gray-300 space-y-2">
-                    <li>• Open Source and completely free</li>
-                    <li>• Compatible with all Linux distributions</li>
-                    <li>• Secure installation via Flatpak</li>
-                    <li>• Modern and intuitive interface</li>
-                    <li>• Support for multiple Minecraft versions</li>
-                    <li>• Integrated management of mods, textures, and worlds</li>
-                    <li>• Automatic launcher updates</li>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3 text-gray-300 text-sm">
+                        <svg class="w-5 h-5 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Open Source and completely free
+                    </li>
+                    <li class="flex items-start gap-3 text-gray-300 text-sm">
+                        <svg class="w-5 h-5 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Compatible with all Linux distributions
+                    </li>
+                    <li class="flex items-start gap-3 text-gray-300 text-sm">
+                        <svg class="w-5 h-5 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Secure installation via Flatpak
+                    </li>
+                    <li class="flex items-start gap-3 text-gray-300 text-sm">
+                        <svg class="w-5 h-5 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        Support for multiple Minecraft versions
+                    </li>
                 </ul>
             </div>
 
-            <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-primary-400 mb-3 flex items-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
+            <div class="glass-card border border-gray-700/50 rounded-2xl p-6 hover:bg-white/5 transition-colors">
+                <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <div class="p-1.5 rounded-lg bg-pink-500/20">
+                        <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                        </svg>
+                    </div>
                     System Requirements
                 </h3>
-                <ul class="text-gray-300 space-y-2">
-                    <li>• Linux (any distribution)</li>
-                    <li>• Flatpak installed on the system</li>
-                    <li>• 2GB RAM minimum (8GB recommended)</li>
-                    <li>• OpenGL 3.0 or Vulkan compatible</li>
-                    <li>• 2GB free disk space</li>
-                    <li>• Copy of Minecraft Bedrock x86-64</li>
+                <ul class="space-y-3">
+                    <li class="flex items-center gap-3 text-gray-300 text-sm">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                        Linux (any distribution with Flatpak)
+                    </li>
+                    <li class="flex items-center gap-3 text-gray-300 text-sm">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                        2GB RAM minimum (8GB recommended)
+                    </li>
+                    <li class="flex items-center gap-3 text-gray-300 text-sm">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                        OpenGL 3.0 or Vulkan compatible GPU
+                    </li>
+                    <li class="flex items-center gap-3 text-gray-300 text-sm">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                        2GB free disk space
+                    </li>
+                    <li class="flex items-center gap-3 text-gray-300 text-sm">
+                        <span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                        <strong>Minecraft Bedrock x86-64 APK</strong>
+                    </li>
                 </ul>
             </div>
         </div>
 
-        <div class="bg-gradient-to-r from-green-900/20 to-green-800/20 border border-green-700/50 rounded-xl p-6 mb-8">
-            <h2 class="text-xl font-semibold text-green-400 mb-3 flex items-center">
-                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-gradient-to-r from-green-900/10 to-emerald-900/10 border border-green-500/20 rounded-2xl p-8 mb-8 backdrop-blur-sm">
+            <h2 class="text-xl font-semibold text-green-400 mb-6 flex items-center">
+                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-                Why Trinity Launcher?
+                Why Choose Trinity?
             </h2>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="font-semibold text-white mb-2">🐧 Designed for Linux</h3>
-                    <p class="text-gray-300 text-sm">Specifically optimized for the Linux ecosystem, without the need for emulation or complex compatibility layers.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="flex gap-4">
+                    <div class="mt-1">
+                        <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white mb-1">Designed for Linux</h3>
+                        <p class="text-gray-400 text-sm">Specifically optimized for the Linux ecosystem, without the need for emulation layers.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-white mb-2">🔒 Secure and Isolated</h3>
-                    <p class="text-gray-300 text-sm">Uses Flatpak to keep the game isolated from the system, providing security and stability.</p>
+                <div class="flex gap-4">
+                    <div class="mt-1">
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white mb-1">Secure & Isolated</h3>
+                        <p class="text-gray-400 text-sm">Uses Flatpak sandbox technology to keep the game isolated from your main system.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-white mb-2">🎮 Complete Experience</h3>
-                    <p class="text-gray-300 text-sm">Manage all versions, mods, and resources from a unified and easy-to-use interface.</p>
+                <div class="flex gap-4">
+                    <div class="mt-1">
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white mb-1">Complete Experience</h3>
+                        <p class="text-gray-400 text-sm">Manage all versions, mods, texture packs and resources from a unified interface.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-white mb-2">🔧 Open Source</h3>
-                    <p class="text-gray-300 text-sm">Open and transparent code, developed by the community for the community.</p>
+                <div class="flex gap-4">
+                    <div class="mt-1">
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white mb-1">Open Source</h3>
+                        <p class="text-gray-400 text-sm">Transparent code under BSD License, developed by the community for the community.</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-4 mb-8">
-            <div class="text-center bg-navy-900/30 border border-navy-800 rounded-lg p-6">
-                <h2 class="text-xl font-semibold text-white mb-3">Ready to start?</h2>
-                <p class="text-gray-300 mb-4">Follow our installation guide to configure Trinity Launcher on your system</p>
-                <button onclick="showWikiSection('installation')" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-primary-500/25 transform hover:-translate-y-0.5 transition-all duration-200">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="glass-card border border-primary-500/30 rounded-2xl p-8 text-center hover:border-primary-500/50 transition-all">
+                <h2 class="text-xl font-bold text-white mb-2">Ready to start?</h2>
+                <p class="text-gray-400 text-sm mb-6">Follow our installation guide to configure Trinity on your system</p>
+                
+                <button onclick="showWikiSection('installation')" class="group relative inline-flex items-center justify-center px-8 py-3 font-semibold text-white transition-all duration-200 bg-primary-600 rounded-lg hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 w-full md:w-auto">
+                    <span>Go to Installation</span>
+                    <svg class="w-5 h-5 ml-2 -mr-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                    Go to Installation
                 </button>
             </div>
 
-            <div class="text-center bg-navy-900/30 border border-navy-800 rounded-lg p-6">
-                <h2 class="text-xl font-semibold text-white mb-3">Need help?</h2>
-                <p class="text-gray-300 mb-4">Join our Discord community to get support and share experiences</p>
-                <a href="{{discord}}" target="_blank" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-indigo-500/25 transform hover:-translate-y-0.5 transition-all duration-200">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <div class="glass-card border border-indigo-500/30 rounded-2xl p-8 text-center hover:border-indigo-500/50 transition-all">
+                <h2 class="text-xl font-bold text-white mb-2">Need help?</h2>
+                <p class="text-gray-400 text-sm mb-6">Join our Discord community to get support</p>
+                
+                <a href="#" target="_blank" class="group relative inline-flex items-center justify-center px-8 py-3 font-semibold text-white transition-all duration-200 bg-indigo-600 rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 w-full md:w-auto">
+                    <svg class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
                     </svg>
                     Join Discord
@@ -151,9 +212,11 @@
     </div>
 
     <script>
+        // Función placeholder para la navegación (el sistema principal la manejará)
         function showWikiSection(sectionId) {
             console.log('Navegar a sección:', sectionId);
-            // Esta función será manejada por el sistema principal de wiki
+            // Si tienes un sistema de padre (iframe), puedes intentar:
+            // window.parent.changeSection(sectionId);
         }
     </script>
 </body>

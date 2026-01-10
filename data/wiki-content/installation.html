@@ -11,212 +11,319 @@
                 extend: {
                     colors: {
                         primary: {
-                            400: '#5D5CDE',
-                            500: '#5D5CDE',
-                            600: '#4F4ECE'
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed'
                         },
                         navy: {
                             700: '#1e293b',
-                            800: '#0f172a', 
-                            900: '#020617'
+                            800: '#0f172a',
+                            900: '#020617',
+                            950: '#010313'
                         }
                     }
                 }
             }
         }
 
-        // Dark mode support
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
     </script>
+    <style>
+        .step-number {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* --- ESTILOS DE LA BARRA DE DESPLAZAMIENTO (SOLUCIÓN) --- */
+        .command-block code {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-right: 3rem;
+            
+            /* Firefox */
+            scrollbar-width: thin;
+            scrollbar-color: #475569 rgba(30, 41, 59, 0.3);
+        }
+
+        /* Chrome, Edge, Safari */
+        .command-block code::-webkit-scrollbar {
+            height: 6px; /* Altura fina */
+        }
+        .command-block code::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.3); /* Fondo sutil */
+            border-radius: 4px;
+        }
+        .command-block code::-webkit-scrollbar-thumb {
+            background-color: #475569; /* Color de la barra */
+            border-radius: 4px;
+        }
+        .command-block code::-webkit-scrollbar-thumb:hover {
+            background-color: #64748b; /* Color al pasar el mouse */
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-white dark:bg-gray-900 transition-colors">
-    <div class="container mx-auto p-6 max-w-6xl">
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold mb-6 flex items-center">
-                <svg class="w-8 h-8 mr-3 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
-                </svg>
-                Trinity Launcher Installation
-            </h1>
-            <p class="text-xl text-gray-300">
-                Complete guide to installing Trinity Launcher on your Linux system
-            </p>
-        </div>
+<body class="min-h-screen bg-navy-950 text-white">
+    <div class="container mx-auto p-6 max-w-5xl">
 
-        <div class="bg-blue-900/20 border border-blue-700/50 rounded-lg p-6 mb-8">
-            <div class="flex items-start">
-                <svg class="w-6 h-6 text-blue-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                    <h3 class="text-lg font-semibold text-blue-400 mb-2">Before you start</h3>
-                    <p class="text-gray-300">Trinity Launcher is distributed as a Flatpak package to ensure compatibility and security across all Linux distributions. Make sure you have Flatpak installed before continuing.</p>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="text-2xl font-semibold mb-6 flex items-center">
-            <svg class="w-6 h-6 mr-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-            Step 1: Install Flatpak
-        </h2>
-
-        <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6 mb-8">
-            <p class="text-gray-300 mb-4">To install Flatpak on your Linux distribution, visit the official page and look for specific instructions for your system:</p>
-            <a href="{{flatpaksetup}}" target="_blank" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-blue-500/25 transform hover:-translate-y-0.5 transition-all duration-200 mb-4">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                </svg>
-                Go to Flatpak.org
-            </a>
-            <p class="text-sm text-gray-400">Once you have Flatpak installed and configured, you can proceed with the Trinity Launcher installation.</p>
-        </div>
-
-        <h2 class="text-2xl font-semibold mb-6 flex items-center">
-            <svg class="w-6 h-6 mr-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-            Step 2: Install Trinity Launcher
-        </h2>
-
-        <div class="space-y-6 mb-8">
-            <div class="bg-gradient-to-r from-purple-900/30 to-indigo-900/30 border border-purple-500/50 rounded-lg p-6 shadow-lg">
-                <div class="flex items-center mb-4">
-                    <svg class="w-6 h-6 text-purple-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        <div class="mb-10">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-primary-500/20 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
                     </svg>
-                    <h3 class="text-lg font-semibold text-purple-400">Method A: Installation from Testing-Beta Repository</h3>
-                    <span class="ml-auto bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full">MOST UP-TO-DATE</span>
                 </div>
-                <p class="text-gray-300 mb-4">This method installs Trinity Launcher directly from the testing-beta repository, getting the latest versions and automatic updates.</p>
-                
-                <div class="bg-purple-900/20 border border-purple-700/50 rounded p-4 mb-4">
-                    <div class="flex items-start">
-                        <svg class="w-5 h-5 text-purple-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <p class="text-purple-300 text-sm"><strong>Run these commands in order in your terminal:</strong></p>
-                    </div>
-                </div>
-
-                <div class="space-y-3">
-                    <div class="bg-navy-900 border border-purple-800 rounded-lg p-4">
-                        <p class="text-purple-300 text-sm mb-2 font-medium">1. Add the Trinity repository:</p>
-                        <code class="text-primary-400">flatpak remote-add --if-not-exists trinity https://trinity-flatpak.codeberg.page/com.trench.trinity.launcher.flatpakrepo</code>
-                    </div>
-                    <div class="bg-navy-900 border border-purple-800 rounded-lg p-4">
-                        <p class="text-purple-300 text-sm mb-2 font-medium">2. Install the KDE runtime (Qt6):</p>
-                        <code class="text-primary-400">flatpak install flathub org.kde.Platform//6.9</code>
-                    </div>
-                    <div class="bg-navy-900 border border-purple-800 rounded-lg p-4">
-                        <p class="text-purple-300 text-sm mb-2 font-medium">3. Install the Qt WebEngine base for Qt6:</p>
-                        <code class="text-primary-400">flatpak install flathub io.qt.qtwebengine.BaseApp//6.9</code>
-                    </div>
-                    <div class="bg-navy-900 border border-purple-800 rounded-lg p-4">
-                        <p class="text-purple-300 text-sm mb-2 font-medium">4. Install Trinity Launcher:</p>
-                        <code class="text-primary-400">flatpak install com.trench.trinity.launcher</code>
-                    </div>
-                </div>
-
-                <div class="mt-4 bg-indigo-900/20 border border-indigo-700/50 rounded p-4">
-                    <div class="flex items-start">
-                        <svg class="w-5 h-5 text-indigo-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <p class="text-indigo-300 text-sm"><strong>Advantages of this method:</strong> Direct access to the latest beta versions, automatic updates when available, and simplified installation in four commands.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-navy-900/50 border border-navy-800 rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-primary-400 mb-3">Method B: Installation from software store</h3>
-                <div class="bg-blue-900/20 border border-blue-700/50 rounded p-4 mb-4">
-                    <div class="flex items-start">
-                        <svg class="w-5 h-5 text-blue-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <p class="text-blue-300 text-sm">First you must add the Trinity repository by running this command in your terminal:</p>
-                    </div>
-                </div>
-                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 mb-4">
-                    <code class="text-primary-400">flatpak remote-add --if-not-exists trinity https://trinity-flatpak.codeberg.page/com.trench.trinity.launcher.flatpakrepo</code>
-                </div>
-                <p class="text-gray-300 mb-4">Once the repository is added, you can search for and install Trinity Launcher directly from your software store (GNOME Software, KDE Discover, etc.) by searching for "Trinity Launcher".</p>
-                <div class="bg-blue-900/20 border border-blue-700/50 rounded p-4">
-                    <p class="text-blue-300 text-sm"><strong>Note:</strong> You may need to restart your software store after adding the repository for Trinity Launcher to appear in search results.</p>
+                <div>
+                    <h1 class="text-3xl font-bold">Trinity Launcher Installation</h1>
+                    <p class="text-gray-400">Complete guide for Linux systems</p>
                 </div>
             </div>
         </div>
 
-        <div class="bg-gradient-to-r from-primary-900/20 to-primary-800/20 border border-primary-700/50 rounded-xl p-8 text-center mb-8">
-            <h3 class="text-xl font-semibold text-white mb-4">Need help with installation?</h3>
-            <a href="{{discord}}" target="_blank" class="inline-flex items-center px-6 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium rounded-lg shadow-md hover:shadow-indigo-500/25 transform hover:-translate-y-0.5 transition-all duration-200">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+        <div class="glass-card border border-blue-500/30 rounded-xl p-5 mb-10">
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-blue-400 mb-1">Before you start</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">Trinity Launcher is distributed as a Flatpak package to ensure compatibility and security across all Linux distributions. Make sure you have Flatpak installed before continuing.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-8">
+
+            <section class="glass-card border border-gray-700/50 rounded-2xl overflow-hidden">
+                <div class="flex items-center gap-4 p-6 border-b border-gray-700/50 bg-gray-800/30">
+                    <div class="step-number w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg">1</div>
+                    <div>
+                        <h2 class="text-xl font-semibold">Install Flatpak</h2>
+                        <p class="text-gray-400 text-sm">Required package manager</p>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-300 mb-5">To install Flatpak on your Linux distribution, visit the official page and look for specific instructions for your system:</p>
+                    <a href="https://flatpak.org/setup/" target="_blank" class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium rounded-lg shadow-lg hover:shadow-blue-500/25 transform hover:-translate-y-0.5 transition-all duration-200">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                        Go to Flatpak.org
+                    </a>
+                    <p class="text-sm text-gray-500 mt-4">Once you have Flatpak installed and configured, proceed to the next step.</p>
+                </div>
+            </section>
+
+            <section class="glass-card border border-gray-700/50 rounded-2xl overflow-hidden">
+                <div class="flex items-center gap-4 p-6 border-b border-gray-700/50 bg-gray-800/30">
+                    <div class="step-number w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg">2</div>
+                    <div>
+                        <h2 class="text-xl font-semibold">Install Trinity Launcher</h2>
+                        <p class="text-gray-400 text-sm">Choose your preferred method</p>
+                    </div>
+                </div>
+                <div class="p-6 space-y-6">
+
+                    <div class="border border-purple-500/40 rounded-xl overflow-hidden">
+                        <div class="flex items-center justify-between p-4 bg-purple-500/10 border-b border-purple-500/30">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                <h3 class="font-semibold text-purple-300">Method A: From Testing-Beta Repository</h3>
+                            </div>
+                            <span class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full">RECOMMENDED</span>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <p class="text-gray-300 text-sm">This method installs Trinity Launcher directly from the testing-beta repository, giving you the latest versions and automatic updates.</p>
+
+                            <div class="bg-purple-500/10 border border-purple-500/30 rounded-lg p-3">
+                                <p class="text-purple-300 text-sm font-medium flex items-center gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                    Run these commands in order in your terminal:
+                                </p>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-purple-300 text-xs font-medium">1. Add the Trinity repository</span>
+                                        <button onclick="window.copyToClipboard('cmd-repo-beta', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                            </svg>
+                                            <span>Copy</span>
+                                        </button>
+                                    </div>
+                                    <code id="cmd-repo-beta" class="text-primary-400 text-sm">flatpak remote-add --if-not-exists trinity https://trinity-flatpak.codeberg.page/com.trench.trinity.launcher.flatpakrepo</code>
+                                </div>
+
+                                <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-purple-300 text-xs font-medium">2. Install the KDE runtime (Qt6)</span>
+                                        <button onclick="window.copyToClipboard('cmd-platform', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                            </svg>
+                                            <span>Copy</span>
+                                        </button>
+                                    </div>
+                                    <code id="cmd-platform" class="text-primary-400 text-sm">flatpak install flathub org.kde.Platform//6.9</code>
+                                </div>
+
+                                <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-purple-300 text-xs font-medium">3. Install the Qt WebEngine base for Qt6</span>
+                                        <button onclick="window.copyToClipboard('cmd-webengine', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                            </svg>
+                                            <span>Copy</span>
+                                        </button>
+                                    </div>
+                                    <code id="cmd-webengine" class="text-primary-400 text-sm">flatpak install flathub io.qt.qtwebengine.BaseApp//6.9</code>
+                                </div>
+
+                                <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-purple-300 text-xs font-medium">4. Install Trinity Launcher</span>
+                                        <button onclick="window.copyToClipboard('cmd-install', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                            </svg>
+                                            <span>Copy</span>
+                                        </button>
+                                    </div>
+                                    <code id="cmd-install" class="text-primary-400 text-sm">flatpak install com.trench.trinity.launcher</code>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-2 p-3 bg-indigo-500/10 border border-indigo-500/30 rounded-lg">
+                                <svg class="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <p class="text-indigo-300 text-xs"><strong>Advantages:</strong> Direct access to the latest beta versions, automatic updates when available, and simplified installation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border border-gray-700 rounded-xl overflow-hidden">
+                        <div class="flex items-center gap-3 p-4 bg-gray-800/50 border-b border-gray-700">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                            </svg>
+                            <h3 class="font-semibold text-gray-300">Method B: From Software Store</h3>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <p class="text-gray-400 text-sm">First you must add the Trinity repository:</p>
+
+                            <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-gray-400 text-xs font-medium">Add repository</span>
+                                    <button onclick="window.copyToClipboard('cmd-repo-store', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                        </svg>
+                                        <span>Copy</span>
+                                    </button>
+                                </div>
+                                <code id="cmd-repo-store" class="text-primary-400 text-sm">flatpak remote-add --if-not-exists trinity https://trinity-flatpak.codeberg.page/com.trench.trinity.launcher.flatpakrepo</code>
+                            </div>
+
+                            <p class="text-gray-400 text-sm">Then search for and install "Trinity Launcher" from your software store (GNOME Software, KDE Discover, etc.).</p>
+
+                            <div class="flex items-start gap-2 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                                <svg class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <p class="text-blue-300 text-xs"><strong>Note:</strong> You may need to restart your software store after adding the repository.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass-card border border-gray-700/50 rounded-2xl overflow-hidden">
+                <div class="flex items-center gap-4 p-6 border-b border-gray-700/50 bg-gray-800/30">
+                    <div class="step-number w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg">3</div>
+                    <div>
+                        <h2 class="text-xl font-semibold">Run Trinity Launcher</h2>
+                        <p class="text-gray-400 text-sm">Start using the launcher</p>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-300 mb-5">Once installed, you can run Trinity Launcher in the following ways:</p>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-green-500/10 border border-green-500/30 rounded-xl">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/>
+                                </svg>
+                                <h4 class="font-medium text-green-400">From Applications Menu</h4>
+                            </div>
+                            <p class="text-gray-400 text-sm">Search for "Trinity Launcher" in your application launcher</p>
+                        </div>
+
+                        <div class="p-4 bg-green-500/10 border border-green-500/30 rounded-xl">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                                <h4 class="font-medium text-green-400">From Terminal</h4>
+                            </div>
+                            <div class="command-block bg-navy-900 border border-gray-700 rounded-lg p-3 mt-2">
+                                <div class="flex items-center justify-between">
+                                    <code id="cmd-run" class="text-primary-400 text-sm">flatpak run com.trench.trinity.launcher</code>
+                                    <button onclick="window.copyToClipboard('cmd-run', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white bg-gray-700/50 hover:bg-gray-700 rounded transition-all">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                        </svg>
+                                        <span>Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="mt-10 p-6 bg-gradient-to-r from-primary-500/10 to-indigo-500/10 border border-primary-500/30 rounded-2xl text-center">
+            <h3 class="text-lg font-semibold text-white mb-3">Need help with installation?</h3>
+            <a href="#" target="_blank" class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium rounded-lg shadow-md hover:shadow-indigo-500/25 transform hover:-translate-y-0.5 transition-all duration-200">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
                 </svg>
                 Get help on Discord
             </a>
         </div>
 
-        <h2 class="text-2xl font-semibold mb-6 flex items-center">
-            <svg class="w-6 h-6 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            Step 3: Run Trinity Launcher
-        </h2>
-
-        <div class="bg-green-900/20 border border-green-700/50 rounded-lg p-6 mb-8">
-            <p class="text-gray-300 mb-4">Once installed, you can run Trinity Launcher in the following ways:</p>
-            <div class="space-y-3">
-                <div class="flex items-center">
-                    <svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        <div class="mt-6 p-5 bg-amber-500/10 border border-amber-500/30 rounded-xl">
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.502 0L4.312 15.5c-.77.833.192 2.5 1.732 2.5z"/>
                     </svg>
-                    <p class="text-gray-300"><strong>From the applications menu:</strong> Search for "Trinity Launcher" in your application launcher</p>
                 </div>
-                <div class="flex items-start">
-                    <svg class="w-5 h-5 text-green-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <div>
-                        <p class="text-gray-300 mb-2"><strong>From terminal:</strong></p>
-                        <div class="bg-navy-900 border border-navy-800 rounded-lg p-3">
-                            <code class="text-primary-400">flatpak run com.trench.trinity.launcher</code>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-amber-900/20 border border-amber-700/50 rounded-lg p-4">
-            <div class="flex items-start">
-                <svg class="w-6 h-6 text-amber-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.502 0L4.312 15.5c-.77.833.192 2.5 1.732 2.5z"/>
-                </svg>
                 <div>
-                    <h3 class="text-lg font-semibold text-amber-400 mb-2">Installation issues</h3>
-                    <p class="text-gray-300">If you encounter problems during installation, verify that you have the Flatpak repositories configured correctly and restart your session after installing Flatpak for the first time.</p>
+                    <h3 class="font-semibold text-amber-400 mb-1">Installation issues?</h3>
+                    <p class="text-gray-400 text-sm">If you encounter problems during installation, verify that you have the Flatpak repositories configured correctly and restart your session after installing Flatpak for the first time.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        function showWikiSection(sectionId) {
-            console.log('Navegar a sección:', sectionId);
-            // Esta función será manejada por el sistema principal de wiki
-        }
-    </script>
+    <script src="../js/utils.js"></script>
 </body>
 </html>

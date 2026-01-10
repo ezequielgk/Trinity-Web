@@ -11,14 +11,15 @@
                 extend: {
                     colors: {
                         primary: {
-                            400: '#5D5CDE',
-                            500: '#5D5CDE',
-                            600: '#4F4ECE'
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed'
                         },
                         navy: {
                             700: '#1e293b',
                             800: '#0f172a',
-                            900: '#020617'
+                            900: '#020617',
+                            950: '#010313'
                         }
                     }
                 }
@@ -28,69 +29,82 @@
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
     </script>
+    <style>
+        .step-number {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* --- SCROLLBAR INVISIBLE (PERO FUNCIONAL) --- */
+        .command-block code, .overflow-x-auto {
+            scrollbar-width: none !important; /* Firefox */
+            -ms-overflow-style: none !important; /* IE/Edge */
+        }
+        .command-block code::-webkit-scrollbar, .overflow-x-auto::-webkit-scrollbar {
+            display: none !important; /* Chrome/Safari */
+            width: 0 !important;
+            height: 0 !important;
+            background: transparent !important;
+        }
+        
+        /* Asegurar comportamiento de bloque de código */
+        .command-block code {
+            display: block;
+            overflow-x: auto;
+            white-space: pre; /* Mantiene formato de código */
+            padding-right: 1rem;
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+<body class="min-h-screen bg-navy-950 text-white">
     <div class="container mx-auto p-6 max-w-6xl">
 
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent mb-4">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-primary-400 to-indigo-400 bg-clip-text text-transparent mb-4">
                 Trinity Launcher
             </h1>
-            <p class="text-xl text-gray-300">
+            <p class="text-xl text-gray-300 mb-4">
                 Modular graphical environment for Minecraft Bedrock on Linux
             </p>
-            <p class="text-gray-400 mt-2">
-                <a href="https://trinitylauncher.vercel.app/" target="_blank" class="text-primary-400 hover:text-primary-500 underline">
-                    Visit our official website
+            
+            <div class="flex justify-center flex-wrap gap-2 mb-6">
+                <span class="inline-flex items-center px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-semibold rounded-full">BSD 3-Clause</span>
+                <span class="inline-flex items-center px-3 py-1 bg-green-500/10 text-green-400 border border-green-500/20 text-xs font-semibold rounded-full">Qt 6</span>
+                <span class="inline-flex items-center px-3 py-1 bg-gray-700/30 text-gray-300 border border-gray-600/30 text-xs font-semibold rounded-full">C++17</span>
+                <span class="inline-flex items-center px-3 py-1 bg-purple-500/10 text-purple-400 border border-purple-500/20 text-xs font-semibold rounded-full">Flatpak</span>
+            </div>
+
+            <p class="text-gray-400 text-sm">
+                <a href="https://trinitylauncher.vercel.app/" target="_blank" class="text-primary-400 hover:text-white transition-colors underline decoration-primary-400/30 hover:decoration-white">
+                    Visit official website
                 </a>
-                for step-by-step installation guides.
             </p>
         </div>
 
-        <div class="flex justify-center flex-wrap gap-2 mb-8">
-            <a href="https://opensource.org/licenses/BSD-3-Clause" target="_blank" class="inline-block px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-full transition-colors">
-                BSD 3-Clause
-            </a>
-            <a href="https://www.qt.io/" target="_blank" class="inline-block px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-xs font-semibold rounded-full transition-colors">
-                Qt 6
-            </a>
-            <a href="{{github}}" target="_blank" class="inline-block px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white text-xs font-semibold rounded-full transition-colors">
-                GitHub
-            </a>
-            <a href="https://flatpak.org/" target="_blank" class="inline-block px-3 py-1 bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold rounded-full transition-colors">
-                Flatpak
-            </a>
-        </div>
-
-        <div class="bg-gradient-to-r from-primary-400/20 to-primary-600/10 border border-primary-400/30 rounded-xl p-6 mb-8">
-            <p class="text-gray-300 mb-4">
+        <div class="glass-card border border-primary-500/20 rounded-2xl p-8 mb-8">
+            <p class="text-gray-300 mb-6 text-lg leading-relaxed">
                 <strong class="text-white">Trinity Launcher</strong> is a modern and modular graphical environment to run and manage
                 <strong class="text-white">Minecraft: Bedrock Edition</strong> on Linux. Designed to work both on the system and inside
-                <strong class="text-white">Flatpak</strong>, it uses <strong class="text-white">Qt6</strong> and follows a clean architecture based on separate libraries
-                (<code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">core</code> and <code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">ui</code>).
+                <strong class="text-white">Flatpak</strong>, it uses <strong class="text-primary-400">Qt6</strong> and follows a clean architecture based on separate libraries
+                (<code class="bg-navy-900 px-1.5 py-0.5 rounded text-primary-400 font-mono text-sm">core</code> and <code class="bg-navy-900 px-1.5 py-0.5 rounded text-primary-400 font-mono text-sm">ui</code>).
             </p>
-            <p class="text-gray-300 mb-4">It includes two complementary applications:</p>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4">
-                    <h4 class="font-semibold text-white mb-2 flex items-center">
-                        <span class="mr-2">🚀</span>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-navy-900/50 border border-navy-700/50 rounded-xl p-5 hover:border-primary-500/30 transition-colors">
+                    <h4 class="font-semibold text-white mb-2 flex items-center gap-2">
+                        <span class="text-xl">🚀</span>
                         <code class="text-primary-400">trinchete</code>
                     </h4>
                     <p class="text-gray-400 text-sm">
                         <strong class="text-gray-300">Main launcher:</strong> advanced version management, export/import, shortcuts.
                     </p>
                 </div>
-                <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4">
-                    <h4 class="font-semibold text-white mb-2 flex items-center">
-                        <span class="mr-2">📦</span>
+                <div class="bg-navy-900/50 border border-navy-700/50 rounded-xl p-5 hover:border-primary-500/30 transition-colors">
+                    <h4 class="font-semibold text-white mb-2 flex items-center gap-2">
+                        <span class="text-xl">📦</span>
                         <code class="text-primary-400">trinito</code>
                     </h4>
                     <p class="text-gray-400 text-sm">
@@ -100,321 +114,318 @@
             </div>
         </div>
 
-        <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6 mb-8">
-            <h2 class="text-xl font-semibold text-white mb-4">📑 Quick Navigation</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <a href="#tecnologias" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
-                    <span class="text-2xl block mb-1">🛠️</span>
-                    <span class="text-sm text-gray-300">Technologies</span>
+        <div class="glass-card border border-gray-700/50 rounded-2xl p-6 mb-10">
+            <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+                Quick Navigation
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#tecnologias" class="bg-navy-900/40 border border-navy-700/50 rounded-lg p-3 text-center hover:bg-primary-500/10 hover:border-primary-500/30 transition-all group">
+                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">🛠️</span>
+                    <span class="text-sm text-gray-300 group-hover:text-white">Technologies</span>
                 </a>
-                <a href="#trinchete" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
-                    <span class="text-2xl block mb-1">🎮</span>
-                    <span class="text-sm text-gray-300">Trinchete</span>
+                <a href="#trinchete" class="bg-navy-900/40 border border-navy-700/50 rounded-lg p-3 text-center hover:bg-primary-500/10 hover:border-primary-500/30 transition-all group">
+                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">🎮</span>
+                    <span class="text-sm text-gray-300 group-hover:text-white">Trinchete</span>
                 </a>
-                <a href="#trinito" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
-                    <span class="text-2xl block mb-1">🧰</span>
-                    <span class="text-sm text-gray-300">Trinito</span>
+                <a href="#trinito" class="bg-navy-900/40 border border-navy-700/50 rounded-lg p-3 text-center hover:bg-primary-500/10 hover:border-primary-500/30 transition-all group">
+                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">🧰</span>
+                    <span class="text-sm text-gray-300 group-hover:text-white">Trinito</span>
                 </a>
-                <a href="#compilacion" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
-                    <span class="text-2xl block mb-1">⚙️</span>
-                    <span class="text-sm text-gray-300">Compilation</span>
+                <a href="#compilacion" class="bg-navy-900/40 border border-navy-700/50 rounded-lg p-3 text-center hover:bg-primary-500/10 hover:border-primary-500/30 transition-all group">
+                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">⚙️</span>
+                    <span class="text-sm text-gray-300 group-hover:text-white">Compilation</span>
                 </a>
-                <a href="#mcpelauncher" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
-                    <span class="text-2xl block mb-1">🔧</span>
-                    <span class="text-sm text-gray-300">MCPElauncher</span>
+                <a href="#mcpelauncher" class="bg-navy-900/40 border border-navy-700/50 rounded-lg p-3 text-center hover:bg-primary-500/10 hover:border-primary-500/30 transition-all group">
+                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">🔧</span>
+                    <span class="text-sm text-gray-300 group-hover:text-white">MCPElauncher</span>
                 </a>
-                <a href="#flatpak" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
-                    <span class="text-2xl block mb-1">📦</span>
-                    <span class="text-sm text-gray-300">Flatpak</span>
+                <a href="#flatpak" class="bg-navy-900/40 border border-navy-700/50 rounded-lg p-3 text-center hover:bg-primary-500/10 hover:border-primary-500/30 transition-all group">
+                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">📦</span>
+                    <span class="text-sm text-gray-300 group-hover:text-white">Flatpak</span>
                 </a>
-                <a href="#pruebas" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
-                    <span class="text-2xl block mb-1">🧪</span>
-                    <span class="text-sm text-gray-300">Testing</span>
+                <a href="#pruebas" class="bg-navy-900/40 border border-navy-700/50 rounded-lg p-3 text-center hover:bg-primary-500/10 hover:border-primary-500/30 transition-all group">
+                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">🧪</span>
+                    <span class="text-sm text-gray-300 group-hover:text-white">Testing</span>
                 </a>
-                <a href="#licencia" class="bg-navy-900/50 border border-navy-700 rounded-lg p-3 text-center hover:border-primary-400 hover:bg-primary-400/10 transition-all">
-                    <span class="text-2xl block mb-1">📄</span>
-                    <span class="text-sm text-gray-300">License</span>
+                <a href="#licencia" class="bg-navy-900/40 border border-navy-700/50 rounded-lg p-3 text-center hover:bg-primary-500/10 hover:border-primary-500/30 transition-all group">
+                    <span class="text-2xl block mb-2 group-hover:scale-110 transition-transform">📄</span>
+                    <span class="text-sm text-gray-300 group-hover:text-white">License</span>
                 </a>
             </div>
         </div>
 
-        <section id="tecnologias" class="mb-10 scroll-mt-6">
+        <section id="tecnologias" class="mb-10 scroll-mt-24">
             <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
                 <span class="mr-3">🛠️</span>
                 Technologies
             </h2>
 
-            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6 mb-6">
+            <div class="glass-card border border-gray-700/50 rounded-2xl p-6 mb-6">
                 <h3 class="text-xl font-semibold text-white mb-4">Development Stack</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm">
-                        <thead>
-                            <tr class="border-b border-navy-700">
-                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Component</th>
-                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Description</th>
-                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Version</th>
+                <div class="overflow-x-auto rounded-lg border border-navy-700">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-navy-900/80 text-gray-400 uppercase">
+                            <tr>
+                                <th class="py-3 px-4 font-semibold">Component</th>
+                                <th class="py-3 px-4 font-semibold">Description</th>
+                                <th class="py-3 px-4 font-semibold">Version</th>
                             </tr>
                         </thead>
-                        <tbody class="text-gray-300">
-                            <tr class="border-b border-navy-800">
+                        <tbody class="divide-y divide-navy-700 text-gray-300 bg-navy-900/30">
+                            <tr class="hover:bg-white/5">
                                 <td class="py-3 px-4 font-medium text-white">Language</td>
                                 <td class="py-3 px-4">Standard C++</td>
-                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">C++17</code></td>
+                                <td class="py-3 px-4"><code class="bg-navy-950 border border-navy-700 px-2 py-0.5 rounded text-primary-400 font-mono text-xs">C++17</code></td>
                             </tr>
-                            <tr class="border-b border-navy-800">
+                            <tr class="hover:bg-white/5">
                                 <td class="py-3 px-4 font-medium text-white">UI Framework</td>
                                 <td class="py-3 px-4">Qt Framework</td>
-                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">Qt 6.6+</code></td>
+                                <td class="py-3 px-4"><code class="bg-navy-950 border border-navy-700 px-2 py-0.5 rounded text-primary-400 font-mono text-xs">Qt 6.6+</code></td>
                             </tr>
-                            <tr class="border-b border-navy-800">
+                            <tr class="hover:bg-white/5">
                                 <td class="py-3 px-4 font-medium text-white">Build System</td>
                                 <td class="py-3 px-4">CMake</td>
-                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">3.17+</code></td>
+                                <td class="py-3 px-4"><code class="bg-navy-950 border border-navy-700 px-2 py-0.5 rounded text-primary-400 font-mono text-xs">3.17+</code></td>
                             </tr>
-                            <tr class="border-b border-navy-800">
+                            <tr class="hover:bg-white/5">
                                 <td class="py-3 px-4 font-medium text-white">Compiler</td>
                                 <td class="py-3 px-4">Clang</td>
-                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">16+</code></td>
+                                <td class="py-3 px-4"><code class="bg-navy-950 border border-navy-700 px-2 py-0.5 rounded text-primary-400 font-mono text-xs">16+</code></td>
                             </tr>
-                            <tr class="border-b border-navy-800">
+                            <tr class="hover:bg-white/5">
                                 <td class="py-3 px-4 font-medium text-white">Packaging</td>
                                 <td class="py-3 px-4">Flatpak</td>
-                                <td class="py-3 px-4">—</td>
+                                <td class="py-3 px-4"><span class="text-gray-500">—</span></td>
                             </tr>
-                            <tr>
+                            <tr class="hover:bg-white/5">
                                 <td class="py-3 px-4 font-medium text-white">Platform</td>
                                 <td class="py-3 px-4">Linux (x86_64, ARM64)</td>
-                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">glibc</code></td>
+                                <td class="py-3 px-4"><code class="bg-navy-950 border border-navy-700 px-2 py-0.5 rounded text-primary-400 font-mono text-xs">glibc</code></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+            <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
                 <h3 class="text-xl font-semibold text-white mb-4">Modular Architecture</h3>
-                <ul class="space-y-3 text-gray-300">
-                    <li class="flex items-start">
-                        <span class="text-primary-400 mr-2">▸</span>
+                <ul class="space-y-4 text-gray-300">
+                    <li class="flex items-start bg-navy-900/30 p-3 rounded-lg border border-navy-800">
+                        <span class="text-primary-400 mr-3 mt-0.5">▸</span>
                         <div>
-                            <code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">TrinityCore</code>:
-                            <span class="text-gray-400">business logic (version management, packs, launch, export).</span>
+                            <code class="bg-navy-950 px-2 py-0.5 rounded text-primary-400 font-mono text-sm border border-navy-700">TrinityCore</code>
+                            <div class="text-sm text-gray-400 mt-1">Business logic (version management, packs, launch, export).</div>
                         </div>
                     </li>
-                    <li class="flex items-start">
-                        <span class="text-primary-400 mr-2">▸</span>
+                    <li class="flex items-start bg-navy-900/30 p-3 rounded-lg border border-navy-800">
+                        <span class="text-primary-400 mr-3 mt-0.5">▸</span>
                         <div>
-                            <code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">TrinityUI</code>:
-                            <span class="text-gray-400">graphical interfaces (windows, dialogs, widgets).</span>
-                        </div>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-primary-400 mr-2">▸</span>
-                        <div>
-                            <strong class="text-white">Clear separation</strong>:
-                            <span class="text-gray-400">facilitates maintenance, testing, and reuse.</span>
+                            <code class="bg-navy-950 px-2 py-0.5 rounded text-primary-400 font-mono text-sm border border-navy-700">TrinityUI</code>
+                            <div class="text-sm text-gray-400 mt-1">Graphical interfaces (windows, dialogs, widgets).</div>
                         </div>
                     </li>
                 </ul>
             </div>
         </section>
 
-        <section id="trinchete" class="mb-10 scroll-mt-6">
+        <section id="trinchete" class="mb-10 scroll-mt-24">
             <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
                 <span class="mr-3">🎮</span>
                 Trinchete — Launcher Interface
             </h2>
 
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
                     <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
+                        <svg class="w-5 h-5 mr-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                         Top bar
                     </h3>
-                    <ul class="space-y-3 text-gray-300">
+                    <ul class="space-y-3">
                         <li class="bg-navy-900/50 border border-navy-700 rounded-lg p-3">
-                            <strong class="text-white">+ Extract APK</strong>
-                            <p class="text-sm text-gray-400 mt-1">Selects an <code class="text-primary-400">.apk</code>, gives it a name, and extracts it with <code class="text-primary-400">mcpelauncher-extract</code>.</p>
+                            <strong class="text-white text-sm">+ Extract APK</strong>
+                            <p class="text-xs text-gray-400 mt-1">Selects an <code class="text-primary-400">.apk</code>, gives it a name, and extracts it with <code class="text-primary-400">mcpelauncher-extract</code>.</p>
                         </li>
                         <li class="bg-navy-900/50 border border-navy-700 rounded-lg p-3">
-                            <strong class="text-white">Import</strong>
-                            <p class="text-sm text-gray-400 mt-1">Restores a saved version in <code class="text-primary-400">.tar.gz</code>.</p>
+                            <strong class="text-white text-sm">Import</strong>
+                            <p class="text-xs text-gray-400 mt-1">Restores a saved version in <code class="text-primary-400">.tar.gz</code>.</p>
                         </li>
                         <li class="bg-navy-900/50 border border-navy-700 rounded-lg p-3">
-                            <strong class="text-white">Tools</strong>
-                            <p class="text-sm text-gray-400 mt-1">Opens the <code class="text-primary-400">trinito</code> application.</p>
+                            <strong class="text-white text-sm">Tools</strong>
+                            <p class="text-xs text-gray-400 mt-1">Opens the <code class="text-primary-400">trinito</code> application.</p>
                         </li>
                     </ul>
                 </div>
 
-                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
+                <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
                     <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                        </svg>
+                        <svg class="w-5 h-5 mr-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         Right panel
                     </h3>
                     <ul class="space-y-2 text-gray-300 text-sm">
                         <li class="flex items-start">
                             <span class="text-green-400 mr-2">▸</span>
-                            <div><strong class="text-white">PLAY</strong>: runs <code class="text-primary-400 text-xs">mcpelauncher-client -dg &lt;path&gt;</code> and closes the launcher.</div>
+                            <div><strong class="text-white">PLAY</strong>: runs <code class="bg-navy-950 px-1 rounded text-gray-400 font-mono text-xs">mcpelauncher-client</code></div>
                         </li>
                         <li class="flex items-start">
                             <span class="text-blue-400 mr-2">▸</span>
-                            <div><strong class="text-white">Create Shortcut</strong>: generates a <code class="text-primary-400 text-xs">.desktop</code> file in <code class="text-primary-400 text-xs">~/Downloads/</code>.</div>
+                            <div><strong class="text-white">Create Shortcut</strong>: generates <code class="bg-navy-950 px-1 rounded text-gray-400 font-mono text-xs">.desktop</code> file</div>
                         </li>
                         <li class="flex items-start">
                             <span class="text-yellow-400 mr-2">▸</span>
-                            <div><strong class="text-white">Edit Configuration</strong>: adds environment variables (e.g., <code class="text-primary-400 text-xs">DRI_PRIME=1</code>).</div>
+                            <div><strong class="text-white">Edit Config</strong>: add env vars like <code class="bg-navy-950 px-1 rounded text-gray-400 font-mono text-xs">DRI_PRIME=1</code></div>
                         </li>
                         <li class="flex items-start">
                             <span class="text-purple-400 mr-2">▸</span>
-                            <div><strong class="text-white">Export</strong>: saves the version + its data in <code class="text-primary-400 text-xs">.tar.gz</code>.</div>
+                            <div><strong class="text-white">Export</strong>: saves version to <code class="bg-navy-950 px-1 rounded text-gray-400 font-mono text-xs">.tar.gz</code></div>
                         </li>
                         <li class="flex items-start">
                             <span class="text-red-400 mr-2">▸</span>
-                            <div><strong class="text-white">Delete</strong>: permanently deletes the version.</div>
+                            <div><strong class="text-white">Delete</strong>: permanently deletes version</div>
                         </li>
                     </ul>
                 </div>
             </div>
-
-            <div class="mt-4 bg-gradient-to-r from-green-900/20 to-green-800/20 border border-green-700/50 rounded-lg p-4">
-                <p class="text-green-400 flex items-center">
-                    <span class="mr-2">✅</span>
-                    <strong>Modern interface with dark theme and icon support</strong>
-                </p>
-            </div>
         </section>
 
-        <section id="trinito" class="mb-10 scroll-mt-6">
+        <section id="trinito" class="mb-10 scroll-mt-24">
             <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
                 <span class="mr-3">🧰</span>
                 Trinito — Content Manager
             </h2>
 
-            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6 mb-6">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm">
-                        <thead>
-                            <tr class="border-b border-navy-700">
-                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Tab</th>
-                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Type</th>
-                                <th class="text-left py-3 px-4 text-gray-400 font-semibold">Destination</th>
+            <div class="glass-card border border-gray-700/50 rounded-2xl p-6 mb-6">
+                <div class="overflow-x-auto rounded-lg border border-navy-700">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-navy-900/80 text-gray-400 uppercase">
+                            <tr>
+                                <th class="py-3 px-4 font-semibold">Tab</th>
+                                <th class="py-3 px-4 font-semibold">Type</th>
+                                <th class="py-3 px-4 font-semibold">Destination Folder</th>
                             </tr>
                         </thead>
-                        <tbody class="text-gray-300">
-                            <tr class="border-b border-navy-800">
+                        <tbody class="divide-y divide-navy-700 text-gray-300 bg-navy-900/30">
+                            <tr class="hover:bg-white/5">
                                 <td class="py-3 px-4 font-medium text-white">Mods</td>
                                 <td class="py-3 px-4">File</td>
-                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">behavior_packs/</code></td>
+                                <td class="py-3 px-4"><code class="text-primary-400 font-mono text-xs">behavior_packs/</code></td>
                             </tr>
-                            <tr class="border-b border-navy-800">
+                            <tr class="hover:bg-white/5">
                                 <td class="py-3 px-4 font-medium text-white">Textures</td>
                                 <td class="py-3 px-4">File</td>
-                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">resource_packs/</code></td>
+                                <td class="py-3 px-4"><code class="text-primary-400 font-mono text-xs">resource_packs/</code></td>
                             </tr>
-                            <tr class="border-b border-navy-800">
+                            <tr class="hover:bg-white/5">
                                 <td class="py-3 px-4 font-medium text-white">Worlds</td>
                                 <td class="py-3 px-4"><strong>Folder</strong></td>
-                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">minecraftWorlds/</code></td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4 font-medium text-white">Development</td>
-                                <td class="py-3 px-4">File</td>
-                                <td class="py-3 px-4"><code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">development_.../</code></td>
+                                <td class="py-3 px-4"><code class="text-primary-400 font-mono text-xs">minecraftWorlds/</code></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
-                <h3 class="text-xl font-semibold text-white mb-4">Key features</h3>
+            <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
                 <div class="grid md:grid-cols-3 gap-4">
                     <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4 text-center">
                         <span class="text-2xl mb-2 block">✅</span>
                         <strong class="text-white">Enabled</strong>
-                        <p class="text-gray-400 text-sm mt-1">Normal name</p>
+                        <p class="text-gray-400 text-xs mt-1">Normal filename</p>
                     </div>
                     <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4 text-center">
                         <span class="text-2xl mb-2 block">⬜</span>
                         <strong class="text-white">Disabled</strong>
-                        <p class="text-gray-400 text-sm mt-1">Renamed to <code class="text-primary-400 text-xs">.disabled</code></p>
+                        <p class="text-gray-400 text-xs mt-1">Renamed to <code class="text-primary-400">.disabled</code></p>
                     </div>
                     <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4 text-center">
                         <span class="text-2xl mb-2 block">🔄</span>
                         <strong class="text-white">Interactive</strong>
-                        <p class="text-gray-400 text-sm mt-1">Checkboxes, reload and deletion</p>
+                        <p class="text-gray-400 text-xs mt-1">Checkboxes & reloading</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="compilacion" class="mb-10 scroll-mt-6">
+        <section id="compilacion" class="mb-10 scroll-mt-24">
             <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
                 <span class="mr-3">⚙️</span>
-                Compilation and Installation
+                Compilation & Installation
             </h2>
 
-            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
-                <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-sm overflow-x-auto mb-4"><code class="text-gray-300"><span class="text-gray-500"># Give permissions</span>
-<span class="text-green-400">chmod</span> +x build.sh
+            <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
+                
+                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Build Script</span>
+                        <button onclick="window.copyToClipboard('code-build', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <code id="code-build" class="font-mono text-sm text-gray-300"># Give permissions
+chmod +x build.sh
 
-<span class="text-gray-500"># Compile and install</span>
-<span class="text-yellow-400">sudo</span> ./build.sh</code></pre>
+# Compile and install
+sudo ./build.sh</code>
+                </div>
 
-                <p class="text-gray-300 mb-4">
-                    Installs in <code class="bg-navy-800 px-2 py-0.5 rounded text-primary-400">/usr/local/bin</code> and registers the icon and shortcut.
+                <p class="text-gray-300 mb-4 text-sm">
+                    Installs in <code class="bg-navy-950 px-1.5 py-0.5 rounded text-primary-400 font-mono border border-navy-800">/usr/local/bin</code> and registers the icon.
                 </p>
 
-                <p class="text-gray-400 mb-3">Once installed, run from any terminal:</p>
-                <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-gray-300"><span class="text-primary-400">trinchete</span>
-<span class="text-primary-400">trinito</span></code></pre>
+                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Run Commands</span>
+                        <button onclick="window.copyToClipboard('code-run', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <code id="code-run" class="font-mono text-sm text-gray-300">trinchete
+trinito</code>
+                </div>
             </div>
         </section>
 
-        <section id="mcpelauncher" class="mb-10 scroll-mt-6">
+        <section id="mcpelauncher" class="mb-10 scroll-mt-24">
             <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
                 <span class="mr-3">🔧</span>
                 MCPElauncher Required
             </h2>
 
-            <div class="bg-amber-900/20 border border-amber-700/50 rounded-xl p-6 mb-6">
-                <p class="text-amber-400 flex items-start">
-                    <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.502 0L4.312 15.5c-.77.833.192 2.5 1.732 2.5z"/>
-                    </svg>
+            <div class="bg-amber-500/10 border border-amber-500/20 rounded-xl p-5 mb-6 backdrop-blur-sm">
+                <p class="text-amber-400 flex items-start text-sm">
+                    <svg class="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.502 0L4.312 15.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
                     <span>
-                        Trinity Launcher <strong>requires</strong> the binaries of
-                        <code class="bg-amber-900/50 px-1 rounded">mcpelauncher-client</code>,
-                        <code class="bg-amber-900/50 px-1 rounded">mcpelauncher-extract</code> and
-                        <code class="bg-amber-900/50 px-1 rounded">mcpelauncher-webview</code>.
+                        Trinity Launcher <strong>requires</strong>:
+                        <code class="bg-amber-900/40 px-1 rounded font-mono">mcpelauncher-client</code>,
+                        <code class="bg-amber-900/40 px-1 rounded font-mono">mcpelauncher-extract</code> &
+                        <code class="bg-amber-900/40 px-1 rounded font-mono">mcpelauncher-webview</code>.
                     </span>
                 </p>
             </div>
 
-            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
-                <p class="text-gray-300 mb-4">
+            <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
+                <p class="text-gray-300 mb-4 text-sm">
                     Use the fork maintained at:
-                    <a href="https://github.com/franckey02/mcpelauncher-patch" target="_blank" class="text-primary-400 hover:text-primary-500 underline">
-                        https://github.com/franckey02/mcpelauncher-patch
-                    </a>
-                    <br>
-                    <span class="text-gray-400 text-sm">(Compatible with recent Minecraft versions, including <strong class="text-white">1.21.131+</strong> and betas).</span>
+                    <a href="https://github.com/franckey02/mcpelauncher-patch" target="_blank" class="text-primary-400 hover:text-white underline">franckey02/mcpelauncher-patch</a>
                 </p>
 
-                <h3 class="text-lg font-semibold text-white mb-3">Compilation commands</h3>
-                <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-gray-300"><span class="text-green-400">git clone</span> https://github.com/franckey02/mcpelauncher-patch.git
-<span class="text-green-400">cd</span> mcpelauncher-patch
-<span class="text-green-400">git checkout</span> qt6
-<span class="text-green-400">git submodule update</span> --init --recursive
-<span class="text-green-400">mkdir</span> -p build
-<span class="text-green-400">cd</span> build
+                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Compilation Commands</span>
+                        <button onclick="window.copyToClipboard('code-mcpe', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <code id="code-mcpe" class="font-mono text-xs text-gray-300">git clone https://github.com/franckey02/mcpelauncher-patch.git
+cd mcpelauncher-patch
+git checkout qt6
+git submodule update --init --recursive
+mkdir -p build && cd build
 
-<span class="text-yellow-400">CC</span>=clang <span class="text-yellow-400">CXX</span>=clang++ cmake .. \
+CC=clang CXX=clang++ cmake .. \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_POLICY_DEFAULT_CMP0074=NEW \
   -DCMAKE_C_COMPILER=clang \
@@ -423,167 +434,129 @@
   -DCMAKE_CXX_FLAGS="-march=x86-64 -mtune=generic -msse4.1 -msse4.2 -mpopcnt" \
   -Wno-dev
 
-<span class="text-green-400">make</span> -j$(getconf _NPROCESSORS_ONLN)
-<span class="text-yellow-400">sudo</span> make install</code></pre>
+make -j$(getconf _NPROCESSORS_ONLN)
+sudo make install</code>
+                </div>
             </div>
         </section>
 
-        <section id="flatpak" class="mb-10 scroll-mt-6">
+        <section id="flatpak" class="mb-10 scroll-mt-24">
             <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
                 <span class="mr-3">📦</span>
                 Flatpak Packaging
             </h2>
 
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
-                    <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        Requirements
-                    </h3>
-                    <pre class="bg-navy-900 border border-navy-700 rounded-lg p-3 text-xs overflow-x-auto"><code class="text-gray-300"><span class="text-green-400">flatpak install</span> flathub io.qt.qtwebengine.BaseApp//6.9
-<span class="text-green-400">flatpak install</span> flathub org.kde.Platform//6.9 org.kde.Sdk//6.9</code></pre>
+                <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
+                    <h3 class="text-lg font-semibold text-white mb-3">Requirements</h3>
+                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Install Runtimes</span>
+                            <button onclick="window.copyToClipboard('code-flatpak-req', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <code id="code-flatpak-req" class="font-mono text-xs text-gray-300">flatpak install flathub io.qt.qtwebengine.BaseApp//6.9
+flatpak install flathub org.kde.Platform//6.9 org.kde.Sdk//6.9</code>
+                    </div>
                 </div>
 
-                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
-                    <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-                        </svg>
-                        Build
-                    </h3>
-                    <pre class="bg-navy-900 border border-navy-700 rounded-lg p-3 text-xs overflow-x-auto"><code class="text-gray-300"><span class="text-green-400">flatpak-builder</span> --user --force-clean build-dir \
+                <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
+                    <h3 class="text-lg font-semibold text-white mb-3">Build</h3>
+                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Build Commands</span>
+                            <button onclick="window.copyToClipboard('code-flatpak-build', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <code id="code-flatpak-build" class="font-mono text-xs text-gray-300">flatpak-builder --user --force-clean build-dir \
   com.trench.trinity.launcher.json
 
-<span class="text-green-400">flatpak-builder</span> --repo=repo --force-clean build-dir \
+flatpak-builder --repo=repo --force-clean build-dir \
   com.trench.trinity.launcher.json
 
-<span class="text-green-400">flatpak build-bundle</span> repo trinity.flatpak \
+flatpak build-bundle repo trinity.flatpak \
   com.trench.trinity.launcher
 
-<span class="text-green-400">flatpak install</span> ./trinity.flatpak</code></pre>
+flatpak install ./trinity.flatpak</code>
+                    </div>
                 </div>
-            </div>
-
-            <div class="mt-4 bg-gradient-to-r from-green-900/20 to-green-800/20 border border-green-700/50 rounded-lg p-4">
-                <p class="text-green-400 flex items-center text-sm">
-                    <span class="mr-2">✅</span>
-                    The manifest must include <code class="bg-green-900/50 px-1 rounded">libevdev</code>, <code class="bg-green-900/50 px-1 rounded">libzip</code> and copy <code class="bg-green-900/50 px-1 rounded">files/</code> to <code class="bg-green-900/50 px-1 rounded">/app</code>.
-                </p>
             </div>
         </section>
 
-        <section id="pruebas" class="mb-10 scroll-mt-6">
+        <section id="pruebas" class="mb-10 scroll-mt-24">
             <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
                 <span class="mr-3">🧪</span>
-                Testing
+                Testing & Data
             </h2>
 
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
-                    <h3 class="text-lg font-semibold text-white mb-4">On system</h3>
-                    <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-sm"><code class="text-gray-300"><span class="text-primary-400">trinchete</span>
-<span class="text-primary-400">trinito</span></code></pre>
-                </div>
-
-                <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
-                    <h3 class="text-lg font-semibold text-white mb-4">On Flatpak</h3>
-                    <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-gray-300"><span class="text-green-400">flatpak run</span> com.trench.trinity.launcher
-<span class="text-green-400">flatpak run</span> --command=trinito \
-  com.trench.trinity.launcher</code></pre>
-                </div>
-            </div>
-
-            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
-                <h3 class="text-lg font-semibold text-white mb-4">Data paths (automatic)</h3>
+            <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
+                <h3 class="text-lg font-semibold text-white mb-4">Data paths</h3>
                 <div class="space-y-3">
-                    <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center gap-2">
-                        <span class="text-purple-400 font-bold shrink-0">Flatpak:</span>
-                        <code class="text-gray-400 text-sm break-all">~/.var/app/com.trench.trinity.launcher/data/mcpelauncher/</code>
+                    
+                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-3 relative group command-block">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-purple-400 font-bold text-xs uppercase tracking-wider">Flatpak Path</span>
+                            <button onclick="window.copyToClipboard('path-flatpak', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <code id="path-flatpak" class="text-gray-400 text-xs font-mono break-all">~/.var/app/com.trench.trinity.launcher/data/mcpelauncher/</code>
                     </div>
-                    <div class="bg-navy-900/50 border border-navy-700 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center gap-2">
-                        <span class="text-blue-400 font-bold shrink-0">Local:</span>
-                        <code class="text-gray-400 text-sm">~/.local/share/mcpelauncher/</code>
+
+                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-3 relative group command-block">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-blue-400 font-bold text-xs uppercase tracking-wider">Local Path</span>
+                            <button onclick="window.copyToClipboard('path-local', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <code id="path-local" class="text-gray-400 text-xs font-mono">~/.local/share/mcpelauncher/</code>
                     </div>
-                </div>
-                <div class="mt-4 bg-blue-900/20 border border-blue-700/50 rounded-lg p-3">
-                    <p class="text-blue-400 text-sm">
-                        Both use <code class="bg-blue-900/50 px-1 rounded">QStandardPaths::GenericDataLocation</code> → <strong>total compatibility</strong>.
-                    </p>
                 </div>
             </div>
         </section>
 
-        <section id="licencia" class="mb-10 scroll-mt-6">
+        <section id="licencia" class="mb-10 scroll-mt-24">
             <h2 class="text-2xl font-bold mb-6 flex items-center text-primary-400">
                 <span class="mr-3">📄</span>
                 License
             </h2>
 
-            <div class="bg-navy-900/30 border border-navy-800 rounded-xl p-6">
-                <p class="text-gray-300 mb-4">
+            <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
+                <p class="text-gray-300 mb-4 text-sm">
                     Trinity Launcher is distributed under the <strong class="text-white">BSD 3-Clause License</strong>.
                 </p>
 
-                <pre class="bg-navy-900 border border-navy-700 rounded-lg p-4 text-xs overflow-x-auto text-gray-400 whitespace-pre-wrap">Copyright (c) 2024, Trinity Launcher Authors
+                <div class="bg-navy-950 border border-navy-800 rounded-lg p-4 text-[10px] leading-relaxed text-gray-500 font-mono command-block">
+                    <code>Copyright (c) 2024, Trinity Launcher Authors
 All rights reserved.
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer.
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
-2. Redistributions in binary form must reproduce the above copyright notice,
-   this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution.
-
-3. Neither the name of the copyright holder nor the names of its
-   contributors may be used to endorse or promote products derived from
-   this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</pre>
-
-                <p class="mt-4">
-                    <a href="https://opensource.org/licenses/BSD-3-Clause" target="_blank" class="text-primary-400 hover:text-primary-500 underline">
-                        View full license →
-                    </a>
-                </p>
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.</code>
+                </div>
             </div>
         </section>
 
         <footer class="border-t border-navy-800 pt-8 mt-12 text-center">
-            <p class="text-gray-500 text-sm mb-2">Technical document generated in January 2026</p>
-            <a href="{{github}}" target="_blank" class="inline-flex items-center text-primary-400 hover:text-primary-500 transition-colors">
-                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
+            <p class="text-gray-500 text-sm mb-4">Technical document generated in January 2026</p>
+            <a href="{{github}}" target="_blank" class="inline-flex items-center text-primary-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 Official GitHub Repository
             </a>
         </footer>
     </div>
 
-    <script>
-        // Smooth scroll para navegación interna
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+    <script src="../js/utils.js"></script>
 </body>
 </html>

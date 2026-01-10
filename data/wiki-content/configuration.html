@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuration - Trinity Launcher</title>
+    <title>Configuration - Trinity Launcher Wiki</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -11,181 +11,222 @@
                 extend: {
                     colors: {
                         primary: {
-                            400: '#5D5CDE',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed'
                         },
                         navy: {
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a'
+                            700: '#1e293b',
+                            800: '#0f172a',
+                            900: '#020617',
+                            950: '#010313'
                         }
                     }
                 }
             }
         }
-    </script>
-    <style>
-        body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
-    </style>
-</head>
-<body class="min-h-full text-white">
-    <div class="container mx-auto px-4 py-8 max-w-6xl">
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold mb-6 flex items-center">
-                <svg class="w-8 h-8 mr-3 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                Trinity Launcher Configuration
-            </h1>
-            <p class="text-xl text-gray-300">Configure Trinity Launcher for an optimal Minecraft Bedrock experience</p>
-        </div>
 
-        <h2 class="text-2xl font-semibold mb-6 flex items-center">
-            <svg class="w-6 h-6 mr-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
-            </svg>
-            Initial Setup
-        </h2>
-
-        <div class="bg-navy-900/50 border border-navy-800 rounded-lg p-6 mb-8">
-            <h3 class="text-lg font-semibold text-primary-400 mb-4">1. Add your first Minecraft version</h3>
-            <p class="text-gray-300 mb-4">To start using Trinity Launcher, you need to import at least one Minecraft Bedrock version in APK format:</p>
-            
-            <div class="space-y-3 mb-6">
-                <div class="bg-navy-900/70 border border-navy-700 rounded p-4">
-                    <h4 class="font-semibold text-white mb-2">🔧 APK Requirements:</h4>
-                    <p class="text-gray-300 text-sm mb-2">You need a copy of any Minecraft Bedrock Edition version that meets these requirements:</p>
-                    <div class="bg-navy-900 border border-navy-800 rounded p-3 mt-2">
-                        <ul class="text-primary-400 text-sm space-y-1">
-                            <li>• <strong>Architecture:</strong> x86_64 (64-bit)</li>
-                            <li>• <strong>Format:</strong> .apk file</li>
-                            <li>• <strong>Source:</strong> Legally acquired copy</li>
-                            <li>• <strong>Compatibility:</strong> Any Bedrock Edition version</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="bg-red-900/20 border border-red-700/50 rounded p-4">
-                    <h4 class="font-semibold text-red-400 mb-2">🚫 Important:</h4>
-                    <p class="text-red-300 text-sm">Trinity Launcher <strong>DOES NOT provide</strong> copies of Minecraft Bedrock. You must obtain your own copy through legal and official means.</p>
-                </div>
-            </div>
-            
-            <div class="bg-blue-900/20 border border-blue-700/50 rounded p-4">
-                <p class="text-blue-300 text-sm"><strong>💡 Need help?</strong> Join our <a href="#" target="_blank" class="text-blue-300 hover:text-blue-200 underline">Discord server</a> for personalized configuration assistance.</p>
-            </div>
-        </div>
-
-        <h2 class="text-2xl font-semibold mb-6 flex items-center">
-            <svg class="w-6 h-6 mr-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-            </svg>
-            Version Management
-        </h2>
-
-        <div class="bg-gradient-to-r from-navy-900/50 to-navy-800/50 border border-navy-700 rounded-xl p-6 mb-8">
-            <h3 class="text-lg font-semibold text-primary-400 mb-4">Multiple Minecraft Versions</h3>
-            <p class="text-gray-300 mb-4">Trinity Launcher allows you to manage multiple Minecraft Bedrock versions simultaneously. You can have different versions for:</p>
-            
-            <div class="grid md:grid-cols-2 gap-4 mb-6">
-                <div class="bg-navy-900/30 border border-navy-800 rounded p-4">
-                    <h4 class="font-semibold text-white mb-2">✨ Different experiences:</h4>
-                    <ul class="text-gray-300 text-sm space-y-1">
-                        <li>• Stable version for normal gameplay</li>
-                        <li>• Beta version for new features</li>
-                        <li>• Older versions for mod compatibility</li>
-                    </ul>
-                </div>
-                <div class="bg-navy-900/30 border border-navy-800 rounded p-4">
-                    <h4 class="font-semibold text-white mb-2">🔧 Specific configurations:</h4>
-                    <ul class="text-gray-300 text-sm space-y-1">
-                        <li>• Profiles with different mod sets</li>
-                        <li>• Optimized performance settings</li>
-                        <li>• Separate worlds per version</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="bg-blue-900/20 border border-blue-700/50 rounded p-4">
-                <p class="text-blue-300 text-sm"><strong>💡 Tip:</strong> To add a new version, select "Extract APK" from the Trinity Launcher interface. You will be asked to select the downloaded APK file from the file explorer.</p>
-            </div>
-        </div>
-
-        <h2 class="text-2xl font-semibold mb-6 flex items-center">
-            <svg class="w-6 h-6 mr-2 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM7 21h10a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a4 4 0 01-4 4zM9 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5z"/>
-            </svg>
-            Customization and Content
-        </h2>
-
-        <p class="text-gray-300 mb-6">Trinity Launcher allows you to easily manage and install mods, resource packs, and worlds directly from the launcher interface.</p>
-
-        <div class="grid md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-primary-400 mb-3 flex items-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                    </svg>
-                    Texture Packs
-                </h3>
-                <p class="text-gray-300 text-sm mb-3">Customize the game's visual appearance:</p>
-                <ul class="text-gray-300 text-sm space-y-1">
-                    <li>• Supports .mcpack files</li>
-                    <li>• Installation from Trinity Launcher</li>
-                    <li>• Management of multiple packs</li>
-                    <li>• Preview before applying</li>
-                </ul>
-            </div>
-
-            <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-primary-400 mb-3 flex items-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                    Mods and Add-ons
-                </h3>
-                <p class="text-gray-300 text-sm mb-3">Expand game functionality:</p>
-                <ul class="text-gray-300 text-sm space-y-1">
-                    <li>• Support for .mcaddon</li>
-                    <li>• Integrated installation in Trinity</li>
-                    <li>• Dependency management</li>
-                    <li>• Easy activation/deactivation</li>
-                </ul>
-            </div>
-
-            <div class="bg-navy-900/30 border border-navy-800 rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-primary-400 mb-3 flex items-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    Worlds
-                </h3>
-                <p class="text-gray-300 text-sm mb-3">Manage your saved worlds:</p>
-                <ul class="text-gray-300 text-sm space-y-1">
-                    <li>• Import .mcworld worlds</li>
-                    <li>• Management from the launcher</li>
-                    <li>• Organization by category</li>
-                    <li>• Share with other players</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Dark/light mode support
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
     </script>
+    <style>
+        .step-number {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Ocultar barra de desplazamiento manteniendo funcionalidad */
+        .command-block code {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-right: 1rem;
+            scrollbar-width: none !important; /* Firefox */
+            -ms-overflow-style: none !important; /* IE/Edge */
+        }
+        .command-block code::-webkit-scrollbar {
+            display: none !important; /* Chrome/Safari */
+            width: 0 !important;
+            height: 0 !important;
+            background: transparent !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-navy-950 text-white">
+    <div class="container mx-auto p-6 max-w-5xl">
+
+        <div class="mb-10">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-primary-500/20 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold">Trinity Launcher Configuration</h1>
+                    <p class="text-gray-400">Configure Trinity Launcher for an optimal Minecraft Bedrock experience</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-8">
+
+            <section class="glass-card border border-gray-700/50 rounded-2xl overflow-hidden">
+                <div class="flex items-center gap-4 p-6 border-b border-gray-700/50 bg-gray-800/30">
+                    <div class="step-number w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg">1</div>
+                    <div>
+                        <h2 class="text-xl font-semibold">Initial Setup</h2>
+                        <p class="text-gray-400 text-sm">Add your first Minecraft version</p>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-300 mb-6">To start using Trinity Launcher, you need to import at least one Minecraft Bedrock version in APK format.</p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="bg-navy-900/50 border border-gray-700 rounded-xl p-5">
+                            <h4 class="font-semibold text-white mb-3 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/></svg>
+                                APK Requirements
+                            </h4>
+                            <div class="bg-navy-950/50 border border-gray-700/50 rounded-lg p-3">
+                                <ul class="text-gray-300 text-sm space-y-2">
+                                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>Architecture: <strong>x86_64 (64-bit)</strong></li>
+                                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>Format: <strong>.apk file</strong></li>
+                                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>Compatibility: <strong>Any Bedrock version</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-start gap-3">
+                            <svg class="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.502 0L4.312 15.5c-.77.833.192 2.5 1.732 2.5z"/>
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold text-red-400 mb-1">Important</h4>
+                                <p class="text-red-300 text-sm">Trinity Launcher <strong>DOES NOT provide</strong> copies of Minecraft Bedrock. You must obtain your own copy through legal means.</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </section>
+
+            <section class="glass-card border border-gray-700/50 rounded-2xl overflow-hidden">
+                <div class="flex items-center gap-4 p-6 border-b border-gray-700/50 bg-gray-800/30">
+                    <div class="step-number w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg">2</div>
+                    <div>
+                        <h2 class="text-xl font-semibold">Version Management</h2>
+                        <p class="text-gray-400 text-sm">Manage multiple instances</p>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-300 mb-6">Trinity Launcher allows you to manage multiple Minecraft Bedrock versions simultaneously.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-navy-900/50 border border-gray-700 rounded-xl p-5 hover:border-primary-500/30 transition-colors">
+                            <h4 class="font-semibold text-white mb-3 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                                Different Experiences
+                            </h4>
+                            <ul class="text-gray-400 text-sm space-y-1 ml-1">
+                                <li>• Stable version for normal gameplay</li>
+                                <li>• Beta version for new features</li>
+                                <li>• Older versions for mod compatibility</li>
+                            </ul>
+                        </div>
+                        <div class="bg-navy-900/50 border border-gray-700 rounded-xl p-5 hover:border-primary-500/30 transition-colors">
+                            <h4 class="font-semibold text-white mb-3 flex items-center gap-2">
+                                <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                                Specific Configurations
+                            </h4>
+                            <ul class="text-gray-400 text-sm space-y-1 ml-1">
+                                <li>• Profiles with different mod sets</li>
+                                <li>• Optimized performance settings</li>
+                                <li>• Separate worlds per version</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
+                        <p class="text-blue-300 text-sm"><strong>💡 Tip:</strong> To add a new version, select "Extract APK" from the Trinity Launcher interface and select your downloaded file.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass-card border border-gray-700/50 rounded-2xl overflow-hidden">
+                <div class="flex items-center gap-4 p-6 border-b border-gray-700/50 bg-gray-800/30">
+                    <div class="step-number w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg">3</div>
+                    <div>
+                        <h2 class="text-xl font-semibold">Customization and Content</h2>
+                        <p class="text-gray-400 text-sm">Mods, packs and worlds</p>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-300 mb-6">Manage all your content directly from the launcher interface.</p>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-navy-900/50 border border-gray-700 rounded-xl p-5 hover:bg-navy-900 transition-all">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center mb-4">
+                                <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Texture Packs</h3>
+                            <ul class="text-gray-400 text-sm space-y-1">
+                                <li>• Supports .mcpack</li>
+                                <li>• Live preview</li>
+                                <li>• Easy management</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-navy-900/50 border border-gray-700 rounded-xl p-5 hover:bg-navy-900 transition-all">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
+                                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Mods & Addons</h3>
+                            <ul class="text-gray-400 text-sm space-y-1">
+                                <li>• Supports .mcaddon</li>
+                                <li>• Dependency handling</li>
+                                <li>• One-click install</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-navy-900/50 border border-gray-700 rounded-xl p-5 hover:bg-navy-900 transition-all">
+                            <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center mb-4">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Worlds</h3>
+                            <ul class="text-gray-400 text-sm space-y-1">
+                                <li>• Import .mcworld</li>
+                                <li>• Backup system</li>
+                                <li>• Easy sharing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="mt-10 p-6 bg-gradient-to-r from-primary-500/10 to-indigo-500/10 border border-primary-500/30 rounded-2xl text-center">
+            <h3 class="text-lg font-semibold text-white mb-3">Need configuration help?</h3>
+            <a href="#" target="_blank" class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium rounded-lg shadow-md hover:shadow-indigo-500/25 transform hover:-translate-y-0.5 transition-all duration-200">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                </svg>
+                Get help on Discord
+            </a>
+        </div>
+    </div>
+
+    <script src="../js/utils.js"></script>
 </body>
 </html>

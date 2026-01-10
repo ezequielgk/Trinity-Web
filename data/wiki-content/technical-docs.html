@@ -39,7 +39,7 @@
             backdrop-filter: blur(10px);
         }
         
-        /* --- SCROLLBAR INVISIBLE (PERO FUNCIONAL) --- */
+        /* --- SCROLLBAR INVISIBLE PERO FUNCIONAL --- */
         .command-block code, .overflow-x-auto {
             scrollbar-width: none !important; /* Firefox */
             -ms-overflow-style: none !important; /* IE/Edge */
@@ -55,7 +55,7 @@
         .command-block code {
             display: block;
             overflow-x: auto;
-            white-space: pre; /* Mantiene formato de código */
+            white-space: pre; 
             padding-right: 1rem;
         }
     </style>
@@ -357,7 +357,7 @@
                 <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block mb-4">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Build Script</span>
-                        <button onclick="window.copyToClipboard('code-build', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                        <button onclick="copyToClipboard('code-build', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                             <span>Copy</span>
                         </button>
@@ -376,7 +376,7 @@ sudo ./build.sh</code>
                 <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Run Commands</span>
-                        <button onclick="window.copyToClipboard('code-run', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                        <button onclick="copyToClipboard('code-run', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                             <span>Copy</span>
                         </button>
@@ -414,7 +414,7 @@ trinito</code>
                 <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Compilation Commands</span>
-                        <button onclick="window.copyToClipboard('code-mcpe', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                        <button onclick="copyToClipboard('code-mcpe', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                             <span>Copy</span>
                         </button>
@@ -452,7 +452,7 @@ sudo make install</code>
                     <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Install Runtimes</span>
-                            <button onclick="window.copyToClipboard('code-flatpak-req', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                            <button onclick="copyToClipboard('code-flatpak-req', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                 <span>Copy</span>
                             </button>
@@ -467,7 +467,7 @@ flatpak install flathub org.kde.Platform//6.9 org.kde.Sdk//6.9</code>
                     <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Build Commands</span>
-                            <button onclick="window.copyToClipboard('code-flatpak-build', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                            <button onclick="copyToClipboard('code-flatpak-build', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                 <span>Copy</span>
                             </button>
@@ -500,7 +500,7 @@ flatpak install ./trinity.flatpak</code>
                     <div class="bg-navy-900 border border-navy-800 rounded-lg p-3 relative group command-block">
                         <div class="flex justify-between items-center mb-1">
                             <span class="text-purple-400 font-bold text-xs uppercase tracking-wider">Flatpak Path</span>
-                            <button onclick="window.copyToClipboard('path-flatpak', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                            <button onclick="copyToClipboard('path-flatpak', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                 <span>Copy</span>
                             </button>
@@ -511,7 +511,7 @@ flatpak install ./trinity.flatpak</code>
                     <div class="bg-navy-900 border border-navy-800 rounded-lg p-3 relative group command-block">
                         <div class="flex justify-between items-center mb-1">
                             <span class="text-blue-400 font-bold text-xs uppercase tracking-wider">Local Path</span>
-                            <button onclick="window.copyToClipboard('path-local', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
+                            <button onclick="copyToClipboard('path-local', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                                 <span>Copy</span>
                             </button>
@@ -557,6 +557,31 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         </footer>
     </div>
 
-    <script src="../js/utils.js"></script>
+    <script>
+        function copyToClipboard(elementId, button) {
+            const textElement = document.getElementById(elementId);
+            if (!textElement) return;
+
+            const textToCopy = textElement.innerText;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const originalHtml = button.innerHTML;
+                
+                // Feedback visual
+                button.innerHTML = `
+                    <svg class="w-3.5 h-3.5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span class="text-green-400 font-bold">Copied!</span>
+                `;
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHtml;
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+        }
+    </script>
 </body>
 </html>

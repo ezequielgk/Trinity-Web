@@ -2,7 +2,7 @@
 
 /**
  * AppUtils - Objeto principal que contiene todas las utilidades organizadas por categorías
- * Proporciona funcionalidades comunes para API, DOM, animaciones, formularios, storage, strings, temas y portapapeles
+ * Proporciona funcionalidades comunes para API, DOM, animaciones, formularios, storage, strings y temas
  */
 const AppUtils = {
   
@@ -117,52 +117,6 @@ const AppUtils = {
       if (element) {
         element.classList.toggle('hidden');
       }
-    }
-  },
-
-  /**
-   * UTILIDADES DE PORTAPAPELES (NUEVO)
-   * Funciones para interactuar con el clipboard del sistema
-   */
-  clipboard: {
-    /**
-     * Copiar texto de un elemento al portapapeles con feedback visual
-     * @param {string} elementId - ID del elemento que contiene el texto
-     * @param {HTMLElement} button - El botón que dispara la acción (para animación)
-     */
-    copy(elementId, button) {
-      const textElement = document.getElementById(elementId);
-      
-      if (!textElement) {
-        console.error(`AppUtils: Elemento con id ${elementId} no encontrado`);
-        return;
-      }
-
-      const textToCopy = textElement.innerText || textElement.textContent;
-
-      navigator.clipboard.writeText(textToCopy.trim()).then(() => {
-        // Guardar el contenido original del botón si no se ha guardado ya
-        if (!button.dataset.originalContent) {
-          button.dataset.originalContent = button.innerHTML;
-        }
-        
-        const originalContent = button.dataset.originalContent;
-        
-        // Cambiar a feedback de éxito (verde)
-        button.innerHTML = `
-            <svg class="w-4 h-4 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <span class="text-green-400 font-bold">Copied!</span>
-        `;
-        
-        // Restaurar el botón después de 2 segundos
-        setTimeout(() => {
-          button.innerHTML = originalContent;
-        }, 2000);
-      }).catch(err => {
-        console.error('AppUtils: Error al copiar: ', err);
-      });
     }
   },
 
@@ -459,10 +413,3 @@ const AppUtils = {
  * Hacer las utilidades disponibles globalmente para uso en toda la aplicación
  */
 window.AppUtils = AppUtils;
-
-/**
- * ALIAS DE COMPATIBILIDAD
- * Esto permite llamar a la función de copiado directamente desde el HTML 
- * como se definió en las vistas (onclick="window.copyToClipboard(...)")
- */
-window.copyToClipboard = AppUtils.clipboard.copy;

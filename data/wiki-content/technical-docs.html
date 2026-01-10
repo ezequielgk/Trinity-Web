@@ -38,8 +38,8 @@
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(10px);
         }
-        
-        /* --- SCROLLBAR INVISIBLE PERO FUNCIONAL --- */
+
+        /* --- SCROLLBAR INVISIBLE (PERO FUNCIONAL) --- */
         .command-block code, .overflow-x-auto {
             scrollbar-width: none !important; /* Firefox */
             -ms-overflow-style: none !important; /* IE/Edge */
@@ -50,13 +50,16 @@
             height: 0 !important;
             background: transparent !important;
         }
-        
+
         /* Asegurar comportamiento de bloque de código */
+        .command-block {
+            overflow: hidden;
+            min-width: 0;
+        }
         .command-block code {
             display: block;
             overflow-x: auto;
-            white-space: pre; 
-            padding-right: 1rem;
+            white-space: pre; /* Mantiene formato de código */
         }
     </style>
 </head>
@@ -70,7 +73,7 @@
             <p class="text-xl text-gray-300 mb-4">
                 Modular graphical environment for Minecraft Bedrock on Linux
             </p>
-            
+
             <div class="flex justify-center flex-wrap gap-2 mb-6">
                 <span class="inline-flex items-center px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-semibold rounded-full">BSD 3-Clause</span>
                 <span class="inline-flex items-center px-3 py-1 bg-green-500/10 text-green-400 border border-green-500/20 text-xs font-semibold rounded-full">Qt 6</span>
@@ -353,16 +356,10 @@
             </h2>
 
             <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
-                
-                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block mb-4">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Build Script</span>
-                        <button onclick="copyToClipboard('code-build', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                            <span>Copy</span>
-                        </button>
-                    </div>
-                    <code id="code-build" class="font-mono text-sm text-gray-300"># Give permissions
+
+                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 command-block mb-4">
+                    <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider block mb-2">Build Script</span>
+                    <code class="font-mono text-sm text-gray-300"># Give permissions
 chmod +x build.sh
 
 # Compile and install
@@ -373,15 +370,9 @@ sudo ./build.sh</code>
                     Installs in <code class="bg-navy-950 px-1.5 py-0.5 rounded text-primary-400 font-mono border border-navy-800">/usr/local/bin</code> and registers the icon.
                 </p>
 
-                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Run Commands</span>
-                        <button onclick="copyToClipboard('code-run', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                            <span>Copy</span>
-                        </button>
-                    </div>
-                    <code id="code-run" class="font-mono text-sm text-gray-300">trinchete
+                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 command-block">
+                    <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider block mb-2">Run Commands</span>
+                    <code class="font-mono text-sm text-gray-300">trinchete
 trinito</code>
                 </div>
             </div>
@@ -411,15 +402,9 @@ trinito</code>
                     <a href="https://github.com/franckey02/mcpelauncher-patch" target="_blank" class="text-primary-400 hover:text-white underline">franckey02/mcpelauncher-patch</a>
                 </p>
 
-                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Compilation Commands</span>
-                        <button onclick="copyToClipboard('code-mcpe', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                            <span>Copy</span>
-                        </button>
-                    </div>
-                    <code id="code-mcpe" class="font-mono text-xs text-gray-300">git clone https://github.com/franckey02/mcpelauncher-patch.git
+                <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 command-block">
+                    <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider block mb-2">Compilation Commands</span>
+                    <code class="font-mono text-xs text-gray-300">git clone https://github.com/franckey02/mcpelauncher-patch.git
 cd mcpelauncher-patch
 git checkout qt6
 git submodule update --init --recursive
@@ -449,30 +434,18 @@ sudo make install</code>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
                     <h3 class="text-lg font-semibold text-white mb-3">Requirements</h3>
-                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Install Runtimes</span>
-                            <button onclick="copyToClipboard('code-flatpak-req', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                                <span>Copy</span>
-                            </button>
-                        </div>
-                        <code id="code-flatpak-req" class="font-mono text-xs text-gray-300">flatpak install flathub io.qt.qtwebengine.BaseApp//6.9
+                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 command-block">
+                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider block mb-2">Install Runtimes</span>
+                        <code class="font-mono text-xs text-gray-300">flatpak install flathub io.qt.qtwebengine.BaseApp//6.9
 flatpak install flathub org.kde.Platform//6.9 org.kde.Sdk//6.9</code>
                     </div>
                 </div>
 
                 <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
                     <h3 class="text-lg font-semibold text-white mb-3">Build</h3>
-                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 relative group command-block">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider">Build Commands</span>
-                            <button onclick="copyToClipboard('code-flatpak-build', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                                <span>Copy</span>
-                            </button>
-                        </div>
-                        <code id="code-flatpak-build" class="font-mono text-xs text-gray-300">flatpak-builder --user --force-clean build-dir \
+                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-4 command-block">
+                        <span class="text-gray-400 text-xs uppercase font-semibold tracking-wider block mb-2">Build Commands</span>
+                        <code class="font-mono text-xs text-gray-300">flatpak-builder --user --force-clean build-dir \
   com.trench.trinity.launcher.json
 
 flatpak-builder --repo=repo --force-clean build-dir \
@@ -496,27 +469,15 @@ flatpak install ./trinity.flatpak</code>
             <div class="glass-card border border-gray-700/50 rounded-2xl p-6">
                 <h3 class="text-lg font-semibold text-white mb-4">Data paths</h3>
                 <div class="space-y-3">
-                    
-                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-3 relative group command-block">
-                        <div class="flex justify-between items-center mb-1">
-                            <span class="text-purple-400 font-bold text-xs uppercase tracking-wider">Flatpak Path</span>
-                            <button onclick="copyToClipboard('path-flatpak', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                                <span>Copy</span>
-                            </button>
-                        </div>
-                        <code id="path-flatpak" class="text-gray-400 text-xs font-mono break-all">~/.var/app/com.trench.trinity.launcher/data/mcpelauncher/</code>
+
+                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-3 command-block">
+                        <span class="text-purple-400 font-bold text-xs uppercase tracking-wider block mb-1">Flatpak Path</span>
+                        <code class="text-gray-400 text-xs font-mono break-all">~/.var/app/com.trench.trinity.launcher/data/mcpelauncher/</code>
                     </div>
 
-                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-3 relative group command-block">
-                        <div class="flex justify-between items-center mb-1">
-                            <span class="text-blue-400 font-bold text-xs uppercase tracking-wider">Local Path</span>
-                            <button onclick="copyToClipboard('path-local', this)" class="flex items-center gap-1 px-2 py-1 text-xs text-primary-400 hover:text-white hover:bg-gray-700 rounded transition-all cursor-pointer">
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                                <span>Copy</span>
-                            </button>
-                        </div>
-                        <code id="path-local" class="text-gray-400 text-xs font-mono">~/.local/share/mcpelauncher/</code>
+                    <div class="bg-navy-900 border border-navy-800 rounded-lg p-3 command-block">
+                        <span class="text-blue-400 font-bold text-xs uppercase tracking-wider block mb-1">Local Path</span>
+                        <code class="text-gray-400 text-xs font-mono">~/.local/share/mcpelauncher/</code>
                     </div>
                 </div>
             </div>
@@ -556,32 +517,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
             </a>
         </footer>
     </div>
-
-    <script>
-        function copyToClipboard(elementId, button) {
-            const textElement = document.getElementById(elementId);
-            if (!textElement) return;
-
-            const textToCopy = textElement.innerText;
-
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                const originalHtml = button.innerHTML;
-                
-                // Feedback visual
-                button.innerHTML = `
-                    <svg class="w-3.5 h-3.5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    <span class="text-green-400 font-bold">Copied!</span>
-                `;
-                
-                setTimeout(() => {
-                    button.innerHTML = originalHtml;
-                }, 2000);
-            }).catch(err => {
-                console.error('Error al copiar: ', err);
-            });
-        }
-    </script>
 </body>
 </html>
+

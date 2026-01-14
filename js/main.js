@@ -2,7 +2,7 @@
 
 // --- INICIO DE INTEGRACIÓN FIREBASE ---
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCrBk2coqPiBrD02Un7i2Bbxpwd6dEYlsw",
@@ -20,42 +20,12 @@ const db = getFirestore(app);
 // Exportamos db para que el script del formulario en el HTML funcione
 export { db };
 
-/**
- * Función para cargar reseñas desde Firebase (sin user badge)
- */
-async function mostrarResenas() {
-  const contenedor = document.getElementById('reviews-display');
-  if (!contenedor) return;
-
-  try {
-    const querySnapshot = await getDocs(collection(db, "reviews"));
-    contenedor.innerHTML = "";
-
-    if (querySnapshot.empty) {
-      contenedor.innerHTML = "<p class='text-gray-500 col-span-full text-center'>No reviews yet. Be the first!</p>";
-      return;
-    }
-
-    querySnapshot.forEach((doc) => {
-      const resena = doc.data();
-      // Solo se muestra el nombre, sin user badge
-      contenedor.innerHTML += `
-        <div class="glass-card p-6 rounded-2xl border border-white/10 mb-4 transition-all hover:bg-white/5">
-          <h4 class="text-primary-400 font-bold">${resena.nombre || 'Anónimo'}</h4>
-          <p class="text-gray-300 my-2">"${resena.comentario || ''}"</p>
-          <div class="text-yellow-500">${"★".repeat(resena.estrella || 5)}</div>
-        </div>
-      `;
-    });
-  } catch (error) {
-    console.error("Error cargando reseñas:", error);
-  }
-}
+// ❌ HE BORRADO LA FUNCIÓN mostrarResenas() DE AQUÍ
+// Porque ahora esa función está mejorada en tu index.html
 // --- FIN DE INTEGRACIÓN FIREBASE ---
 
 /**
  * Vercel Analytics Integration
- * Configura el rastreo de visitas para el dashboard de Vercel
  */
 (function() {
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -67,7 +37,6 @@ async function mostrarResenas() {
 
 /**
  * Configuración del modo oscuro automático
- * Detecta las preferencias del sistema y aplica el tema correspondiente
  */
 function initDarkMode() {
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -152,14 +121,11 @@ const utils = {
 };
 
 /**
- * Inicialización cuando el DOM esté completamente cargado
+ * Inicialización
  */
 document.addEventListener('DOMContentLoaded', function() {
   initDarkMode();
-
-  // Ejecutar carga de reseñas de Firebase
-  mostrarResenas();
-
+  // YA NO LLAMAMOS A mostrarResenas() AQUÍ
   console.log('Trinity Launcher cargado exitosamente! 🚀');
 });
 
@@ -175,6 +141,5 @@ window.addEventListener('error', function(e) {
  */
 window.TrinityLauncher = {
   utils,
-  initDarkMode,
-  mostrarResenas
+  initDarkMode
 };

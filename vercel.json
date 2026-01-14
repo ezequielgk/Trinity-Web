@@ -4,6 +4,7 @@
     { "source": "/", "destination": "/index.html" },
     { "source": "/wiki", "destination": "/pages/wiki.html" },
     { "source": "/contributors", "destination": "/pages/contributors.html" },
-    { "source": "/faq", "destination": "/pages/faq.html" }
+    { "source": "/faq", "destination": "/pages/faq.html" },
+    { "source": "/api/(.*)", "destination": "/api/$1" }
   ]
 }

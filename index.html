@@ -421,38 +421,83 @@
                     <span class="inline-block px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6">Community</span>
                     <h2 class="text-4xl md:text-5xl font-bold text-gradient">User Reviews</h2>
                 </div>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <div class="lg:col-span-1">
-                        <div class="glass-card rounded-2xl p-8 sticky top-24">
-                            <h3 class="text-2xl font-bold mb-6 text-white">Leave a Review</h3>
-                            <form id="review-form" class="space-y-4" onsubmit="return false">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-400 mb-2">Name</label>
-                                    <input type="text" id="nombre-input" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary-500/50 transition-colors" placeholder="Your nickname" style="font-size:16px">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-400 mb-2">Rating</label>
-                                    <input type="hidden" id="estrellas-input" value="5">
-                                    <div id="star-rating" class="flex gap-2 py-2"></div>
-                                    <p id="rating-text" class="text-sm text-primary-300 mt-1">5 stars - Excellent!</p>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-400 mb-2">Your Experience</label>
-                                    <textarea id="comentario-input" required rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary-500/50 transition-colors resize-none" placeholder="What do you think?" style="font-size:16px"></textarea>
-                                </div>
-                                <button type="submit" class="w-full btn-shine bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary-500/20 transition-all active:scale-95">Post Review</button>
-                            </form>
-                        </div>
+
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        
+        <div class="lg:col-span-1">
+            <div class="glass-card rounded-2xl p-8 sticky top-24">
+                
+                <div id="login-state" class="text-center py-4">
+                    <div class="mb-6 relative inline-block">
+                        <div class="absolute inset-0 bg-primary-500/20 blur-xl rounded-full"></div>
+                        <i class="fa-solid fa-comments text-4xl text-white relative z-10"></i>
                     </div>
-                    <div class="lg:col-span-2">
-                        <div id="reviews-display" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="col-span-full py-12 text-center text-gray-500">
-                                <div class="animate-spin inline-block w-8 h-8 border-4 border-primary-500 border-t-transparent rounded-full mb-4"></div>
-                                <p>Loading community reviews...</p>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Leave a Review</h3>
+                    <p class="text-gray-400 mb-8 text-sm leading-relaxed">Join the community! Identify yourself with Discord to share your experience.</p>
+                    
+                    <a href="https://discord.com/oauth2/authorize?client_id=1460853649394761851&redirect_uri=https://trinitylauncher.vercel.app/&response_type=code&scope=identify" 
+                       class="btn-shine w-full flex items-center justify-center gap-3 bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-1 active:scale-95 group">
+                        <i class="fa-brands fa-discord text-xl group-hover:rotate-12 transition-transform"></i>
+                        Login with Discord
+                    </a>
                 </div>
+
+                <div id="form-state" class="hidden">
+                    <div class="flex flex-col items-center text-center mb-8 pb-6 border-b border-white/10">
+                        <div class="relative mb-4 group">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-primary-500 to-purple-600 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-500"></div>
+                            <img id="user-avatar" src="" alt="User" onerror="this.onerror=null; this.src='assets/icons/start.svg';" class="relative w-24 h-24 rounded-full border-4 border-[#0f172a] object-cover shadow-2xl">
+                            <div class="absolute bottom-1 right-1 w-6 h-6 bg-green-500 border-4 border-[#0f172a] rounded-full"></div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-white mb-1">
+                            Welcome, <span id="user-name" class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-purple-400">User</span>!
+                        </h3>
+                        <p class="text-xs text-gray-400 mb-4 bg-white/5 px-3 py-1 rounded-full border border-white/5 inline-block">Verified Reviewer</p>
+                        
+                        <button onclick="logout()" class="text-xs flex items-center gap-2 text-red-400 hover:text-red-300 hover:underline transition-all mt-1">
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
+                        </button>
+                    </div>
+
+                    <form id="review-form" class="space-y-5" onsubmit="return false">
+                        <input type="hidden" id="discord-username-input">
+                        <input type="hidden" id="discord-avatar-input">
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 text-center">Rate your experience</label>
+                            <input type="hidden" id="estrellas-input" value="5">
+                            <div id="star-rating" class="flex gap-2 justify-center py-2"></div>
+                            <p id="rating-text" class="text-center text-sm text-primary-300 mt-2 font-medium">5 stars - Excellent!</p>
+                        </div>
+
+                        <div class="relative">
+                            <textarea id="comentario-input" required rows="4" 
+                                class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary-500/50 focus:ring-1 focus:ring-primary-500/50 transition-all resize-none" 
+                                placeholder="Tell us what you liked the most..." style="font-size:16px"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full btn-shine bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary-500/20 transition-all transform active:scale-95 flex items-center justify-center gap-2">
+                            <span>Post Review</span>
+                            <i class="fa-solid fa-paper-plane text-sm"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-2">
+            <div id="reviews-display" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="col-span-full py-12 text-center text-gray-500">
+                    <div class="animate-spin inline-block w-8 h-8 border-4 border-primary-500 border-t-transparent rounded-full mb-4"></div>
+                    <p>Loading community reviews...</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
             </div>
         </div>
     </main>
@@ -546,111 +591,189 @@
             ['1','2','3','4','5'].forEach(n => { const img = new Image(); img.src = 'assets/images/' + n + '.webp'; });
         });
     </script>
-    <script type="module">
-        import { db } from './js/main.js';
-        import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    
+<script type="module">
+    import { db } from './js/main.js';
+    import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        const stars = n => '⭐'.repeat(n);
-        const fmtDate = t => {
-            if (!t) return 'Just now';
-            const d = t.toDate ? t.toDate() : new Date(t);
-            return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-        };
+    console.log("🚀 Trinity Script: Iniciado (Puerto 3000)");
 
-        async function loadReviews() {
-            const c = document.getElementById('reviews-display');
-            if (!c) return;
+    // --- Referencias ---
+    const loginState = document.getElementById('login-state');
+    const formState = document.getElementById('form-state');
+    const userAvatarImg = document.getElementById('user-avatar');
+    const userNameText = document.getElementById('user-name');
+    
+    // --- Referencias Inputs (Con protección) ---
+    const getHiddenName = () => document.getElementById('discord-username-input');
+    const getHiddenAvatar = () => document.getElementById('discord-avatar-input');
+
+    // --- Logout ---
+    window.logout = () => {
+        localStorage.removeItem('trinity_user');
+        window.location.href = window.location.origin; // Recarga limpia a la raíz
+    };
+
+    // --- UI Update ---
+    function updateUI(user) {
+        if (user && user.username) {
+            console.log("✅ Usuario detectado:", user.username);
+            
+            // 1. Cambiar visualización
+            if(loginState) loginState.classList.add('hidden');
+            if(formState) formState.classList.remove('hidden');
+            
+            // 2. Actualizar perfil
+            if(userAvatarImg) userAvatarImg.src = user.avatar || 'assets/icons/start.svg';
+            if(userNameText) userNameText.textContent = user.username;
+            
+            // 3. Guardar en inputs ocultos (Si existen)
+            const nameInput = getHiddenName();
+            const avatarInput = getHiddenAvatar();
+            
+            if (nameInput) nameInput.value = user.username;
+            else console.error("⚠️ FALTA EN HTML: <input id='discord-username-input'>");
+
+            if (avatarInput) avatarInput.value = user.avatar;
+        } else {
+            if(loginState) loginState.classList.remove('hidden');
+            if(formState) formState.classList.add('hidden');
+        }
+    }
+
+    // --- Login Logic ---
+    async function checkDiscordLogin() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+
+        if (code) {
+            // Evitamos borrar el código inmediatamente para poder depurar si falla
+            // window.history.replaceState({}, document.title, window.location.pathname);
+            showCustomModal("Conectando con Discord...");
+            
             try {
-                const snap = await getDocs(query(collection(db, "reviews"), orderBy("fecha", "desc"), limit(20)));
-                if (snap.empty) {
-                    c.innerHTML = '<div class="col-span-full py-12 text-center text-gray-500"><p class="text-lg">No reviews yet. Be the first!</p></div>';
-                    return;
-                }
-                let html = '';
-                snap.forEach(doc => {
-                    const r = doc.data();
-                    const name = r.nombre || 'Anonymous';
-                    html += `<div class="review-card rounded-2xl p-6"><div class="flex items-start justify-between mb-4"><div><h4 class="font-semibold text-white">${name}</h4><p class="text-xs text-gray-500 mt-1">${fmtDate(r.fecha)}</p></div><div class="text-sm">${stars(r.estrella||5)}</div></div><p class="text-gray-400 leading-relaxed">${r.comentario||''}</p></div>`;
-                });
-                c.innerHTML = html;
-            } catch (e) {
-                console.error(e);
-                c.innerHTML = '<div class="col-span-full py-12 text-center text-gray-500"><p>Unable to load reviews.</p></div>';
+                const response = await fetch(`/api/login?code=${code}`);
+                const data = await response.json();
+
+                if (data.error) throw new Error(data.error);
+                if (!data.username) throw new Error("Datos de usuario incompletos");
+
+                localStorage.setItem('trinity_user', JSON.stringify(data));
+                updateUI(data);
+                
+                closeCustomModal();
+                showCustomModal(`¡Bienvenido, ${data.username}!`);
+                
+                // Si todo salió bien, limpiamos la URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+
+            } catch (error) {
+                console.error("❌ Error Login:", error);
+                closeCustomModal();
+                showCustomModal("Error de Login: " + error.message);
+            }
+        } else {
+            const saved = localStorage.getItem('trinity_user');
+            if (saved) {
+                try { updateUI(JSON.parse(saved)); } 
+                catch (e) { localStorage.removeItem('trinity_user'); }
             }
         }
+    }
 
-        // Función para enviar reseña sin recargar página
-        async function handleSubmitReview(e) {
+    // --- Load Reviews ---
+    const stars = n => '⭐'.repeat(n);
+    const fmtDate = t => {
+        if (!t) return 'Just now';
+        const d = t.toDate ? t.toDate() : new Date(t);
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    };
+
+    async function loadReviews() {
+        const container = document.getElementById('reviews-display');
+        if (!container) return;
+        
+        try {
+            const q = query(collection(db, "reviews"), orderBy("fecha", "desc"), limit(20));
+            const snap = await getDocs(q);
+            
+            if (snap.empty) {
+                container.innerHTML = '<div class="col-span-full py-12 text-center text-gray-500">No reviews yet.</div>';
+                return;
+            }
+
+            let html = '';
+            snap.forEach(doc => {
+                const r = doc.data();
+                html += `
+                <div class="review-card rounded-2xl p-6 transition-all hover:bg-white/5 border border-white/5">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <img src="${r.avatar || 'assets/icons/start.svg'}" 
+                                 alt="${r.nombre}"
+                                 onerror="this.onerror=null; this.src='assets/icons/start.svg';"
+                                 class="w-10 h-10 rounded-full border border-white/10 object-cover bg-gray-800">
+                            
+                            <div>
+                                <h4 class="font-semibold text-white">${r.nombre || 'Anon'}</h4>
+                                <p class="text-xs text-gray-500">${fmtDate(r.fecha)}</p>
+                            </div>
+                        </div>
+                        <div class="text-sm text-yellow-400 tracking-widest">${stars(r.estrella||5)}</div>
+                    </div>
+                    <p class="text-gray-300 text-sm bg-black/20 p-3 rounded-lg">${r.comentario||''}</p>
+                </div>`;
+            });
+            container.innerHTML = html;
+        } catch (e) { 
+            console.error("Error reviews:", e); 
+        }
+    }
+
+    // --- Init ---
+    // Quitamos DOMContentLoaded porque en type="module" ya es diferido
+    checkDiscordLogin();
+    loadReviews();
+
+    const form = document.getElementById('review-form');
+    if (form) {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            e.stopPropagation();
-
-            const form = document.getElementById('review-form');
             const btn = form.querySelector('button[type="submit"]');
-            const orig = btn.innerText;
-
-            // Deshabilitar botón mientras se envía
-            btn.disabled = true;
-            btn.innerText = 'Sending...';
+            const originalText = btn.innerText;
+            btn.disabled = true; btn.innerText = 'Sending...';
 
             try {
-                const nombre = document.getElementById('nombre-input').value.trim();
-                const comentario = document.getElementById('comentario-input').value.trim();
-                const estrella = parseInt(document.getElementById('estrellas-input').value) || 5;
+                // Recuperar datos con seguridad
+                const nameInput = getHiddenName();
+                const avatarInput = getHiddenAvatar();
+                const nombre = nameInput ? nameInput.value : null;
+                const avatar = avatarInput ? avatarInput.value : null;
+                
+                const comentario = document.getElementById('comentario-input').value;
+                const estrellas = document.getElementById('estrellas-input').value || 5;
 
-                if (!nombre || !comentario) {
-                    showCustomModal('Please fill in all fields.');
-                    return;
-                }
+                if (!nombre) throw new Error("Error: No se detecta el usuario. Intenta recargar (F5).");
+                if (!comentario.trim()) throw new Error("Escribe un comentario.");
 
                 await addDoc(collection(db, "reviews"), {
-                    nombre: nombre,
-                    comentario: comentario,
-                    estrella: estrella,
-                    fecha: serverTimestamp()
+                    nombre, avatar, comentario, 
+                    estrella: parseInt(estrellas), 
+                    fecha: serverTimestamp(), 
+                    verified: true
                 });
-
-                // Limpiar formulario sin recargar
-                document.getElementById('nombre-input').value = '';
-                document.getElementById('comentario-input').value = '';
-                if (typeof window.resetStars === 'function') {
-                    window.resetStars();
-                }
-
-                showCustomModal('Review posted!');
+                
+                showCustomModal('Review enviada!');
                 loadReviews();
-
-            } catch (err) {
-                console.error('Error posting review:', err);
-                showCustomModal('Error posting review. Please try again.');
+                document.getElementById('comentario-input').value = '';
+            } catch(err) {
+                console.error(err);
+                showCustomModal(err.message);
             } finally {
-                btn.disabled = false;
-                btn.innerText = orig;
-            }
-
-            return false;
-        }
-
-        // Inicializar cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', () => {
-            loadReviews();
-
-            const form = document.getElementById('review-form');
-            if (form) {
-                // Remover cualquier listener previo y agregar el nuevo
-                form.addEventListener('submit', handleSubmitReview);
-
-                // También prevenir con el botón directamente
-                const submitBtn = form.querySelector('button[type="submit"]');
-                if (submitBtn) {
-                    submitBtn.addEventListener('click', (e) => {
-                        if (form.checkValidity()) {
-                            e.preventDefault();
-                            handleSubmitReview(e);
-                        }
-                    });
-                }
+                btn.disabled = false; btn.innerText = originalText;
             }
         });
-    </script>
+    }
+</script>
 </body>
 </html>

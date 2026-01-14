@@ -649,7 +649,7 @@
         if (code) {
             // Evitamos borrar el código inmediatamente para poder depurar si falla
             // window.history.replaceState({}, document.title, window.location.pathname);
-            showCustomModal("Conectando con Discord...");
+            showCustomModal("Connecting to Discord...");
             
             try {
                 const response = await fetch(`/api/login?code=${code}`);
@@ -662,7 +662,7 @@
                 updateUI(data);
                 
                 closeCustomModal();
-                showCustomModal(`¡Bienvenido, ${data.username}!`);
+                showCustomModal(`Welcome, ${data.username}!`);
                 
                 // Si todo salió bien, limpiamos la URL
                 window.history.replaceState({}, document.title, window.location.pathname);

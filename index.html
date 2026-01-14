@@ -753,8 +753,9 @@
                 const comentario = document.getElementById('comentario-input').value;
                 const estrellas = document.getElementById('estrellas-input').value || 5;
 
-                if (!nombre) throw new Error("Error: No se detecta el usuario. Intenta recargar (F5).");
-                if (!comentario.trim()) throw new Error("Escribe un comentario.");
+                if (!nombre) throw new Error("Error: User not detected. Please reload the page (F5).");
+                if (!comentario.trim()) throw new Error("Please write a comment.");
+
 
                 await addDoc(collection(db, "reviews"), {
                     nombre, avatar, comentario, 
@@ -763,7 +764,7 @@
                     verified: true
                 });
                 
-                showCustomModal('Review enviada!');
+                showCustomModal('Review submitted!');
                 loadReviews();
                 document.getElementById('comentario-input').value = '';
             } catch(err) {

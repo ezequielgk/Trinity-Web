@@ -5,13 +5,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyCrBk2coqPiBrD02Un7i2Bbxpwd6dEYlsw",
+  authDomain: "trinity-launcher.firebaseapp.com",
+  projectId: "trinity-launcher",
+  storageBucket: "trinity-launcher.firebasestorage.app",
+  messagingSenderId: "975804480637",
+  appId: "1:975804480637:web:f9b15cd76140a56476c514",
+  measurementId: "G-JYN9X1MPFC"
 };
 
 const app = initializeApp(firebaseConfig);

@@ -1,6 +1,56 @@
 // Archivo JavaScript principal - Funcionalidad global del proyecto
 
-// Archivo JavaScript principal - Funcionalidad global del proyecto
+// --- INICIO DE INTEGRACIÓN FIREBASE ---
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCrBk2coqPiBrD02Un7i2Bbxpwd6dEYlsw",
+  authDomain: "trinity-launcher.firebaseapp.com",
+  projectId: "trinity-launcher",
+  storageBucket: "trinity-launcher.firebasestorage.app",
+  messagingSenderId: "975804480637",
+  appId: "1:975804480637:web:f9b15cd76140a56476c514",
+  measurementId: "G-JYN9X1MPFC"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Exportamos db para que el script del formulario en el HTML funcione
+export { db };
+
+/**
+ * Función para cargar reseñas desde Firebase
+ */
+async function mostrarResenas() {
+  const contenedor = document.getElementById('reviews-display');
+  if (!contenedor) return;
+
+  try {
+    const querySnapshot = await getDocs(collection(db, "reviews"));
+    contenedor.innerHTML = ""; 
+
+    if (querySnapshot.empty) {
+      contenedor.innerHTML = "<p class='text-gray-500 col-span-full text-center'>No reviews yet. Be the first!</p>";
+      return;
+    }
+
+    querySnapshot.forEach((doc) => {
+      const resena = doc.data();
+      contenedor.innerHTML += `
+        <div class="glass-card p-6 rounded-2xl border border-white/10 mb-4 transition-all hover:bg-white/5">
+          <h4 class="text-primary-400 font-bold">${resena.nombre || 'Anónimo'}</h4>
+          <p class="text-gray-300 my-2">"${resena.comentario || ''}"</p>
+          <div class="text-yellow-500">${"★".repeat(resena.estrella || 5)}</div>
+        </div>
+      `;
+    });
+  } catch (error) {
+    console.error("Error cargando reseñas:", error);
+  }
+}
+// --- FIN DE INTEGRACIÓN FIREBASE ---
 
 /**
  * Vercel Analytics Integration
@@ -19,18 +69,14 @@
  * Detecta las preferencias del sistema y aplica el tema correspondiente
  */
 function initDarkMode() {
-  // Verificar si el navegador soporta media queries y si el usuario prefiere el tema oscuro
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.classList.add('dark');
   }
   
-  // Escuchar cambios en las preferencias del tema del sistema
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
     if (event.matches) {
-      // Activar modo oscuro
       document.documentElement.classList.add('dark');
     } else {
-      // Activar modo claro
       document.documentElement.classList.remove('dark');
     }
   });
@@ -38,77 +84,45 @@ function initDarkMode() {
 
 /**
  * Configuración personalizada de Tailwind CSS
- * Define la paleta de colores del proyecto inspirada en Trinity Launcher
  */
 const tailwindScript = document.createElement('script');
 tailwindScript.innerHTML = `
   tailwind.config = {
-    // Habilitar modo oscuro basado en clases CSS
     darkMode: 'class',
     theme: {
       extend: {
         colors: {
-          // Paleta de colores primaria (morados)
           primary: {
-            50: '#f5f3ff',   // Morado muy claro
-            100: '#ede9fe',  // Morado claro
-            200: '#ddd6fe',  // Morado suave
-            300: '#c4b5fd',  // Morado medio-claro
-            400: '#a78bfa',  // Morado claro del diseño
-            500: '#8b5cf6',  // Morado principal de Trinity
-            600: '#7c3aed',  // Morado medio
-            700: '#6d28d9',  // Morado oscuro
-            800: '#5b21b6',  // Morado muy oscuro
-            900: '#4c1d95',  // Morado más oscuro
+            50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd',
+            400: '#a78bfa', 500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9',
+            800: '#5b21b6', 900: '#4c1d95',
           },
-          // Paleta de colores de acento (naranjas)
           accent: {
-            400: '#fb923c',  // Naranja claro
-            500: '#f97316',  // Naranja principal
-            600: '#ea580c',  // Naranja oscuro
+            400: '#fb923c', 500: '#f97316', 600: '#ea580c',
           },
-          // Paleta de colores navales (grises/azules oscuros)
           navy: {
-            50: '#f8fafc',   // Gris muy claro
-            100: '#f1f5f9',  // Gris claro
-            200: '#e2e8f0',  // Gris suave
-            300: '#cbd5e1',  // Gris medio-claro
-            400: '#94a3b8',  // Gris medio
-            500: '#64748b',  // Gris principal
-            600: '#475569',  // Gris oscuro
-            700: '#334155',  // Gris muy oscuro
-            800: '#1e293b',  // Azul-gris oscuro
-            900: '#0f172a',  // Azul muy oscuro
-            950: '#020617',  // Azul casi negro
+            50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1',
+            400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155',
+            800: '#1e293b', 900: '#0f172a', 950: '#020617',
           }
         }
       }
     }
   }
 `;
-// Inyectar la configuración de Tailwind en el head del documento
 document.head.appendChild(tailwindScript);
 
 /**
  * Objeto con funciones utilitarias reutilizables
- * Proporciona métodos comunes para la aplicación
  */
 const utils = {
-  /**
-   * Detectar la página actual basada en la URL
-   * @returns {string} Nombre de la página actual
-   */
   getCurrentPage() {
     const path = window.location.pathname;
     if (path.includes('wiki')) return 'wiki';
     if (path.includes('contributors')) return 'contributors';
-    return 'home';  // Página por defecto
+    return 'home';
   },
 
-  /**
-   * Realizar scroll suave hacia un elemento específico
-   * @param {string} elementId - ID del elemento destino
-   */
   smoothScrollTo(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
@@ -116,10 +130,6 @@ const utils = {
     }
   },
 
-  /**
-   * Mostrar indicador de carga en un elemento
-   * @param {string} elementId - ID del elemento donde mostrar la carga
-   */
   showLoading(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
@@ -131,11 +141,6 @@ const utils = {
     }
   },
 
-  /**
-   * Formatear fecha en formato español
-   * @param {Date|string} date - Fecha a formatear
-   * @returns {string} Fecha formateada en español
-   */
   formatDate(date) {
     return new Date(date).toLocaleDateString('es-ES', {
       year: 'numeric',
@@ -147,29 +152,28 @@ const utils = {
 
 /**
  * Inicialización cuando el DOM esté completamente cargado
- * Configura todas las funcionalidades principales del proyecto
  */
 document.addEventListener('DOMContentLoaded', function() {
-  // Inicializar el modo oscuro automático
   initDarkMode();
   
-  // Mensaje de confirmación en la consola para desarrollo
+  // Ejecutar carga de reseñas de Firebase
+  mostrarResenas();
+  
   console.log('Trinity Launcher cargado exitosamente! 🚀');
 });
 
 /**
  * Manejador global de errores
- * Captura errores no manejados para debugging
  */
 window.addEventListener('error', function(e) {
   console.error('Error ocurrido en Trinity Launcher:', e.error);
 });
 
 /**
- * Exportar funciones principales para uso en otros scripts
- * Hace disponibles las utilidades globalmente bajo el namespace TrinityLauncher
+ * Exportar funciones principales
  */
 window.TrinityLauncher = {
   utils,
-  initDarkMode
+  initDarkMode,
+  mostrarResenas
 };

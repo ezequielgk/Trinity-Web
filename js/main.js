@@ -20,9 +20,6 @@ const db = getFirestore(app);
 // Exportamos db para que el script del formulario en el HTML funcione
 export { db };
 
-// ❌ HE BORRADO LA FUNCIÓN mostrarResenas() DE AQUÍ
-// Porque ahora esa función está mejorada en tu index.html
-// --- FIN DE INTEGRACIÓN FIREBASE ---
 
 /**
  * Vercel Analytics Integration

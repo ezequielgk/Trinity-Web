@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
     return;
   }
 
-  // --- DIAGNÓSTICO EN EL NAVEGADOR ---
+  // DIAGNÓSTICO EN EL NAVEGADOR
   // Si falta el ID, devolvemos un error 500 explicativo al navegador
   if (!process.env.DISCORD_CLIENT_ID) {
       return res.status(500).json({
@@ -26,7 +26,6 @@ module.exports = async (req, res) => {
           }
       });
   }
-  // ------------------------------------
 
   const { code } = req.query;
   if (!code) return res.status(400).json({ error: 'No code provided' });
@@ -67,7 +66,8 @@ module.exports = async (req, res) => {
   }
 };
 
-// Funciones auxiliares (no cambian)
+// Funciones auxiliares
+
 function postDiscord(url, body) {
   return new Promise((resolve, reject) => {
     const postData = querystring.stringify(body);

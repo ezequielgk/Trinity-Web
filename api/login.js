@@ -1,6 +1,3 @@
-// 1. CARGA FORZADA DE VARIABLES
-require('dotenv').config();
-
 const https = require('https');
 const querystring = require('querystring');
 

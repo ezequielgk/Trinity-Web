@@ -3,239 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO Meta Tags -->
     <title>Trinity Launcher - Minecraft Bedrock Open Source Launcher | Home</title>
     <meta name="description" content="An open source launcher for Minecraft Bedrock with the ability to manage multiple instances, worlds, textures and mods. Focused on user freedom and free redistribution.">
-    <meta name="keywords" content="trinity launcher, minecraft bedrock, launcher, open source, mods, textures, instances, linux, free, mod manager, minecraft launcher">
+    <meta name="keywords" content="trinity launcher, minecraft bedrock, launcher, open source, mods, textures, instances, linux, free">
     <meta name="author" content="Trinity Launcher Team">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="en">
     <meta name="theme-color" content="#8b5cf6">
-    <meta name="generator" content="Trinity Launcher">
-    <meta name="rating" content="general">
-    <meta name="application-name" content="Trinity Launcher">
-    <meta name="msapplication-TileColor" content="#8b5cf6">
-
-    <!-- Open Graph Tags -->
     <meta property="og:title" content="Trinity Launcher - Minecraft Bedrock Open Source Launcher">
-    <meta property="og:description" content="An open source launcher for Minecraft Bedrock with management of multiple instances, worlds, textures and mods. Focused on user freedom and free redistribution.">
+    <meta property="og:description" content="An open source launcher for Minecraft Bedrock with management of multiple instances, worlds, textures and mods.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://trinitylauncher.vercel.app/">
     <meta property="og:image" content="https://trinitylauncher.vercel.app/assets/images/trinity-launcher-preview.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Trinity Launcher - Main launcher interface">
-    <meta property="og:site_name" content="Trinity Launcher">
-    <meta property="og:locale" content="en_US">
-
-    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Trinity Launcher - Minecraft Bedrock Open Source Launcher">
-    <meta name="twitter:description" content="Open source launcher for Minecraft Bedrock with management of multiple instances, worlds, textures and mods.">
     <meta name="twitter:image" content="https://trinitylauncher.vercel.app/assets/images/trinity-launcher-preview.jpg">
-    <meta name="twitter:image:alt" content="Trinity Launcher main interface">
-    <meta name="twitter:site" content="@TrinityLauncher">
-    <meta name="twitter:creator" content="@TrinityLauncher">
-
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
-
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://trinitylauncher.vercel.app/">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        /* Custom animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
+    /* =========================================
+       1. ANIMACIONES
+       ========================================= */
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
 
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 0.8; }
-        }
+    .float-animation {
+        animation: float 6s ease-in-out infinite;
+    }
 
-        @keyframes shimmer {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
-        }
+    /* =========================================
+       2. UTILIDADES Y EFECTOS VISUALES
+       ========================================= */
+    .text-gradient {
+        background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #7c3aed 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
-        }
+    .glow-effect {
+        box-shadow: 0 0 40px rgba(139, 92, 246, .15), 0 0 80px rgba(139, 92, 246, .05);
+    }
 
-        .glow-effect {
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.15), 0 0 80px rgba(139, 92, 246, 0.05);
-        }
+    .img-bright {
+        filter: brightness(1.1) contrast(1.1);
+    }
 
-        .card-glow:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(139, 92, 246, 0.1);
-        }
+    .section-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(139, 92, 246, .3), transparent);
+    }
 
-        .text-gradient {
-            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #7c3aed 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    /* =========================================
+       3. BOTONES E INTERACCIÓN
+       ========================================= */
+    .btn-shine {
+        position: relative;
+        overflow: hidden;
+    }
 
-        .btn-shine {
-            position: relative;
-            overflow: hidden;
-        }
+    .btn-shine::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+        transition: left .5s;
+    }
 
-        .btn-shine::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
+    .btn-shine:hover::before {
+        left: 100%;
+    }
 
-        .btn-shine:hover::before {
-            left: 100%;
-        }
+    /* Sistema de Estrellas (Rating) */
+    .star-btn {
+        color: rgba(255, 255, 255, .2);
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        line-height: 1;
+    }
 
-        .image-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1rem;
-        }
+    .star-btn .star-filled {
+        color: #fbbf24;
+        text-shadow: 0 0 10px rgba(251, 191, 36, .5);
+    }
 
-        .image-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.6) 100%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+    /* Lógica de visualización de estrellas */
+    .star-btn.active .star-empty,
+    .star-btn:not(.active) .star-filled {
+        display: none;
+    }
 
-        .image-card:hover::before {
-            opacity: 1;
-        }
+    .star-btn.active .star-filled,
+    .star-btn:not(.active) .star-empty {
+        display: inline;
+    }
 
-        .image-card img {
-            transition: transform 0.5s ease, filter 0.3s ease;
-        }
+    .star-btn.hover-preview .star-empty {
+        display: none;
+    }
 
-        .image-card:hover img {
-            transform: scale(1.05);
-        }
+    .star-btn.hover-preview .star-filled {
+        display: inline;
+        opacity: .7;
+    }
 
-        .feature-icon {
-            position: relative;
-        }
+    /* =========================================
+       4. TARJETAS (CARDS)
+       ========================================= */
+    /* Tarjeta General / Glow */
+    .card-glow:hover {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .3), 0 0 30px rgba(139, 92, 246, .1);
+    }
 
-        .feature-icon::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 0.75rem;
-            background: inherit;
-            opacity: 0.3;
-            filter: blur(8px);
-            z-index: -1;
-        }
+    /* Glass Card */
+    .glass-card {
+        background: rgba(255, 255, 255, .02);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, .05);
+    }
 
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
-        }
+    /* Image Card */
+    .image-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+    }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+    .image-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, .6) 100%);
+        z-index: 1;
+        opacity: 0;
+        transition: opacity .3s;
+    }
 
-        .tag-pill {
-            position: relative;
-            overflow: hidden;
-        }
+    .image-card:hover::before {
+        opacity: 1;
+    }
 
-        .tag-pill::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-        }
+    .image-card img {
+        transition: transform .5s, filter .3s;
+    }
 
-        /* Review card styles */
-        .review-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
+    .image-card:hover img {
+        transform: scale(1.05);
+    }
 
-        .review-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(139, 92, 246, 0.1);
-            border-color: rgba(139, 92, 246, 0.2);
-        }
+    /* Review Card */
+    .review-card {
+        background: rgba(255, 255, 255, .02);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, .05);
+        transition: all .3s;
+    }
 
-        /* Star rating styles */
-        .star-btn {
-            color: rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0;
-            line-height: 1;
-        }
+    .review-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .3), 0 0 30px rgba(139, 92, 246, .1);
+        border-color: rgba(139, 92, 246, .2);
+    }
 
-        .star-btn .star-filled {
-            color: #fbbf24;
-            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
-        }
+    /* =========================================
+       5. COMPONENTES (FEATURES / TAGS)
+       ========================================= */
+    .tag-pill {
+        position: relative;
+        overflow: hidden;
+    }
 
-        .star-btn.active .star-empty {
-            display: none;
-        }
+    .tag-pill::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, .1) 0%, transparent 100%);
+    }
 
-        .star-btn.active .star-filled {
-            display: inline;
-        }
+    .feature-icon {
+        position: relative;
+    }
 
-        .star-btn:not(.active) .star-filled {
-            display: none;
-        }
+    .feature-icon::after {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border-radius: .75rem;
+        background: inherit;
+        opacity: .3;
+        filter: blur(8px);
+        z-index: -1;
+    }
 
-        .star-btn:not(.active) .star-empty {
-            display: inline;
-        }
+    .feat-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: .625rem 1.25rem;
+        border-radius: 9999px;
+    }
 
-        .star-btn.hover-preview .star-empty {
-            display: none;
-        }
+    .feat-badge svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-right: .5rem;
+    }
 
-        .star-btn.hover-preview .star-filled {
-            display: inline;
-            opacity: 0.7;
+    .feat-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+    }
+
+    .feat-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.25;
+    }
+
+    .feat-desc {
+        font-size: 1.125rem;
+        color: rgb(156, 163, 175);
+        line-height: 1.75;
+    }
+
+    .feat-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .75rem;
+        padding-top: .5rem;
+    }
+
+    /* =========================================
+       6. MEDIA QUERIES
+       ========================================= */
+    @media (min-width: 768px) {
+        .feat-title {
+            font-size: 2.25rem;
         }
-    </style>
+    }
+
+</style>
+
 </head>
 <body class="bg-navy-950 text-white min-h-screen">
-    <!-- Navigation -->
     <div id="navigation-container"></div>
-
-    <!-- Main Content -->
     <main class="flex-1">
         <div class="relative overflow-hidden">
-            <!-- Subtle background decoration -->
             <div class="absolute inset-0 overflow-hidden pointer-events-none">
                 <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl"></div>
                 <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl"></div>
@@ -244,300 +267,145 @@
             <!-- Hero Section -->
             <div class="min-h-[calc(100vh-80px)] flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-8 text-center relative">
                 <div class="max-w-4xl mx-auto">
-                    <!-- Logo with glow effect -->
                     <div class="mb-6 lg:mb-8 float-animation">
                         <div class="relative inline-block">
-                            <img src="assets/icons/start.svg" alt="My Project Logo" class="w-20 h-20 lg:w-24 lg:h-24 mx-auto relative z-10">
+                            <img src="assets/icons/start.svg" alt="Trinity Launcher Logo" class="w-20 h-20 lg:w-24 lg:h-24 mx-auto relative z-10">
                             <div class="absolute inset-0 bg-primary-500/20 rounded-full blur-2xl scale-150"></div>
                         </div>
                     </div>
-
                     <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 lg:mb-6 leading-tight">
-                        Welcome to
-                        <span class="block mt-1 lg:mt-2 text-gradient">
-                            Trinity Launcher
-                        </span>
+                        Welcome to <span class="block mt-1 lg:mt-2 text-gradient">Trinity Launcher</span>
                     </h1>
                     <p class="text-lg md:text-xl lg:text-2xl text-gray-300/90 mb-8 lg:mb-10 leading-relaxed max-w-3xl mx-auto">
                         An open source launcher for Minecraft Bedrock with the ability to manage multiple instances, worlds, textures and mods. Focused on user freedom and free redistribution.
                     </p>
-
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="pages/wiki.html" class="btn-shine bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white px-8 lg:px-10 py-3 lg:py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-0.5 inline-block">
-                            Get Started
-                        </a>
-                        <a href="pages/contributors.html" class="border-2 border-gray-600/50 hover:border-primary-500/50 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white px-8 lg:px-10 py-3 lg:py-4 rounded-xl font-semibold transition-all duration-300 inline-block hover:-translate-y-0.5">
-                            Meet the Team
-                        </a>
+                        <a href="pages/wiki.html" class="btn-shine bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white px-8 lg:px-10 py-3 lg:py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-0.5 inline-block">Get Started</a>
+                        <a href="pages/contributors.html" class="border-2 border-gray-600/50 hover:border-primary-500/50 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white px-8 lg:px-10 py-3 lg:py-4 rounded-xl font-semibold transition-all duration-300 inline-block hover:-translate-y-0.5">Meet the Team</a>
                     </div>
-
-                    <!-- Scroll indicator -->
                     <div class="hidden lg:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                        </svg>
+                        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
                     </div>
                 </div>
             </div>
 
-            <!-- Section Divider -->
             <div class="section-divider max-w-4xl mx-auto"></div>
 
-            <!-- Enhanced Features Showcase -->
+            <!-- Features Showcase -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-                <!-- Section Header -->
                 <div class="text-center mb-20">
-                    <span class="inline-block px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6">
-                        Features
-                    </span>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gradient">
-                        Powerful Management Tools
-                    </h2>
-                    <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                        Discover the main features that make Trinity Launcher the best choice for managing Minecraft Bedrock
-                    </p>
+                    <span class="inline-block px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6">Features</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gradient">Powerful Management Tools</h2>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">Discover the main features that make Trinity Launcher the best choice for managing Minecraft Bedrock</p>
                 </div>
 
-                <!-- Modpack Management -->
-                <div class="mb-28">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <!-- Images Section -->
-                        <div class="relative">
-                            <div class="grid grid-cols-2 gap-5">
-                                <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/1.webp', 'Instance Management - Trinity Launcher')">
-                                    <img
-                                        src="assets/images/1.webp"
-                                        alt="Instance Management"
-                                        class="w-full h-52 object-cover"
-                                        style="filter: brightness(1.1) contrast(1.1);"
-                                    >
-                                </div>
-                                <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/2.webp', 'Mod Management - Trinity Launcher')">
-                                    <img
-                                        src="assets/images/2.webp"
-                                        alt="Mod Management"
-                                        class="w-full h-52 object-cover"
-                                        style="filter: brightness(1.1) contrast(1.1);"
-                                    >
-                                </div>
-                            </div>
+                <!-- Feature 1: Instance Export -->
+                <div class="mb-28 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="grid grid-cols-2 gap-5">
+                        <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/1.webp','Instance Management')"><img src="assets/images/1.webp" alt="Instance Management" class="w-full h-52 object-cover img-bright"></div>
+                        <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/2.webp','Mod Management')"><img src="assets/images/2.webp" alt="Mod Management" class="w-full h-52 object-cover img-bright"></div>
+                    </div>
+                    <div class="feat-content">
+                        <div class="feat-badge bg-primary-500/10 border border-primary-500/20">
+                            <svg class="text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            <span class="text-primary-300 text-sm font-medium">Instance Export</span>
                         </div>
-
-                        <!-- Content Section -->
-                        <div class="space-y-7">
-                            <div class="inline-flex items-center px-5 py-2.5 bg-primary-500/10 border border-primary-500/20 rounded-full">
-                                <svg class="w-5 h-5 text-primary-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                </svg>
-                                <span class="text-primary-300 text-sm font-medium">Instance Export</span>
-                            </div>
-
-                            <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">
-                                Export Your Complete Instances with Ease
-                            </h3>
-
-                            <p class="text-lg text-gray-400 leading-relaxed">
-                                Export and import your complete Minecraft instances with all mods, resources, worlds and settings included. Share your perfect setup with friends or make backups of your customized instances without losing any detail.
-                            </p>
-
-                            <div class="flex flex-wrap gap-3 pt-2">
-                                <span class="tag-pill px-4 py-2.5 bg-primary-500/10 border border-primary-500/20 rounded-xl text-sm text-primary-300 font-medium">
-                                    📤 Complete export
-                                </span>
-                                <span class="tag-pill px-4 py-2.5 bg-primary-500/10 border border-primary-500/20 rounded-xl text-sm text-primary-300 font-medium">
-                                    🔄 Easy import
-                                </span>
-                                <span class="tag-pill px-4 py-2.5 bg-primary-500/10 border border-primary-500/20 rounded-xl text-sm text-primary-300 font-medium">
-                                    🛡️ Secure backups
-                                </span>
-                            </div>
+                        <h3 class="feat-title">Export Your Complete Instances with Ease</h3>
+                        <p class="feat-desc">Export and import your complete Minecraft instances with all mods, resources, worlds and settings included. Share your perfect setup with friends or make backups of your customized instances without losing any detail.</p>
+                        <div class="feat-tags">
+                            <span class="tag-pill px-4 py-2.5 bg-primary-500/10 border border-primary-500/20 rounded-xl text-sm text-primary-300 font-medium">📤 Complete export</span>
+                            <span class="tag-pill px-4 py-2.5 bg-primary-500/10 border border-primary-500/20 rounded-xl text-sm text-primary-300 font-medium">🔄 Easy import</span>
+                            <span class="tag-pill px-4 py-2.5 bg-primary-500/10 border border-primary-500/20 rounded-xl text-sm text-primary-300 font-medium">🛡️ Secure backups</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mod Download and Update -->
-                <div class="mb-28">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <!-- Content Section (left side) -->
-                        <div class="space-y-7 lg:order-1">
-                            <div class="inline-flex items-center px-5 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-full">
-                                <svg class="w-5 h-5 text-accent-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                                </svg>
-                                <span class="text-accent-300 text-sm font-medium">Mod Management</span>
-                            </div>
-
-                            <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">
-                                Install and Manage Your Mods Easily
-                            </h3>
-
-                            <p class="text-lg text-gray-400 leading-relaxed">
-                                Manage all your mods and add-ons from an intuitive and centralized interface. Trinity Launcher allows you to install, activate, deactivate and organize your modifications easily, without technical complications or complex configurations.
-                            </p>
-
-                            <div class="flex flex-wrap gap-3 pt-2">
-                                <span class="tag-pill px-4 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-xl text-sm text-accent-300 font-medium">
-                                    📦 Centralized management
-                                </span>
-                                <span class="tag-pill px-4 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-xl text-sm text-accent-300 font-medium">
-                                    🔧 Simple configuration
-                                </span>
-                                <span class="tag-pill px-4 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-xl text-sm text-accent-300 font-medium">
-                                    🎮 Compatible add-ons
-                                </span>
-                            </div>
+                <!-- Feature 2: Mod Management -->
+                <div class="mb-28 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="feat-content lg:order-1">
+                        <div class="feat-badge bg-accent-500/10 border border-accent-500/20">
+                            <svg class="text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                            <span class="text-accent-300 text-sm font-medium">Mod Management</span>
                         </div>
+                        <h3 class="feat-title">Install and Manage Your Mods Easily</h3>
+                        <p class="feat-desc">Manage all your mods and add-ons from an intuitive and centralized interface. Trinity Launcher allows you to install, activate, deactivate and organize your modifications easily, without technical complications or complex configurations.</p>
+                        <div class="feat-tags">
+                            <span class="tag-pill px-4 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-xl text-sm text-accent-300 font-medium">📦 Centralized management</span>
+                            <span class="tag-pill px-4 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-xl text-sm text-accent-300 font-medium">🔧 Simple configuration</span>
+                            <span class="tag-pill px-4 py-2.5 bg-accent-500/10 border border-accent-500/20 rounded-xl text-sm text-accent-300 font-medium">🎮 Compatible add-ons</span>
+                        </div>
+                    </div>
+                    <div class="lg:order-2">
+                        <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/3.webp','Resource Management')"><img src="assets/images/3.webp" alt="Resource Management" class="w-full h-80 object-cover img-bright"></div>
+                    </div>
+                </div>
 
-                        <!-- Images Section (right side) -->
-                        <div class="lg:order-2">
-                            <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/3.webp', 'Resource Management - Trinity Launcher')">
-                                <img
-                                    src="assets/images/3.webp"
-                                    alt="Resource Management"
-                                    class="w-full h-80 object-cover"
-                                    style="filter: brightness(1.1) contrast(1.1);"
-                                >
-                            </div>
+                <!-- Feature 3: Instance Management -->
+                <div class="mb-28 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/5.webp','World Management')"><img src="assets/images/5.webp" alt="World Management" class="w-full h-80 object-cover img-bright"></div>
+                    <div class="feat-content">
+                        <div class="feat-badge bg-emerald-500/10 border border-emerald-500/20">
+                            <svg class="text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <span class="text-emerald-300 text-sm font-medium">Minecraft Instance Management</span>
+                        </div>
+                        <h3 class="feat-title">Multiple Organized Instances</h3>
+                        <p class="feat-desc">Have your settings been reset after launching an older version? Have you accidentally broken a world because you opened it in an old version? Are you tired of manually switching mods and installing mod loaders for different versions?</p>
+                        <p class="feat-desc">Trinity Launcher can help you. Each Minecraft instance has its own folder, with mods, resource packs and settings completely separated for each instance.</p>
+                        <div class="feat-tags">
+                            <span class="tag-pill px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-sm text-emerald-300 font-medium">📁 Separate folders</span>
+                            <span class="tag-pill px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-sm text-emerald-300 font-medium">⚙️ Isolated settings</span>
+                            <span class="tag-pill px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-sm text-emerald-300 font-medium">🛡️ Protected worlds</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Minecraft Instance Management -->
-                <div class="mb-28">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <!-- Images Section -->
-                        <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/5.webp', 'World Management - Trinity Launcher')">
-                            <img
-                                src="assets/images/5.webp"
-                                alt="World Management"
-                                class="w-full h-80 object-cover"
-                                style="filter: brightness(1.1) contrast(1.1);"
-                            >
+                <!-- Feature 4: Updates & Support -->
+                <div class="mb-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="feat-content lg:order-1">
+                        <div class="feat-badge bg-orange-500/10 border border-orange-500/20">
+                            <svg class="text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            <span class="text-orange-300 text-sm font-medium">Collaborative Project</span>
                         </div>
-
-                        <!-- Content Section -->
-                        <div class="space-y-7">
-                            <div class="inline-flex items-center px-5 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
-                                <svg class="w-5 h-5 text-emerald-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                <span class="text-emerald-300 text-sm font-medium">Minecraft Instance Management</span>
-                            </div>
-
-                            <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">
-                                Multiple Organized Instances
-                            </h3>
-
-                            <p class="text-lg text-gray-400 leading-relaxed">
-                                Have your settings been reset after launching an older version? Have you accidentally broken a world because you opened it in an old version? Are you tired of manually switching mods and installing mod loaders for different versions?
-                            </p>
-
-                            <p class="text-lg text-gray-400 leading-relaxed">
-                                Trinity Launcher can help you. Each Minecraft instance has its own folder, with mods, resource packs and settings completely separated for each instance.
-                            </p>
-
-                            <div class="flex flex-wrap gap-3 pt-2">
-                                <span class="tag-pill px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-sm text-emerald-300 font-medium">
-                                    📁 Separate folders
-                                </span>
-                                <span class="tag-pill px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-sm text-emerald-300 font-medium">
-                                    ⚙️ Isolated settings
-                                </span>
-                                <span class="tag-pill px-4 py-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-sm text-emerald-300 font-medium">
-                                    🛡️ Protected worlds
-                                </span>
-                            </div>
+                        <h3 class="feat-title">Continuous Updates and Support</h3>
+                        <p class="feat-desc">Trinity Launcher receives constant updates and technical support thanks to the dedication of all the developers involved in the project. Our community of contributors works continuously to improve the user experience and add new features.</p>
+                        <div class="feat-tags">
+                            <span class="tag-pill px-4 py-2.5 bg-orange-500/10 border border-orange-500/20 rounded-xl text-sm text-orange-300 font-medium">🔄 Regular updates</span>
+                            <span class="tag-pill px-4 py-2.5 bg-orange-500/10 border border-orange-500/20 rounded-xl text-sm text-orange-300 font-medium">👥 Active community</span>
+                            <span class="tag-pill px-4 py-2.5 bg-orange-500/10 border border-orange-500/20 rounded-xl text-sm text-orange-300 font-medium">🛠️ Technical support</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- Lightweight and Customizable -->
-                <div class="mb-20">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <!-- Content Section (left side) -->
-                        <div class="space-y-7 lg:order-1">
-                            <div class="inline-flex items-center px-5 py-2.5 bg-orange-500/10 border border-orange-500/20 rounded-full">
-                                <svg class="w-5 h-5 text-orange-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                                </svg>
-                                <span class="text-orange-300 text-sm font-medium">Collaborative Project</span>
-                            </div>
-
-                            <h3 class="text-3xl md:text-4xl font-bold text-white leading-tight">
-                                Continuous Updates and Support
-                            </h3>
-
-                            <p class="text-lg text-gray-400 leading-relaxed">
-                                Trinity Launcher receives constant updates and technical support thanks to the dedication of all the developers involved in the project. Our community of contributors works continuously to improve the user experience and add new features.
-                            </p>
-
-                            <div class="flex flex-wrap gap-3 pt-2">
-                                <span class="tag-pill px-4 py-2.5 bg-orange-500/10 border border-orange-500/20 rounded-xl text-sm text-orange-300 font-medium">
-                                    🔄 Regular updates
-                                </span>
-                                <span class="tag-pill px-4 py-2.5 bg-orange-500/10 border border-orange-500/20 rounded-xl text-sm text-orange-300 font-medium">
-                                    👥 Active community
-                                </span>
-                                <span class="tag-pill px-4 py-2.5 bg-orange-500/10 border border-orange-500/20 rounded-xl text-sm text-orange-300 font-medium">
-                                    🛠️ Technical support
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Images Section (right side) -->
-                        <div class="lg:order-2">
-                            <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/4.webp', 'Advanced Configuration - Trinity Launcher')">
-                                <img
-                                    src="assets/images/4.webp"
-                                    alt="Advanced Configuration"
-                                    class="w-full h-80 object-cover"
-                                    style="filter: brightness(1.1) contrast(1.1);"
-                                >
-                            </div>
-                        </div>
+                    <div class="lg:order-2">
+                        <div class="image-card cursor-pointer glow-effect" onclick="openLightbox('assets/images/4.webp','Advanced Configuration')"><img src="assets/images/4.webp" alt="Advanced Configuration" class="w-full h-80 object-cover img-bright"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Section Divider -->
             <div class="section-divider max-w-4xl mx-auto"></div>
 
-            <!-- Features Section -->
+            <!-- Main Features -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
                 <div class="text-center mb-16">
-                    <span class="inline-block px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6">
-                        Why Choose Us
-                    </span>
+                    <span class="inline-block px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6">Why Choose Us</span>
                     <h2 class="text-4xl md:text-5xl font-bold text-gradient">Main Features</h2>
                 </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="glass-card card-glow rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 group">
                         <div class="feature-icon w-14 h-14 bg-gradient-to-br from-primary-500/30 to-primary-600/30 rounded-xl flex items-center justify-center mb-7">
-                            <svg class="w-7 h-7 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
+                            <svg class="w-7 h-7 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-4 group-hover:text-primary-300 transition-colors">Fast Performance</h3>
                         <p class="text-gray-400 leading-relaxed">Optimized for speed and efficiency in all Minecraft Bedrock management operations on Linux.</p>
                     </div>
-
                     <div class="glass-card card-glow rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 group">
                         <div class="feature-icon w-14 h-14 bg-gradient-to-br from-accent-500/30 to-accent-600/30 rounded-xl flex items-center justify-center mb-7">
-                            <svg class="w-7 h-7 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                            </svg>
+                            <svg class="w-7 h-7 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-4 group-hover:text-accent-300 transition-colors">Easy to Use</h3>
                         <p class="text-gray-400 leading-relaxed">Intuitive interface designed with user experience in mind, without technical complications.</p>
                     </div>
-
                     <div class="glass-card card-glow rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 group">
                         <div class="feature-icon w-14 h-14 bg-gradient-to-br from-primary-500/30 to-primary-600/30 rounded-xl flex items-center justify-center mb-7">
-                            <svg class="w-7 h-7 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                            </svg>
+                            <svg class="w-7 h-7 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-4 group-hover:text-primary-300 transition-colors">Customizable</h3>
                         <p class="text-gray-400 leading-relaxed">Configure everything to your liking with flexible customization and content management options.</p>
@@ -545,67 +413,37 @@
                 </div>
             </div>
 
-            <!-- Section Divider -->
             <div class="section-divider max-w-4xl mx-auto"></div>
 
             <!-- User Reviews Section -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
                 <div class="text-center mb-16">
-                    <span class="inline-block px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6">
-                        Community
-                    </span>
+                    <span class="inline-block px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-medium mb-6">Community</span>
                     <h2 class="text-4xl md:text-5xl font-bold text-gradient">User Reviews</h2>
                 </div>
-
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <!-- Review Form -->
                     <div class="lg:col-span-1">
                         <div class="glass-card rounded-2xl p-8 sticky top-24">
                             <h3 class="text-2xl font-bold mb-6 text-white">Leave a Review</h3>
-                            <form id="review-form" class="space-y-4">
+                            <form id="review-form" class="space-y-4" onsubmit="return false">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-400 mb-2">Name</label>
-                                    <input type="text" id="nombre-input" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary-500/50 transition-colors" placeholder="Your nickname" style="font-size: 16px;">
+                                    <input type="text" id="nombre-input" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary-500/50 transition-colors" placeholder="Your nickname" style="font-size:16px">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-400 mb-2">Rating</label>
                                     <input type="hidden" id="estrellas-input" value="5">
-                                    <div id="star-rating" class="flex gap-2 py-2">
-                                        <button type="button" class="star-btn text-3xl transition-all duration-200 hover:scale-110" data-value="1">
-                                            <span class="star-empty">☆</span>
-                                            <span class="star-filled hidden">★</span>
-                                        </button>
-                                        <button type="button" class="star-btn text-3xl transition-all duration-200 hover:scale-110" data-value="2">
-                                            <span class="star-empty">☆</span>
-                                            <span class="star-filled hidden">★</span>
-                                        </button>
-                                        <button type="button" class="star-btn text-3xl transition-all duration-200 hover:scale-110" data-value="3">
-                                            <span class="star-empty">☆</span>
-                                            <span class="star-filled hidden">★</span>
-                                        </button>
-                                        <button type="button" class="star-btn text-3xl transition-all duration-200 hover:scale-110" data-value="4">
-                                            <span class="star-empty">☆</span>
-                                            <span class="star-filled hidden">★</span>
-                                        </button>
-                                        <button type="button" class="star-btn text-3xl transition-all duration-200 hover:scale-110" data-value="5">
-                                            <span class="star-empty">☆</span>
-                                            <span class="star-filled hidden">★</span>
-                                        </button>
-                                    </div>
+                                    <div id="star-rating" class="flex gap-2 py-2"></div>
                                     <p id="rating-text" class="text-sm text-primary-300 mt-1">5 stars - Excellent!</p>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-400 mb-2">Your Experience</label>
-                                    <textarea id="comentario-input" required rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary-500/50 transition-colors resize-none" placeholder="What do you think?" style="font-size: 16px;"></textarea>
+                                    <textarea id="comentario-input" required rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary-500/50 transition-colors resize-none" placeholder="What do you think?" style="font-size:16px"></textarea>
                                 </div>
-                                <button type="submit" class="w-full btn-shine bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary-500/20 transition-all active:scale-95">
-                                    Post Review
-                                </button>
+                                <button type="submit" class="w-full btn-shine bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary-500/20 transition-all active:scale-95">Post Review</button>
                             </form>
                         </div>
                     </div>
-
-                    <!-- Reviews Display -->
                     <div class="lg:col-span-2">
                         <div id="reviews-display" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="col-span-full py-12 text-center text-gray-500">
@@ -619,33 +457,16 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- Image Lightbox Modal -->
+    <!-- Lightbox Modal -->
     <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md opacity-0 invisible transition-all duration-300">
-        <!-- Close button -->
-        <button
-            onclick="closeLightbox()"
-            class="absolute top-6 right-6 z-60 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-200 flex items-center justify-center group"
-            aria-label="Close image"
-        >
-            <svg class="w-6 h-6 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 z-60 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-200 flex items-center justify-center" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
-
-        <!-- Image container -->
         <div class="flex items-center justify-center min-h-screen p-4" onclick="closeLightbox()">
             <div class="relative max-w-7xl mx-auto" onclick="event.stopPropagation()">
-                <img
-                    id="lightboxImage"
-                    src=""
-                    alt=""
-                    class="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl ring-1 ring-white/10"
-                >
-
-                <!-- Image info overlay -->
+                <img id="lightboxImage" src="" alt="" class="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl ring-1 ring-white/10">
                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent rounded-b-2xl p-8">
                     <h3 id="lightboxTitle" class="text-xl font-bold text-white mb-2"></h3>
                     <p class="text-gray-400 text-sm">Click outside the image or press ESC to close</p>
@@ -654,307 +475,182 @@
         </div>
     </div>
 
-    <!-- Custom Modal for Alerts -->
+    <!-- Custom Modal -->
     <div id="customModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
         <div class="glass-card rounded-2xl p-6 max-w-sm w-full mx-4 transform scale-95 transition-transform duration-300" id="modalContent">
             <p id="modalMessage" class="text-gray-300 mb-6 text-center"></p>
-            <button onclick="closeCustomModal()" class="w-full btn-shine bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold py-3 rounded-xl shadow-lg shadow-primary-500/20 transition-all active:scale-95">
-                OK
-            </button>
+            <button onclick="closeCustomModal()" class="w-full btn-shine bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold py-3 rounded-xl">OK</button>
         </div>
     </div>
 
+    <script type="module" src="js/main.js"></script>
     <script src="js/navigation.js"></script>
-
-    <!-- Lightbox functionality -->
     <script>
-        // Function to open lightbox
-        function openLightbox(imageSrc, imageTitle) {
-            const modal = document.getElementById('lightboxModal');
-            const image = document.getElementById('lightboxImage');
-            const title = document.getElementById('lightboxTitle');
-
-            image.src = imageSrc;
-            image.alt = imageTitle;
-            title.textContent = imageTitle;
-
-            // Show modal with animation
-            modal.classList.remove('invisible');
-            modal.classList.remove('opacity-0');
-            modal.classList.add('opacity-100');
-
-            // Prevent body scroll
+        // Lightbox
+        function openLightbox(src, title) {
+            const m = document.getElementById('lightboxModal'), img = document.getElementById('lightboxImage');
+            img.src = src; img.alt = title; document.getElementById('lightboxTitle').textContent = title;
+            m.classList.remove('invisible', 'opacity-0'); m.classList.add('opacity-100');
             document.body.style.overflow = 'hidden';
         }
-
-        // Function to close lightbox
         function closeLightbox() {
-            const modal = document.getElementById('lightboxModal');
-
-            modal.classList.add('opacity-0');
-            modal.classList.remove('opacity-100');
-
-            setTimeout(() => {
-                modal.classList.add('invisible');
-                document.body.style.overflow = '';
-            }, 300);
+            const m = document.getElementById('lightboxModal');
+            m.classList.add('opacity-0'); m.classList.remove('opacity-100');
+            setTimeout(() => { m.classList.add('invisible'); document.body.style.overflow = ''; }, 300);
         }
-
-        // Close with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeLightbox();
-                closeCustomModal();
-            }
-        });
-
-        // Preload images for better performance
-        function preloadImages() {
-            const imagesToPreload = [
-                'assets/images/1.webp',
-                'assets/images/2.webp',
-                'assets/images/3.webp',
-                'assets/images/4.webp',
-                'assets/images/5.webp'
-            ];
-
-            imagesToPreload.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        }
-
-        // Custom modal functions (replacement for alert)
-        function showCustomModal(message) {
-            const modal = document.getElementById('customModal');
-            const content = document.getElementById('modalContent');
-            const messageEl = document.getElementById('modalMessage');
-
-            messageEl.textContent = message;
-            modal.classList.remove('invisible', 'opacity-0');
-            modal.classList.add('opacity-100');
-            content.classList.remove('scale-95');
-            content.classList.add('scale-100');
+        // Custom Modal
+        function showCustomModal(msg) {
+            const m = document.getElementById('customModal'), c = document.getElementById('modalContent');
+            document.getElementById('modalMessage').textContent = msg;
+            m.classList.remove('invisible', 'opacity-0'); m.classList.add('opacity-100');
+            c.classList.remove('scale-95'); c.classList.add('scale-100');
             document.body.style.overflow = 'hidden';
         }
-
         function closeCustomModal() {
-            const modal = document.getElementById('customModal');
-            const content = document.getElementById('modalContent');
-
-            modal.classList.add('opacity-0');
-            modal.classList.remove('opacity-100');
-            content.classList.add('scale-95');
-            content.classList.remove('scale-100');
-
-            setTimeout(() => {
-                modal.classList.add('invisible');
-                document.body.style.overflow = '';
-            }, 300);
+            const m = document.getElementById('customModal'), c = document.getElementById('modalContent');
+            m.classList.add('opacity-0'); m.classList.remove('opacity-100');
+            c.classList.add('scale-95'); c.classList.remove('scale-100');
+            setTimeout(() => { m.classList.add('invisible'); document.body.style.overflow = ''; }, 300);
         }
-
-        // Initialize preloading when page loads
-        document.addEventListener('DOMContentLoaded', preloadImages);
-
-        // Star rating functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const starButtons = document.querySelectorAll('.star-btn');
-            const hiddenInput = document.getElementById('estrellas-input');
-            const ratingText = document.getElementById('rating-text');
-            let currentRating = 5;
-
-            const ratingMessages = {
-                1: '1 star - Poor',
-                2: '2 stars - Fair',
-                3: '3 stars - Good',
-                4: '4 stars - Very Good',
-                5: '5 stars - Excellent!'
-            };
-
-            function updateStars(rating, isHover = false) {
-                starButtons.forEach((btn, index) => {
-                    const starValue = index + 1;
-                    if (isHover) {
-                        btn.classList.remove('active');
-                        if (starValue <= rating) {
-                            btn.classList.add('hover-preview');
-                        } else {
-                            btn.classList.remove('hover-preview');
-                        }
-                    } else {
-                        btn.classList.remove('hover-preview');
-                        if (starValue <= rating) {
-                            btn.classList.add('active');
-                        } else {
-                            btn.classList.remove('active');
-                        }
-                    }
-                });
-
-                if (!isHover) {
-                    ratingText.textContent = ratingMessages[rating];
-                } else {
-                    ratingText.textContent = ratingMessages[rating];
-                    ratingText.style.opacity = '0.7';
-                }
+        // Keyboard
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeCustomModal(); }});
+        // Star rating
+        (function() {
+            const container = document.getElementById('star-rating'), hidden = document.getElementById('estrellas-input'), text = document.getElementById('rating-text');
+            const msgs = { 1: '1 star - Poor', 2: '2 stars - Fair', 3: '3 stars - Good', 4: '4 stars - Very Good', 5: '5 stars - Excellent!' };
+            let rating = 5;
+            for (let i = 1; i <= 5; i++) {
+                const b = document.createElement('button');
+                b.type = 'button'; b.className = 'star-btn text-3xl transition-all duration-200 hover:scale-110 active'; b.dataset.value = i;
+                b.innerHTML = '<span class="star-empty">☆</span><span class="star-filled">★</span>';
+                container.appendChild(b);
             }
-
-            // Initialize with 5 stars
-            updateStars(5);
-
-            starButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    currentRating = parseInt(this.dataset.value);
-                    hiddenInput.value = currentRating;
-                    ratingText.style.opacity = '1';
-                    updateStars(currentRating);
+            const btns = container.querySelectorAll('.star-btn');
+            function update(r, hover = false) {
+                btns.forEach((b, idx) => {
+                    b.classList.remove('active', 'hover-preview');
+                    if (hover) { if (idx + 1 <= r) b.classList.add('hover-preview'); }
+                    else { if (idx + 1 <= r) b.classList.add('active'); }
                 });
-
-                btn.addEventListener('mouseenter', function() {
-                    const hoverRating = parseInt(this.dataset.value);
-                    updateStars(hoverRating, true);
-                });
-
-                btn.addEventListener('mouseleave', function() {
-                    ratingText.style.opacity = '1';
-                    updateStars(currentRating);
-                });
+                text.textContent = msgs[r]; text.style.opacity = hover ? '0.7' : '1';
+            }
+            btns.forEach(b => {
+                b.addEventListener('click', () => { rating = +b.dataset.value; hidden.value = rating; update(rating); });
+                b.addEventListener('mouseenter', () => update(+b.dataset.value, true));
+                b.addEventListener('mouseleave', () => update(rating));
             });
-
-            // Touch support for mobile
-            const starContainer = document.getElementById('star-rating');
-            if (starContainer) {
-                starContainer.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                });
-            }
+            window.resetStars = () => { rating = 5; hidden.value = 5; update(5); };
+        })();
+        // Preload images
+        document.addEventListener('DOMContentLoaded', () => {
+            ['1','2','3','4','5'].forEach(n => { const img = new Image(); img.src = 'assets/images/' + n + '.webp'; });
         });
     </script>
-
-    <!-- Firebase and Reviews functionality -->
     <script type="module">
         import { db } from './js/main.js';
         import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // Function to render stars
-        function renderStars(count) {
-            return '⭐'.repeat(count);
-        }
+        const stars = n => '⭐'.repeat(n);
+        const fmtDate = t => {
+            if (!t) return 'Just now';
+            const d = t.toDate ? t.toDate() : new Date(t);
+            return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        };
 
-        // Function to format date
-        function formatDate(timestamp) {
-            if (!timestamp) return 'Just now';
-            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-            return date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-            });
-        }
-
-        // Function to load and display reviews
         async function loadReviews() {
-            const reviewsContainer = document.getElementById('reviews-display');
-
+            const c = document.getElementById('reviews-display');
+            if (!c) return;
             try {
-                const reviewsQuery = query(
-                    collection(db, "reviews"),
-                    orderBy("fecha", "desc"),
-                    limit(20)
-                );
-                const querySnapshot = await getDocs(reviewsQuery);
-
-                if (querySnapshot.empty) {
-                    reviewsContainer.innerHTML = `
-                        <div class="col-span-full py-12 text-center text-gray-500">
-                            <svg class="w-16 h-16 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                            </svg>
-                            <p class="text-lg">No reviews yet. Be the first to share your experience!</p>
-                        </div>
-                    `;
+                const snap = await getDocs(query(collection(db, "reviews"), orderBy("fecha", "desc"), limit(20)));
+                if (snap.empty) {
+                    c.innerHTML = '<div class="col-span-full py-12 text-center text-gray-500"><p class="text-lg">No reviews yet. Be the first!</p></div>';
                     return;
                 }
-
-                let reviewsHTML = '';
-                querySnapshot.forEach((doc) => {
-                    const review = doc.data();
-                    reviewsHTML += `
-                        <div class="review-card rounded-2xl p-6">
-                            <div class="flex items-start justify-between mb-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-bold text-sm">
-                                        ${review.nombre ? review.nombre.charAt(0).toUpperCase() : 'U'}
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-white">${review.nombre || 'Anonymous'}</h4>
-                                        <p class="text-xs text-gray-500">${formatDate(review.fecha)}</p>
-                                    </div>
-                                </div>
-                                <div class="text-sm">${renderStars(review.estrella || 5)}</div>
-                            </div>
-                            <p class="text-gray-400 leading-relaxed">${review.comentario || ''}</p>
-                        </div>
-                    `;
+                let html = '';
+                snap.forEach(doc => {
+                    const r = doc.data();
+                    const name = r.nombre || 'Anonymous';
+                    html += `<div class="review-card rounded-2xl p-6"><div class="flex items-start justify-between mb-4"><div><h4 class="font-semibold text-white">${name}</h4><p class="text-xs text-gray-500 mt-1">${fmtDate(r.fecha)}</p></div><div class="text-sm">${stars(r.estrella||5)}</div></div><p class="text-gray-400 leading-relaxed">${r.comentario||''}</p></div>`;
                 });
-
-                reviewsContainer.innerHTML = reviewsHTML;
-            } catch (error) {
-                console.error("Error loading reviews:", error);
-                reviewsContainer.innerHTML = `
-                    <div class="col-span-full py-12 text-center text-gray-500">
-                        <svg class="w-16 h-16 mx-auto mb-4 text-red-500/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                        </svg>
-                        <p class="text-lg">Unable to load reviews. Please try again later.</p>
-                    </div>
-                `;
+                c.innerHTML = html;
+            } catch (e) {
+                console.error(e);
+                c.innerHTML = '<div class="col-span-full py-12 text-center text-gray-500"><p>Unable to load reviews.</p></div>';
             }
         }
 
-        // Load reviews on page load
-        loadReviews();
+        // Función para enviar reseña sin recargar página
+        async function handleSubmitReview(e) {
+            e.preventDefault();
+            e.stopPropagation();
 
-        // Handle form submission
-        const form = document.getElementById('review-form');
-        if(form) {
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const btn = e.target.querySelector('button');
-                const originalText = btn.innerText;
-                btn.disabled = true;
-                btn.innerText = "Sending...";
+            const form = document.getElementById('review-form');
+            const btn = form.querySelector('button[type="submit"]');
+            const orig = btn.innerText;
 
-                try {
-                    await addDoc(collection(db, "reviews"), {
-                        nombre: document.getElementById('nombre-input').value,
-                        comentario: document.getElementById('comentario-input').value,
-                        estrella: parseInt(document.getElementById('estrellas-input').value),
-                        fecha: serverTimestamp()
-                    });
+            // Deshabilitar botón mientras se envía
+            btn.disabled = true;
+            btn.innerText = 'Sending...';
 
-                    form.reset();
-                    // Reset stars to 5
-                    document.getElementById('estrellas-input').value = 5;
-                    document.querySelectorAll('.star-btn').forEach((btn, index) => {
-                        btn.classList.add('active');
-                        btn.classList.remove('hover-preview');
-                    });
-                    document.getElementById('rating-text').textContent = '5 stars - Excellent!';
+            try {
+                const nombre = document.getElementById('nombre-input').value.trim();
+                const comentario = document.getElementById('comentario-input').value.trim();
+                const estrella = parseInt(document.getElementById('estrellas-input').value) || 5;
 
-                    showCustomModal("Review posted successfully!");
-                    // Reload reviews without page refresh
-                    loadReviews();
-                } catch (error) {
-                    console.error("Error:", error);
-                    showCustomModal("Error posting review. Please try again.");
-                } finally {
-                    btn.disabled = false;
-                    btn.innerText = originalText;
+                if (!nombre || !comentario) {
+                    showCustomModal('Please fill in all fields.');
+                    return;
                 }
-            });
+
+                await addDoc(collection(db, "reviews"), {
+                    nombre: nombre,
+                    comentario: comentario,
+                    estrella: estrella,
+                    fecha: serverTimestamp()
+                });
+
+                // Limpiar formulario sin recargar
+                document.getElementById('nombre-input').value = '';
+                document.getElementById('comentario-input').value = '';
+                if (typeof window.resetStars === 'function') {
+                    window.resetStars();
+                }
+
+                showCustomModal('Review posted!');
+                loadReviews();
+
+            } catch (err) {
+                console.error('Error posting review:', err);
+                showCustomModal('Error posting review. Please try again.');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = orig;
+            }
+
+            return false;
         }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            loadReviews();
+
+            const form = document.getElementById('review-form');
+            if (form) {
+                // Remover cualquier listener previo y agregar el nuevo
+                form.addEventListener('submit', handleSubmitReview);
+
+                // También prevenir con el botón directamente
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.addEventListener('click', (e) => {
+                        if (form.checkValidity()) {
+                            e.preventDefault();
+                            handleSubmitReview(e);
+                        }
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>
-

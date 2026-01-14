@@ -1,10 +1,5 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./index.html",
-    "./pages/**/*.html",
-    "./js/**/*.js"
-  ],
+// js/tailwind-config.js
+window.tailwindConfig = {
   darkMode: 'class',
   theme: {
     extend: {
@@ -12,33 +7,30 @@ module.exports = {
         sans: ['Inter', 'system-ui', 'sans-serif']
       },
       colors: {
-        // Paleta del Pingüino Morado
         primary: {
-          50: '#f8fafc',   // Blanco suave
-          100: '#f1f5f9',  // Gris muy claro
-          200: '#e2e8f0',  // Gris claro
-          300: '#c7d2fe',  // Morado muy claro (pecho del pingüino)
-          400: '#a78bfa',  // Morado claro
-          500: '#8b7cf6',  // Morado principal del pingüino
-          600: '#7c3aed',  // Morado medio
-          700: '#6d28d9',  // Morado oscuro
-          800: '#5b21b6',  // Morado muy oscuro
-          900: '#4c1d95',  // Morado profundo
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#c7d2fe',
+          400: '#a78bfa',
+          500: '#8b7cf6',
+          600: '#7c3aed',
+          700: '#6d28d9',
+          800: '#5b21b6',
+          900: '#4c1d95',
         },
-        // Naranja del pico como acento
         accent: {
           50: '#fff7ed',
           100: '#ffedd5',
           200: '#fed7aa',
           300: '#fdba74',
           400: '#fb923c',
-          500: '#f97316',   // Naranja principal del pico
+          500: '#f97316',
           600: '#ea580c',
           700: '#c2410c',
           800: '#9a3412',
           900: '#7c2d12',
         },
-        // Fondos suaves (no tan oscuros)
         background: {
           50: '#fafafa',
           100: '#f4f4f5',
@@ -64,4 +56,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

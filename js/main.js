@@ -21,7 +21,7 @@ const db = getFirestore(app);
 export { db };
 
 /**
- * Función para cargar reseñas desde Firebase
+ * Función para cargar reseñas desde Firebase (sin user badge)
  */
 async function mostrarResenas() {
   const contenedor = document.getElementById('reviews-display');
@@ -29,7 +29,7 @@ async function mostrarResenas() {
 
   try {
     const querySnapshot = await getDocs(collection(db, "reviews"));
-    contenedor.innerHTML = ""; 
+    contenedor.innerHTML = "";
 
     if (querySnapshot.empty) {
       contenedor.innerHTML = "<p class='text-gray-500 col-span-full text-center'>No reviews yet. Be the first!</p>";
@@ -38,6 +38,7 @@ async function mostrarResenas() {
 
     querySnapshot.forEach((doc) => {
       const resena = doc.data();
+      // Solo se muestra el nombre, sin user badge
       contenedor.innerHTML += `
         <div class="glass-card p-6 rounded-2xl border border-white/10 mb-4 transition-all hover:bg-white/5">
           <h4 class="text-primary-400 font-bold">${resena.nombre || 'Anónimo'}</h4>
@@ -72,7 +73,7 @@ function initDarkMode() {
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.classList.add('dark');
   }
-  
+
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
     if (event.matches) {
       document.documentElement.classList.add('dark');
@@ -155,10 +156,10 @@ const utils = {
  */
 document.addEventListener('DOMContentLoaded', function() {
   initDarkMode();
-  
+
   // Ejecutar carga de reseñas de Firebase
   mostrarResenas();
-  
+
   console.log('Trinity Launcher cargado exitosamente! 🚀');
 });
 

@@ -642,44 +642,55 @@
     }
 
     // --- Login Logic ---
-    async function checkDiscordLogin() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get('code');
+async function checkDiscordLogin() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
 
-        if (code) {
-            // Evitamos borrar el código inmediatamente para poder depurar si falla
-            // window.history.replaceState({}, document.title, window.location.pathname);
-            showCustomModal("Connecting to Discord...");
-            
-            try {
-                const response = await fetch(`/api/login?code=${code}`);
-                const data = await response.json();
+    if (code) {
+        showCustomModal("Connecting to Discord...");
+        
+        try {
+            // Cambiamos a POST para mayor seguridad y enviamos el JSON
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code })
+            });
 
-                if (data.error) throw new Error(data.error);
-                if (!data.username) throw new Error("Incomplete user data ");
+            const data = await response.json();
 
-                localStorage.setItem('trinity_user', JSON.stringify(data));
-                updateUI(data);
-                
-                closeCustomModal();
-                showCustomModal(`Welcome, ${data.username}!`);
-                
-                // Si todo salió bien, limpiamos la URL
-                window.history.replaceState({}, document.title, window.location.pathname);
-
-            } catch (error) {
-                console.error("❌ Login Error:", error);
-                closeCustomModal();
-                showCustomModal("Login Error: " + error.message);
+            if (!response.ok || data.error) {
+                throw new Error(data.message || data.error || "Failed to login");
             }
-        } else {
-            const saved = localStorage.getItem('trinity_user');
-            if (saved) {
-                try { updateUI(JSON.parse(saved)); } 
-                catch (e) { localStorage.removeItem('trinity_user'); }
+
+            // Guardar datos y actualizar UI
+            localStorage.setItem('trinity_user', JSON.stringify(data));
+            updateUI(data);
+            
+            closeCustomModal();
+            showCustomModal(`Welcome, ${data.username}!`);
+            
+            // Limpiar la URL para evitar re-logins accidentales al refrescar
+            window.history.replaceState({}, document.title, window.location.pathname);
+
+        } catch (error) {
+            console.error("❌ Login Error:", error);
+            closeCustomModal();
+            showCustomModal("Login Error: " + error.message);
+            // Si el código falló, también conviene limpiar la URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    } else {
+        const saved = localStorage.getItem('trinity_user');
+        if (saved) {
+            try { 
+                updateUI(JSON.parse(saved)); 
+            } catch (e) { 
+                localStorage.removeItem('trinity_user'); 
             }
         }
     }
+}
 
     // --- Load Reviews ---
     const stars = n => '⭐'.repeat(n);

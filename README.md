@@ -41,54 +41,54 @@ Sitio web moderno y responsive de Trinity Launcher, construido con tecnologías 
 ```
 
 trinity-launcher-website/  
+├── api
+│   └── login.js
 ├── assets
-│   ├── icons
-│   │   ├── favicon.ico
-│   │   ├── start23.svg
-│   │   └── start.svg
-│   └── images
-│       ├── 1.jpg
-│       ├── 2.jpg
-│       ├── 3.jpg
-│       ├── 4.jpg
-│       ├── 5.jpg
-│       ├── faq-preview.jpg
-│       ├── team-preview.jpg
-│       ├── trinity-launcher-preview.jpg
-│       └── wiki-preview.jpg
+│   ├── icons
+│   │   ├── favicon.ico
+│   │   ├── start23.svg
+│   │   └── start.svg
+│   └── images
+│       ├── 1.webp
+│       ├── 2.webp
+│       ├── 3.webp
+│       ├── 4.webp
+│       ├── 5.webp
+│       └── trinity-launcher-preview.jpg
 ├── css
-│   ├── components.css
-│   └── main.css
+│   ├── components.css
+│   └── main.css
 ├── data
-│   ├── contributors.json
-│   ├── faq-content
-│   │   ├── 1.html
-│   │   ├── 2.html
-│   │   ├── 3.html
-│   │   ├── 4.html
-│   │   ├── 5.html
-│   │   ├── 6.html
-│   │   ├── 7.html
-│   │   ├── 8.html
-│   │   ├── 9.html
-│   │   └── config.json
-│   └── wiki-content
-│       ├── configs.json
-│       ├── configuration.html
-│       ├── getting-started.html
-│       ├── installation.html
-│       └── support.html
+│   ├── contributors.json
+│   ├── faq-content
+│   │   ├── 1.html
+│   │   ├── 2.html
+│   │   ├── 3.html
+│   │   ├── 4.html
+│   │   ├── 5.html
+│   │   ├── 6.html
+│   │   ├── 7.html
+│   │   ├── 8.html
+│   │   ├── 9.html
+│   │   └── config.json
+│   └── wiki-content
+│       ├── configs.json
+│       ├── configuration.html
+│       ├── getting-started.html
+│       ├── installation.html
+│       ├── support.html
+│       └── technical-docs.html
 ├── index.html
 ├── js
-│   ├── main.js
-│   ├── navigation.js
-│   ├── tailwind.config.js
-│   └── utils.js
+│   ├── main.js
+│   ├── navigation.js
+│   ├── tailwind.config.js
+│   └── utils.js
 ├── LICENSE
 ├── pages
-│   ├── contributors.html
-│   ├── faq.html
-│   └── wiki.html
+│   ├── contributors.html
+│   ├── faq.html
+│   └── wiki.html
 ├── README.md
 └── vercel.json
 
@@ -118,6 +118,12 @@ trinity-launcher-website/
     # O con Python 3
     python3 -m http.server 8000
     ```
+ 
+    **Opción 2: Vercel Live Server**
+    
+    - Instala Vercel para poder usar `vercel dev`
+    - Asi podras usar un servidor vercel de forma local
+
     
     **Opción 3: VS Code Live Server**
     

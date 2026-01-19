@@ -71,7 +71,7 @@
       "name": "IoselDev",
       "role": "AppImage Maintainer",
       "initials": "ID",
-      "description": "Created the AppImage version of Trinity Launcher, providing a portable and easy-to-run option for Linux users.",
+      "description": "Contributed exclusively by creating the PKGBUILD for the AUR package.",
       "gradient": "from-cyan-400 to-cyan-600",
       "roleColor": "text-cyan-400",
       "hoverColor": "text-cyan-400",

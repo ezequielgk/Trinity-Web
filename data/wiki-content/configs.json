@@ -1,10 +1,10 @@
 {
   "links": {
-    "download": "https://github.com/Trinity-LA/Trinity-Launcher/releases/download/1.0/trinity.flatpak",
+    "download": "https://github.com/Trinity-LA/Trinity-Launcher/releases/download/2.6-beta/Trinity_Launcher-x86_64.AppImage",
     "discord": "https://discord.gg/4EVgybJbbZ",
     "github": "https://github.com/Trinity-LA/Trinity-Launcher",
     "flatpaksetup": "https://flatpak.org/setup/"
   },
-  "version": "1.0.0",
-  "fileSize": "50MB"
+  "version": "2.6-beta",
+  "fileSize": "160MB"
 }

@@ -84,7 +84,7 @@ class Navigation {
                 </a>
                 
                 <!-- Enlace a Discord -->
-                <a href="https://discord.gg/4EVgybJbbZ" target="_blank" 
+                <a href="https://discord.gg/xpRevUkyKd" target="_blank" 
                    class="nav-icon p-2 text-gray-400 hover:text-white hover:bg-navy-700 rounded-lg transition-colors duration-200"
                    title="Unirse a Discord">
                   <i class="fab fa-discord text-lg"></i>
